@@ -1,17 +1,18 @@
 /**
- * ����Java256�{�m�b�N for Java 5.0
- * Java�T���v���\�[�X ver0.2C "Java256"
- * Java256.java �u�R�}���h�v�����v�g�ɕ������o�͂���v
+ * 愛のJava256本ノック for Java 5.0
+ * Javaサンプルソース ver0.2C "Java256"
+ * Java256.java 「コマンドプロンプトに文字を出力する」
  *
- * 2005/09/23 ����F���i�m���J�Y
+ * 2005/09/23 制作：安永ノリカズ
  *
- * �y�R���p�C�������s���@�z
+ * 【コンパイル＆実行方法】
  *     >javac Java256.java
  *     >java Java256
- * �y�L�[���[�h�z
- *     �ׂ���(power), �^�ϊ�(cast), int(����)�^, java.util.Formatter�N���X, 
- * �y�����Ă݂悤�z
- *     Math.pow�̈�����ύX���āu32�{�̃m�b�N���󂯂�v��A *     �u65536�{�̃m�b�N���󂯂�v�ƕ\�����Ă݂�B
+ * 【キーワード】
+ *     べき乗(power), 型変換(cast), int(整数)型, java.util.Formatterクラス,
+ * 【試してみよう】
+ *     Math.powの引数を変更して「32本のノックを受ける」や、
+ *     「65536本のノックを受ける」と表示してみる。
  */
 import java.lang.Math;
 import java.lang.String;
@@ -20,19 +21,19 @@ import java.lang.System;
 public class Java256 {
     public static void main(String[] a00) {
         int L00 = (int)Math.pow(2, 8);
-        System.out.println("�鐾�I�@��X�́A�X�|�[�c�}���V�b�v�ɂ̂��Ƃ�");
-        System.out.printf("���X���X�A%d�{�̃m�b�N���󂯂邱�Ƃ𐾂��܂��B%n", L00);
+        System.out.println("宣誓！　我々は、スポーツマンシップにのっとり");
+        System.out.printf("正々堂々、%d本のノックを受けることを誓います。%n", L00);
     }
 }
 
-/* �� �N���X�̊O�ł�����ƈꌾ ��
-java.lang.Math.pow()�́Adouble�^��Ԃ��܂��B�ł��̂ŁA���̂܂܂���
-"256.0"�ƂȂ��Ă��܂��̂ŁAint�^�ɕϊ����Ă܂��B
+/* ■ クラスの外でちょっと一言 ■
+java.lang.Math.pow()は、double型を返します。ですので、そのままだと
+"256.0"となってしまうので、int型に変換してます。
 
-�R���s���[�^�̊�{��2�i��(binary)�ł��̂ŁA�Q�ׂ̂���͂悭�o�Ă��܂��B
-8,16,32,64,128,256,512,1024,65536�������Ƃ��ɂ̓s���Ɨ���悤�ɂȂ��Ă�
-�������B�Ƃ͂����A�������Ȃ񂩂ł��ނ肪256�~�������肵���Ƃ��ɁA�u����
-���A�҂�����I�v�Ǝ������Ă��A��ʂ̐l�ɂ͗������Ă��炦�܂��񂩂�ˁB
+コンピュータの基本は2進数(binary)ですので、２のべき乗はよく出てきます。
+8,16,32,64,128,256,512,1024,65536を見たときにはピンと来るようになってく
+ださい。とはいえ、買い物なんかでお釣りが256円だったりしたときに、「すげ
+え、ぴったり！」と自慢しても、一般の人には理解してもらえませんからね。
 
-128(�C�`�j�b�p)�A256(�j�S��)�Ɣ�������ƁA�v�����ۂ��Ă��������ł��B
+128(イチニッパ)、256(ニゴロ)と発音すると、プロっぽくていい感じです。
  */
