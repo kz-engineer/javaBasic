@@ -20,7 +20,7 @@ import java.lang.System;
 
 public class Java256 {
     public static void main(String[] a00) {
-        int L00 = (int)Math.pow(2, 8);
+        int L00 = (int)Math.pow(2, 5);
         System.out.println("宣誓！　我々は、スポーツマンシップにのっとり");
         System.out.printf("正々堂々、%d本のノックを受けることを誓います。%n", L00);
     }
