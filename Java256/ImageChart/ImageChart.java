@@ -1,17 +1,20 @@
 /**
- * ����Java256�{�m�b�N for Java 5.0
- * Java�T���v���\�[�X ver0.2C "ImageChart"
- * ImageChart.java �uJLabel��HTML�\���@�\�Ŗ_�O���t���ȒP�ɕ\���v
+ * 愛のJava256本ノック for Java 5.0
+ * Javaサンプルソース ver0.2C "ImageChart"
+ * ImageChart.java 「JLabelのHTML表示機能で棒グラフを簡単に表示」
  *
- * 2005/09/23 ����F���i�m���J�Y
+ * 2005/09/23 制作：安永ノリカズ
  *
- * �y�R���p�C�������s���@�z
+ * 【コンパイル＆実行方法】
  *     >javac ImageChart.java
  *     >java ImageChart
- * �y�L�[���[�h�z
- *     HTML(HyperText Markup Language), table�^�O, img�^�O,  *     URL(Uniform Resource Locator)
- * �y�����Ă݂悤�z
- *     JLabel�̓��e��System.out.println�ŕ\�����āA�摜�t�@�C����URL���m�F����B *     table�^�O��border�����ŕ\�ɘg������B *     ���ڂ��Ƃ̐��l���\������B
+ * 【キーワード】
+ *     HTML(HyperText Markup Language), tableタグ, imgタグ, 
+ *     URL(Uniform Resource Locator)
+ * 【試してみよう】
+ *     JLabelの内容をSystem.out.printlnで表示して、画像ファイルのURLを確認する。
+ *     tableタグのborder属性で表に枠をつける。
+ *     項目ごとの数値も表示する。
  */
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -27,10 +30,10 @@ public class ImageChart extends JFrame {
 
     public ImageChart() {
         Item[] L00 = {
-            new Item("�`��", "image/bar01.gif", 48),
-            new Item("�a��", "image/bar02.gif", 159),
-            new Item("�b��", "image/bar03.gif", 106),
-            new Item("�c��", "image/bar04.gif", 89), 
+            new Item("Ａ社", "image/bar01.gif", 48),
+            new Item("Ｂ社", "image/bar02.gif", 159),
+            new Item("Ｃ社", "image/bar03.gif", 106),
+            new Item("Ｄ社", "image/bar04.gif", 89), 
         };
 
         StringBuffer L01 = new StringBuffer();
@@ -46,7 +49,7 @@ public class ImageChart extends JFrame {
 
     public static void main(String[] A00) {
         JFrame L00 = new ImageChart();
-        L00.setTitle("�摜���g�����O���t");
+        L00.setTitle("画像を使ったグラフ");
         L00.getContentPane().setBackground(Color.white);
         L00.setDefaultCloseOperation(EXIT_ON_CLOSE);
         L00.pack();
@@ -76,29 +79,29 @@ class Item {
             URL L01 = new File(I01).toURL();
             L00 = String.format("<img src='%s' width='%d'>", L01, I02);
         } catch (MalformedURLException e) {
-            System.out.println("�摜�t�@�C���̎w��Ɍ�肪����܂��B");
+            System.out.println("画像ファイルの指定に誤りがあります。");
         }
 
         return L00;
     }
 }
 
-/* �� �N���X�̊O�ł�����ƈꌾ ��
-Swing�ŉ摜�\���Ƃ����ƁAJPanel�ɒ��ڕ`�悷��̂��v�������ׂ邩�������
-���񂪁AJLabel��HTML�ŕ\������Ƃ����A�v���[�`������܂��B����́A�摜��
-�����݂̂ō\�������O���t�ł��̂ŁAHTML��table�^�O�𗘗p���āAJLabel��
-���C�A�E�g���邱�Ƃɂ��܂����B
+/* ■ クラスの外でちょっと一言 ■
+Swingで画像表示というと、JPanelに直接描画するのを思い浮かべるかもしれま
+せんが、JLabelにHTMLで表示するというアプローチもあります。今回は、画像と
+文字のみで構成されるグラフですので、HTMLのtableタグを利用して、JLabelで
+レイアウトすることにしました。
 
-�_�O���t�̌��摜�́A�ǂ̐F����8�h�b�g�B�����img�^�O��width�����ɒl���
-�肷�邱�ƂŁA���̒�����ς��Ă��܂��BWeb�A�v���P�[�V�����ł悭�g����@
-�ł��ˁB
+棒グラフの元画像は、どの色も幅8ドット。それをimgタグのwidth属性に値を設
+定することで、横の長さを変えています。Webアプリケーションでよく使う手法
+ですね。
 
-img�^�O�Ƀ��[�J���̃t�@�C�������w�肷��ꍇ�́AURL�ɕϊ�����K�v�������
-���B<img src="image/fish00.gif">�̂悤�ɑ��΃p�X�Ŏw�肵�Ă��\������܂�
-��̂Œ��ӂ��Ă��������B���΃p�X��URL�̕ϊ��́Ajava.io.File�I�u�W�F�N�g
-������āAtoURL���\�b�h���Ăׂ�OK�B
+imgタグにローカルのファイル名を指定する場合は、URLに変換する必要がありま
+す。<img src="image/fish00.gif">のように相対パスで指定しても表示されませ
+んので注意してください。相対パス→URLの変換は、java.io.Fileオブジェクト
+を作って、toURLメソッドを呼べばOK。
 
-JLabel�ɐݒ肷��HTML�^�O�̘A���ɂ́AStringBuffer���g���Ă܂��BString��+
-�ŘA������̂ɔ�ׁA�������ɖ��ʂ�����܂���B�u������p�ɂɘA������Ƃ�
-��StringBuffer�v�Ɗo���Ă����Ă��������B
+JLabelに設定するHTMLタグの連結には、StringBufferを使ってます。Stringを+
+で連結するのに比べ、メモリに無駄がありません。「文字を頻繁に連結するとき
+はStringBuffer」と覚えておいてください。
  */

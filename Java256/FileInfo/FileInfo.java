@@ -1,17 +1,19 @@
 /**
- * ����Java256�{�m�b�N for Java 5.0
- * Java�T���v���\�[�X ver0.2C "FileInfo"
- * FileInfo.java �u�t�@�C���̗l�X�ȏ����擾�v
+ * 愛のJava256本ノック for Java 5.0
+ * Javaサンプルソース ver0.2C "FileInfo"
+ * FileInfo.java 「ファイルの様々な情報を取得」
  *
- * 2005/09/23 ����F���i�m���J�Y
+ * 2005/09/23 制作：安永ノリカズ
  *
- * �y�R���p�C�������s���@�z
+ * 【コンパイル＆実行方法】
  *     >javac FileInfo.java
  *     >java FileInfo
- * �y�L�[���[�h�z
- *     ��΃p�X(absolute path), ���΃p�X(relative path),  *     URL(Uniform Resource Locator), java.util.Formatter�N���X, 
- * �y�����Ă݂悤�z
- *     �t�@�C�������݂��邩�ǂ����̃`�F�b�N������B *     �t�H���_�̏����擾���Ă݂�B
+ * 【キーワード】
+ *     絶対パス(absolute path), 相対パス(relative path), 
+ *     URL(Uniform Resource Locator), java.util.Formatterクラス, 
+ * 【試してみよう】
+ *     ファイルが存在するかどうかのチェックを入れる。
+ *     フォルダの情報を取得してみる。
  */
 import java.io.File;
 import java.lang.String;
@@ -24,32 +26,32 @@ public class FileInfo {
     public static void main(String[] A00) {
         File L00 = new File(C00);
         
-        System.out.println("��΃p�X�@�@" + L00.getAbsolutePath());
+        System.out.println("絶対パス　　" + L00.getAbsolutePath());
         try {
-            System.out.println("URL �@�@�@�@" + L00.toURL());
+            System.out.println("URL 　　　　" + L00.toURL());
         } catch (MalformedURLException e) {
-            System.out.println("URL�ɕϊ��ł��܂���ł����B");
+            System.out.println("URLに変換できませんでした。");
         }
-        System.out.println("�p�X���@�@�@" + L00.getPath());
-        System.out.println("�t�@�C�����@" + L00.getName());
-        System.out.printf("�X�V�����@�@%1$tD %1$tT%n", L00.lastModified());
-        System.out.printf("�T�C�Y�@�@�@%d�o�C�g%n", L00.length());
-        System.out.println("��΃p�X�H�@�@�@" + L00.isAbsolute());
-        System.out.println("�f�B���N�g���H�@" + L00.isDirectory());
-        System.out.println("�t�@�C���H�@�@�@" + L00.isFile());
+        System.out.println("パス名　　　" + L00.getPath());
+        System.out.println("ファイル名　" + L00.getName());
+        System.out.printf("更新日時　　%1$tD %1$tT%n", L00.lastModified());
+        System.out.printf("サイズ　　　%dバイト%n", L00.length());
+        System.out.println("絶対パス？　　　" + L00.isAbsolute());
+        System.out.println("ディレクトリ？　" + L00.isDirectory());
+        System.out.println("ファイル？　　　" + L00.isFile());
     }
 }
 
-/* �� �N���X�̊O�ł�����ƈꌾ ��
-����Ƀt�@�C�����w�肷��Ƃ����Ă��A�������̕��@������܂��B�u��΃p
-�X�v�u���΃p�X�v�uURL�v�Ƃ����ł����A���ꂼ��̕ϊ��ɕ֗��Ȃ̂�File�N
-���X�ł��B
+/* ■ クラスの外でちょっと一言 ■
+一口にファイルを指定するといっても、いくつかの方法があります。「絶対パ
+ス」「相対パス」「URL」とあるんですが、それぞれの変換に便利なのがFileク
+ラスです。
 
-����̃T���v���ł́A"data/sample.txt"�Ƃ������s���̃t�H���_����́u����
-�p�X�v�Ńt�@�C�����w�肵�Ă��܂��B��������u��΃p�X�v�uURL�v���擾����
-�܂��̂ŁA�\��������ׂĂ��̈Ⴂ�𗝉����Ă��������B
+今回のサンプルでは、"data/sample.txt"という実行時のフォルダからの「相対
+パス」でファイルを指定しています。そこから「絶対パス」「URL」を取得して
+ますので、表示を見比べてその違いを理解してください。
 
-�܂��AFile�N���X�ł́A���̃t�@�C���Ɋւ�������擾���邱�Ƃ��o���܂��B
-���̃T���v���ł͂��̒��̂�������\�����Ă܂����A���ɂ��擾�ł�����
-����܂��̂Œ��ׂĂ݂Ă��������B
+また、Fileクラスでは、そのファイルに関する情報を取得することも出来ます。
+このサンプルではその中のいくつかを表示してますが、他にも取得できる情報が
+ありますので調べてみてください。
  */

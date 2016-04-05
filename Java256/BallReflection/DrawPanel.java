@@ -1,17 +1,19 @@
 /**
- * ����Java256�{�m�b�N for Java 5.0
- * Java�T���v���\�[�X ver0.2C "BallReflection"
- * DrawPanel.java �u�E�B���h�E�̓����𔽎˂���{�[���v
+ * 愛のJava256本ノック for Java 5.0
+ * Javaサンプルソース ver0.2C "BallReflection"
+ * DrawPanel.java 「ウィンドウの内側を反射するボール」
  *
- * 2005/09/23 ����F���i�m���J�Y
+ * 2005/09/23 制作：安永ノリカズ
  *
- * �y�R���p�C�������s���@�z
+ * 【コンパイル＆実行方法】
  *     >javac *.java
  *     >java BallReflection
- * �y�L�[���[�h�z
- *     �C�x���g�쓮(event-driven)�v���O����, �R���|�[�l���g�̍ĕ`��(repaint),  *     �R�[���o�b�N(callback)���\�b�h, *     �C�x���g�f�B�X�p�b�`�X���b�h(event dispatch thread), 
- * �y�����Ă݂悤�z
- *     �{�[���̐��𑝂₵�Ĕz��ŊǗ�����B
+ * 【キーワード】
+ *     イベント駆動(event-driven)プログラム, コンポーネントの再描画(repaint), 
+ *     コールバック(callback)メソッド,
+ *     イベントディスパッチスレッド(event dispatch thread), 
+ * 【試してみよう】
+ *     ボールの数を増やして配列で管理する。
  */
 import java.awt.Color;
 import java.awt.Dimension;
@@ -48,26 +50,26 @@ public class DrawPanel extends JPanel implements ActionListener {
     }
 }
 
-/* �� �N���X�̊O�ł�����ƈꌾ ��
-���̃N���X�̃��\�b�h�́A�S�āA���߂��炿���Ƃ������O���t���Ă���܂��B
-����́i�R���X�g���N�^�[�������āj�A�v���O���}�[�����ڌĂяo���̂ł͂�
-���ASwing���ɌĂяo���Ă��炤�R�[���o�b�N���\�b�h������ł�
+/* ■ クラスの外でちょっと一言 ■
+このクラスのメソッドは、全て、初めからちゃんとした名前が付けてあります。
+これは（コンストラクターを除いて）、プログラマーが直接呼び出すのではな
+く、Swing側に呼び出してもらうコールバックメソッドだからです
 
-�����̗���𗝉�����ɂ́A�ǂ̃^�C�~���O�Ń��\�b�h���Ăяo����邩��m��
-�̂��|�C���g�ŁA���ɁATimer��actionPerformed()�̊֌W�A�y�сArepaint()��
-paintComponent()�̊֌W�͏d�v�ł��B
+処理の流れを理解するには、どのタイミングでメソッドが呼び出されるかを知る
+のがポイントで、特に、TimerとactionPerformed()の関係、及び、repaint()と
+paintComponent()の関係は重要です。
 
-BallReflection�N���X�Ő�������Timer�ɂ��A����I��Action�C�x���g������
-���A���̂ǁAactionPerformed���Ă΂�܂��B�����ɕ`�惁�\�b�h�������΁A
-�A�j���[�V���������������킯�ł����A���ۂ́A�{�[���̍��W���X�V����̂�
-�ŁA�`��͍s�킸�Arepaint()�Ńp�l���́u�ĕ`��v���v���o���ɂƂǂ܂��Ă�
-���B���́u�ĕ`��v���v���o���ꂽ��ApaintComponent()���Ăяo����A���ۂ�
-��ʂɃ{�[�����`�悳���Ƃ����d�g�݂ɂȂ��Ă܂��B
+BallReflectionクラスで生成したTimerにより、定期的にActionイベントが発生
+し、そのつど、actionPerformedが呼ばれます。ここに描画メソッドを書けば、
+アニメーションが実現されるわけですが、実際は、ボールの座標を更新するのみ
+で、描画は行わず、repaint()でパネルの「再描画要求」を出すにとどまってま
+す。この「再描画要求」が出された後、paintComponent()が呼び出され、実際に
+画面にボールが描画されるという仕組みになってます。
 
-���̂悤�ɁAGUI�v���O���~���O�ł́A���ڃ��\�b�h���Ăяo���̂ł͂Ȃ��A�C
-�x���g�Ƃ����u�d�g�݁v�𗘗p���ă��\�b�h���Ăяo���܂��B������v���O��
-�}�[�����ڂ�����ꍇ�ɂ́A�K�v�ȂƂ��ɉ�ʂ̕`�悪�Ȃ��ꂸ�ɕ\�������ꂽ
-��A�E�B���h�E�𑀍삵�悤�ɂ��������Ȃ��Ȃǂ̖�肪�N����\���������
-���B�R�[���o�b�N���\�b�h�ł́A�������������ɁA�f�����V�X�e���ɏ�����Ԃ�
-�̂��A�����̑f����GUI�\�z�̃J�M�ɂȂ�܂��B
+このように、GUIプログラミングでは、直接メソッドを呼び出すのではなく、イ
+ベントという「仕組み」を利用してメソッドを呼び出します。これをプログラ
+マーが直接やった場合には、必要なときに画面の描画がなされずに表示が崩れた
+り、ウィンドウを操作しようにも反応しないなどの問題が起こる可能性がありま
+す。コールバックメソッドでは、もたもたせずに、素早くシステムに処理を返す
+のが、応答の素早いGUI構築のカギになります。
  */

@@ -1,17 +1,19 @@
 /**
- * ����Java256�{�m�b�N for Java 5.0
- * Java�T���v���\�[�X ver0.2C "MultiScroll"
- * MultiScroll.java �u����GIF�𗘗p���āA�w�i�𑽏d�X�N���[���v
+ * 愛のJava256本ノック for Java 5.0
+ * Javaサンプルソース ver0.2C "MultiScroll"
+ * MultiScroll.java 「透過GIFを利用して、背景を多重スクロール」
  *
- * 2005/09/23 ����F���i�m���J�Y
+ * 2005/09/23 制作：安永ノリカズ
  *
- * �y�R���p�C�������s���@�z
+ * 【コンパイル＆実行方法】
  *     >javac *.java
  *     >java MultiScroll
- * �y�L�[���[�h�z
- *     �t���[�����[�g(frame rate)
- * �y�����Ă݂悤�z
- *     GIF�摜�̓����������m�F����B *     �e�w�i�̃X�N���[���X�s�[�h��ς��Ă݂�B *     �Ԃ�O�ɐi�߂���A�����݂ɏ㉺�ɓ��������肷��B
+ * 【キーワード】
+ *     フレームレート(frame rate)
+ * 【試してみよう】
+ *     GIF画像の透明処理を確認する。
+ *     各背景のスクロールスピードを変えてみる。
+ *     車を前に進めたり、小刻みに上下に動かしたりする。
  */
 import java.lang.String;
 import javax.swing.JFrame;
@@ -19,7 +21,7 @@ import javax.swing.Timer;
 
 public class MultiScroll extends JFrame {
 
-    final static int C00 = 33;    // �P�b������̕`���
+    final static int C00 = 33;    // １秒あたりの描画回数
 
     public MultiScroll() {
         DrawPanel L00 = new DrawPanel();
@@ -30,7 +32,7 @@ public class MultiScroll extends JFrame {
 
     public static void main(String[] A00) {
         MultiScroll L00 = new MultiScroll();
-        L00.setTitle("�w�i�̑��d�X�N���[��");
+        L00.setTitle("背景の多重スクロール");
         L00.setDefaultCloseOperation(EXIT_ON_CLOSE);
         L00.setResizable(false);
         L00.pack();
@@ -38,15 +40,15 @@ public class MultiScroll extends JFrame {
     }
 }
 
-/* �� �N���X�̊O�ł�����ƈꌾ ��
-�w�i�𑽏d�X�N���[��������T���v���ł��BMultiScroll�ADrawPanel�A
-Background��3�̃N���X����\������Ă��܂��B
+/* ■ クラスの外でちょっと一言 ■
+背景を多重スクロールさせるサンプルです。MultiScroll、DrawPanel、
+Backgroundの3つのクラスから構成されています。
 
-����MultiScroll�N���X��main���\�b�h���������G���g���[�ŁA�t���[���A�`��
-�p�l���A�^�C�}�[�̐������s���Ă܂��BDrawPanel�N���X�͕`��p�̃p�l���B�^
-�C�}�[�C�x���g�͂��̃p�l���ɒʒm����܂��BBackground�N���X�́A1���̔w�i
-���Ǘ�����N���X�B�w�i�̖������A���̃N���X�̃C���X�^���X����������܂��B
+このMultiScrollクラスはmainメソッドを持ったエントリーで、フレーム、描画
+パネル、タイマーの生成を行ってます。DrawPanelクラスは描画用のパネル。タ
+イマーイベントはこのパネルに通知されます。Backgroundクラスは、1枚の背景
+を管理するクラス。背景の枚数分、このクラスのインスタンスが生成されます。
 
-���Ȃ݂ɁA�Ԃ�Fiat500�i�`���N�`�F���g�j�B�w�J���I�X�g���̏�x�Ń��p���O
-��������Ă�����ł��ˁB
+ちなみに、車はFiat500（チンクチェント）。『カリオストロの城』でルパン三
+世が乗っていたやつですね。
  */

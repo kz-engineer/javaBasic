@@ -1,17 +1,19 @@
 /**
- * ����Java256�{�m�b�N for Java 5.0
- * Java�T���v���\�[�X ver0.2C "MultiScroll"
- * DrawPanel.java �u����GIF�𗘗p���āA�w�i�𑽏d�X�N���[���v
+ * 愛のJava256本ノック for Java 5.0
+ * Javaサンプルソース ver0.2C "MultiScroll"
+ * DrawPanel.java 「透過GIFを利用して、背景を多重スクロール」
  *
- * 2005/09/23 ����F���i�m���J�Y
+ * 2005/09/23 制作：安永ノリカズ
  *
- * �y�R���p�C�������s���@�z
+ * 【コンパイル＆実行方法】
  *     >javac *.java
  *     >java MultiScroll
- * �y�L�[���[�h�z
- *     ����GIF(transparent gif), �W�F�l���b�N�X(generics), �g��for���[�v,  *     �R���N�V�����t���[�����[�N(Collections Framework),  *     
- * �y�����Ă݂悤�z
- *     MultiScroll.java�Q�ƁB
+ * 【キーワード】
+ *     透過GIF(transparent gif), ジェネリックス(generics), 拡張forループ, 
+ *     コレクションフレームワーク(Collections Framework), 
+ *     
+ * 【試してみよう】
+ *     MultiScroll.java参照。
  */
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -51,23 +53,23 @@ class DrawPanel extends JPanel implements ActionListener {
     }
 }
 
-/* �� �N���X�̊O�ł�����ƈꌾ ��
-���̃N���X�͉�ʕ\���Ɖ摜�̊Ǘ���S�����Ă��܂��B
+/* ■ クラスの外でちょっと一言 ■
+このクラスは画面表示と画像の管理を担当しています。
 
-�܂����ڂ��Ă��炢�����̂��R���X�g���N�^�[�B�w�i�I�u�W�F�N�g�𐶐����āA
-List�ɒǉ����Ă܂��B�w�i�̐������Ɏw�肷��̂́A�摜�t�@�C�����ƃX�N���[
-���̃X�s�[�h�B�������������A��O�𑬂����������ƂŁA���ߊ��̂��鑽�d�X
-�N���[������������܂��B�܂��A���X�g�ɒǉ����鏇�Ԃ��d�v�ł��B���̒ǉ���
-���`�揇�ɂ��Ȃ�̂ŁA���ɔz�u������̂��珇�Ԃɒǉ����Ă����܂��B
+まず注目してもらいたいのがコンストラクター。背景オブジェクトを生成して、
+Listに追加してます。背景の生成時に指定するのは、画像ファイル名とスクロー
+ルのスピード。遠くをゆっくり、手前を速く動かすことで、遠近感のある多重ス
+クロールが実現されます。また、リストに追加する順番も重要です。この追加順
+が描画順にもなるので、奥に配置するものから順番に追加していきます。
 
-�����Ŏg�p����摜�ɂ́A�������̎d�|��������܂��B��A�_�A�n�ʁA�ԁA��
-��5���̔w�i���p�ӂ��Ă����ł����A��ȊO��4����GIF�̓����F�̎w����g��
-�āA���̉��ɂ���摜�������Č�����悤�ɂȂ��Ă܂��B�܂��A�E�̒[�����̒[
-�ɂȂ��郋�[�v�\���ɂ��Ȃ��Ă܂��B��ʃT�C�Y��400x300�ŌŒ肵�Ă܂���
-�ŁA�摜�͂��̃T�C�Y�ȏ�̕����K�v�B����͑S��400x300�ł��낦�Ă��܂��B
+ここで使用する画像には、いくつかの仕掛けがあります。空、雲、地面、車、草
+の5枚の背景が用意してあるんですが、空以外の4枚はGIFの透明色の指定を使っ
+て、その下にある画像が透けて見えるようになってます。また、右の端が左の端
+につながるループ構造にもなってます。画面サイズを400x300で固定してますの
+で、画像はこのサイズ以上の幅が必要。今回は全て400x300でそろえています。
 
-�\�����\�b�h�ł́A�܂��X�N���[���ʒu��1��`�悵�āA�摜�̕��Ԃ񍶂ɂ���
-�����ʒu�ɂ���1��`�悵�Ă܂��B�������邱�ƂŁA�w�i�̃��[�v���������Ă�
-�܂��B���E�����[�v�\���ɂȂ����摜��p�ӂ����̂͂��̂��߁B�悭�ώ@����
-�ƁA�E�ŏ����čs���摜���A���̂܂܍��ɕ\������Ă���̂ɋC�Â��ł��傤�B
+表示メソッドでは、まずスクロール位置に1回描画して、画像の幅ぶん左にずら
+した位置にもう1回描画してます。こうすることで、背景のループを実現してい
+ます。左右がループ構造になった画像を用意したのはこのため。よく観察する
+と、右で消えて行く画像が、そのまま左に表示されているのに気づくでしょう。
  */

@@ -1,17 +1,19 @@
 /**
- * ����Java256�{�m�b�N for Java 5.0
- * Java�T���v���\�[�X ver0.2C "Animal"
- * Animal.java �u�R�}���h������switch�����g���āA�Ȃ񂿂���ē����肢�v
+ * 愛のJava256本ノック for Java 5.0
+ * Javaサンプルソース ver0.2C "Animal"
+ * Animal.java 「コマンド引数とswitch文を使って、なんちゃって動物占い」
  *
- * 2005/09/23 ����F���i�m���J�Y
+ * 2005/09/23 制作：安永ノリカズ
  *
- * �y�R���p�C�������s���@�z
+ * 【コンパイル＆実行方法】
  *     >javac Animal.java
  *     >java Animal
- * �y�L�[���[�h�z
- *     switch��, ��]���Z�q(%), ������(String)�𐮐�(int)�ɕϊ�,  *     �R�}���h���C������(arguments)�̎擾, ��O(exception)�̕ߑ�(catch)
- * �y�����Ă݂悤�z
- *     �����̎�ނ𑝂₷�B *     �������N�������ǂ����̃`�F�b�N������B
+ * 【キーワード】
+ *     switch文, 剰余演算子(%), 文字列(String)を整数(int)に変換, 
+ *     コマンドライン引数(arguments)の取得, 例外(exception)の捕捉(catch)
+ * 【試してみよう】
+ *     動物の種類を増やす。
+ *     正しい年月日かどうかのチェックをする。
  */
 import java.lang.Integer;
 import java.lang.NumberFormatException;
@@ -26,7 +28,7 @@ public class Animal {
         int L03 = 0;
 
         if (A00.length < 3) {
-            System.out.println("�g�p�� >java Animal 1969 6 26");
+            System.out.println("使用例 >java Animal 1969 6 26");
             System.exit(1);
         }
 
@@ -35,44 +37,44 @@ public class Animal {
             L02 = Integer.parseInt(A00[1]);
             L03 = Integer.parseInt(A00[2]);
         } catch (NumberFormatException L04) {
-            System.out.println("���N�����ɂ͐������w�肵�Ă��������B");
+            System.out.println("生年月日には数字を指定してください。");
             System.exit(1);
         }
 
         int L05 = (L01 + L02 + L03) % L00;
 
-        System.out.printf("%d�N%d��%d�����܂�̂��Ȃ���...%n", L01, L02, L03);
+        System.out.printf("%d年%d月%d日生まれのあなたは...%n", L01, L02, L03);
 
         switch (L05) {
             case 0:
-                System.out.println("���₩�ȐS���������q�c�W�ł��B");
+                System.out.println("穏やかな心をもったヒツジです。");
                 break;
             case 1:
-                System.out.println("�����Ƃ�}�C�y�[�X�̃R�A���ł��B");
+                System.out.println("おっとりマイペースのコアラです。");
                 break;
             case 2:
-                System.out.println("��������Ԃ̃��C�I���ł��B");
+                System.out.println("自分が一番のライオンです。");
                 break;
             case 3:
-                System.out.println("�ǓƂ���D���ȃI�I�J�~�ł��B");
+                System.out.println("孤独が大好きなオオカミです。");
                 break;
             case 4:
-                System.out.println("�����q�҂̃T���ł��B");
+                System.out.println("お調子者のサルです。");
                 break;
             case 5:
             default:
-                System.out.println("�s�v�c�Ȑ��i�̃^�X�}�j�A���f�r���ł��B");
+                System.out.println("不思議な性格のタスマニアンデビルです。");
                 break;
         }
     }
 }
 
-/* �� �N���X�̊O�ł�����ƈꌾ ��
-���͂��ꂽ���t�𖳗����v�Z����Ƃ����A�C���`�L�L���A���S���Y���ł����A
-���ۂɂ���Ă݂�ƁA�u���A�������Ă邩���I�H�v�Ǝv�����肵���Ⴂ�܂��B��
-���A�肢���Ă�����������Ȃ��̂Ȃ�ł��傤�ˁB
+/* ■ クラスの外でちょっと一言 ■
+入力された日付を無理やり計算するという、インチキ臭いアルゴリズムですが、
+実際にやってみると、「お、当たってるかも！？」と思ったりしちゃいます。ま
+あ、占いってだいたいそんなものなんでしょうね。
 
-���������t���ǂ������ׂ�ɂ́A�`�F�b�N�������N�������g���āA���ۂ�
-java.util.Calendar�C���X�^���X�𐶐���������������ł��傤�B�����G���W
-����"java ���t �Ó���"�ŒT���ƁA�����T���v����������Ǝv���܂��B
+正しい日付かどうか調べるには、チェックしたい年月日を使って、実際に
+java.util.Calendarインスタンスを生成するやり方がいいでしょう。検索エンジ
+ンで"java 日付 妥当性"で探すと、いいサンプルが見つかると思います。
  */

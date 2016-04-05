@@ -1,17 +1,17 @@
 /**
- * ����Java256�{�m�b�N for Java 5.0
- * Java�T���v���\�[�X ver0.2C "JavaCurry"
- * Box.java �u�J���[�̃p�b�P�[�W���I�u�W�F�N�g�w���ŕ\���v
+ * 愛のJava256本ノック for Java 5.0
+ * Javaサンプルソース ver0.2C "JavaCurry"
+ * Box.java 「カレーのパッケージをオブジェクト指向で表現」
  *
- * 2005/09/23 ����F���i�m���J�Y
+ * 2005/09/23 制作：安永ノリカズ
  *
- * �y�R���p�C�������s���@�z
+ * 【コンパイル＆実行方法】
  *     >javac *.java
  *     >java JavaCurry
- * �y�L�[���[�h�z
- *     ��`(rectangle)�̕`��
- * �y�����Ă݂悤�z
- *     JavaCurry.java�Q��
+ * 【キーワード】
+ *     矩形(rectangle)の描画
+ * 【試してみよう】
+ *     JavaCurry.java参照
  */
 import java.awt.Color;
 import java.awt.Graphics;
@@ -37,9 +37,9 @@ public class Box implements Parts {
     }
 }
 
-/* �� �N���X�̊O�ł�����ƈꌾ ��
-���Ȃ݂ɁA�l�͐h���̂͋��ȕ��ł��B�Ƃ������A���������������Ă��܂���
-���B�u�R�R�C�`�v�̃J���[�ł����΁A�h�����ʂŌ��\�������B�ł��A�D���Ȃ�
-�ŁA���傭���傭�H�ׂɍs���Ă܂��B�悭��������̂́u�`�L���J�c�J���[�v��
-���ˁB
+/* ■ クラスの外でちょっと一言 ■
+ちなみに、僕は辛いのは苦手な方です。というか、すごく汗をかいてしまいま
+す。「ココイチ」のカレーでいえば、辛さ普通で結構汗だく。でも、好きなん
+で、ちょくちょく食べに行ってます。よく注文するのは「チキンカツカレー」で
+すね。
  */

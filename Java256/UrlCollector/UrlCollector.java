@@ -1,17 +1,19 @@
 /**
- * ����Java256�{�m�b�N for Java 5.0
- * Java�T���v���\�[�X ver0.2C "UrlCollector"
- * UrlCollector.java �u���K�\�����g����Web�T�C�g���烊���N�𒊏o�v
+ * 愛のJava256本ノック for Java 5.0
+ * Javaサンプルソース ver0.2C "UrlCollector"
+ * UrlCollector.java 「正規表現を使ってWebサイトからリンクを抽出」
  *
- * 2005/09/23 ����F���i�m���J�Y
+ * 2005/09/23 制作：安永ノリカズ
  *
- * �y�R���p�C�������s���@�z
+ * 【コンパイル＆実行方法】
  *     >javac UrlCollector.java
  *     >java UrlCollector
- * �y�L�[���[�h�z
- *     URL(Uniform Resource Locator), �������{�b�g(search robot),  *     ���K�\��(regular expression), java.util.regex.Pattern�N���X,
- * �y�����Ă݂悤�z
- *     ���W����URL�����ƂɁA�����URL�����W����B *     Web�y�[�W�Ɋ܂܂��摜�̃����N�����W����B
+ * 【キーワード】
+ *     URL(Uniform Resource Locator), 検索ロボット(search robot), 
+ *     正規表現(regular expression), java.util.regex.Patternクラス,
+ * 【試してみよう】
+ *     収集したURLをもとに、さらにURLを収集する。
+ *     Webページに含まれる画像のリンクを収集する。
  */
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -27,7 +29,7 @@ public class UrlCollector {
     static final String C01 = "<a href=\"([^\"]+)\">";
 
     public static void main(String[] A00) {
-        System.out.printf("[%s]����AURL������...%n", C00);
+        System.out.printf("[%s]から、URLを検索...%n", C00);
         int L00 = 0;
 
         try {
@@ -48,41 +50,41 @@ public class UrlCollector {
             
             L02.close();
         } catch (IOException L06) {
-            System.out.println("�y�[�W�ǂݍ��ݒ��ɃG���[���N���܂����B");
+            System.out.println("ページ読み込み中にエラーが起きました。");
         }
 
-        System.out.println(L00 + "����URL�𔭌����܂����B");
+        System.out.println(L00 + "件のURLを発見しました。");
     }
 }
 
-/* �� �N���X�̊O�ł�����ƈꌾ ��
-Google�ɑ�\�����u���{�b�g�^�����G���W���v�Ƃ����̂�����܂��B����͌�
-�����{�b�g�i�N���[���[�A�X�p�C�_�[�Ƃ��Ă΂��j���A�S���E��Web�T�C�g��
-�����I�ɏ��񂵂āAWeb�y�[�W���f�[�^�x�[�X�ɕۑ����Ă����d�g�݂ɂȂ��Ă�
-���B
+/* ■ クラスの外でちょっと一言 ■
+Googleに代表される「ロボット型検索エンジン」というのがあります。これは検
+索ロボット（クローラー、スパイダーとも呼ばれる）が、全世界のWebサイトを
+自動的に巡回して、Webページをデータベースに保存していく仕組みになってま
+す。
 
-���̏���̊�{�ɂȂ��Ă�̂��A���̃T���v���̂悤�ɁA����y�[�W�Ɋ܂܂��
-�����N�𔲂��o���A��������X�ɂ��ǂ邱�ƂŁA�y�[�W�����W�����@�ł��B��
-�Ȃ݂ɁA2005�N3�����݁AGoogle��16���ȏ��URL���W�߂Ă���Ƃ̂��ƁB����
-�������ˁB
+その巡回の基本になってるのが、このサンプルのように、あるページに含まれる
+リンクを抜き出し、それを次々にたどることで、ページを収集する手法です。ち
+なみに、2005年3月現在、Googleは16億以上のURLを集めているとのこと。すご
+いっすね。
 
-�����N�𔲂��o�����K�\���́A"<a href=\"([^\"]+)\">"�ƂȂ��Ă܂��B����
-�́A<a href="�`">�Ƃ���������̃p�^�[�����Ӗ����܂��B�u�`�v�̕����ɂ�
-�u[^\"]+�v�Ƃ����\���ŁA�u�_�u���N�I�[�e�[�V����(")�ȊO(^)�̕�����1����
-�ȏ�(+)�v�Ƃ����w������Ă��܂��B�u()�v�͕����̃O���[�v����\���A�p�^�[
-���Ƀ}�b�`�����ꍇ�A�����o�������������͂�ł��܂��B
+リンクを抜き出す正規表現は、"<a href=\"([^\"]+)\">"となってます。これ
+は、<a href="〜">という文字列のパターンを意味します。「〜」の部分には
+「[^\"]+」という表現で、「ダブルクオーテーション(")以外(^)の文字が1文字
+以上(+)」という指定をしています。「()」は文字のグループ化を表し、パター
+ンにマッチした場合、抜き出したい部分を囲んでいます。
 
-���̃p�^�[�����R���p�C������Ƃ��Ɏw�肵���uCASE_INSENSITIVE�v�́A�啶��
-����������ʂ��Ȃ��Ƃ����Ӗ��B�܂�<A HREF="�`">�Ƃ����^�O��OK�Ƃ�����
-�Ƃł��B
+そのパターンをコンパイルするときに指定した「CASE_INSENSITIVE」は、大文字
+小文字を区別しないという意味。つまり<A HREF="〜">というタグもOKというこ
+とです。
 
-Matcher��find���\�b�h�́A�擪����p�^�[���Ƀ}�b�`���镔�����T�[�`����
-���B����ɑO�񔭌������ʒu��ێ����Ă܂��̂ŁA�ēxfind���\�b�h���Ăяo��
-����A���̈ʒu�������T���Ă���܂��Bwhile���[�v�Ƒg�ݍ��킹��΁A��
-�s�ɕ����̃����N�����݂���ꍇ�ɑΉ��ł��܂��ˁB
+Matcherのfindメソッドは、先頭からパターンにマッチする部分をサーチしま
+す。さらに前回発見した位置を保持してますので、再度findメソッドを呼び出し
+たら、その位置から後ろを探してくれます。whileループと組み合わせれば、一
+行に複数のリンクが存在する場合に対応できますね。
 
-���͂��̐��K�\���A���Ȃ�蔲���ł��BURL��"�ň͂��ĂȂ��̂̓_���A�V���O��
-�N�I�[�e�[�V����(')�ň͂��Ă��_���Ahref�ȊO�̑���������̂��_���Aa�̌��
-�ɃX�y�[�X��2�ȏ゠���Ă��_���c�c�ƂȂ��Ă܂��B���ЁA��苖�e�͈͂̍L
-�����K�\���̃p�^�[���𒲂ׂĂ݂Ă��������B
+実はこの正規表現、かなり手抜きです。URLを"で囲ってないのはダメ、シングル
+クオーテーション(')で囲ってもダメ、href以外の属性があるのもダメ、aの後ろ
+にスペースが2つ以上あってもダメ……となってます。ぜひ、より許容範囲の広
+い正規表現のパターンを調べてみてください。
  */

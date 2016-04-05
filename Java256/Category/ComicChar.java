@@ -1,23 +1,23 @@
 /**
- * ˆ¤‚ÌJava256–{ƒmƒbƒN for Java 5.0
- * JavaƒTƒ“ƒvƒ‹ƒ\[ƒX ver0.2C "Category"
- * ComicChar.java uSet‚ðŽg‚Á‚½ƒJƒeƒSƒŠ[•ª—Þv
+ * æ„›ã®Java256æœ¬ãƒŽãƒƒã‚¯ for Java 5.0
+ * Javaã‚µãƒ³ãƒ—ãƒ«ã‚½ãƒ¼ã‚¹ ver0.2C "Category"
+ * ComicChar.java ã€ŒSetã‚’ä½¿ã£ãŸã‚«ãƒ†ã‚´ãƒªãƒ¼åˆ†é¡žã€
  *
- * 2005/09/23 §ìFˆÀ‰iƒmƒŠƒJƒY
+ * 2005/09/23 åˆ¶ä½œï¼šå®‰æ°¸ãƒŽãƒªã‚«ã‚º
  *
- * yƒRƒ“ƒpƒCƒ‹•ŽÀs•û–@z
+ * ã€ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ï¼†å®Ÿè¡Œæ–¹æ³•ã€‘
  *     >javac *.java
  *     >java Category
- * yƒL[ƒ[ƒhz
- *     ƒRƒ“ƒXƒgƒ‰ƒNƒ^(constructor)
- * yŽŽ‚µ‚Ä‚Ý‚æ‚¤z
- *     Category.java‚ðŽQÆB
+ * ã€ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã€‘
+ *     ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿(constructor)
+ * ã€è©¦ã—ã¦ã¿ã‚ˆã†ã€‘
+ *     Category.javaã‚’å‚ç…§ã€‚
  */
 import java.lang.String;
 
 public class ComicChar {
-    String I00;    // ƒJƒeƒSƒŠ[–¼
-    String I01;    // ƒLƒƒƒ‰ƒNƒ^[–¼
+    String I00;    // ã‚«ãƒ†ã‚´ãƒªãƒ¼å
+    String I01;    // ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼å
 
     public ComicChar(String A00, String A01) {
         this.I00 = A00;
@@ -25,12 +25,12 @@ public class ComicChar {
     }
 }
 
-/* ¡ ƒNƒ‰ƒX‚ÌŠO‚Å‚¿‚å‚Á‚ÆˆêŒ¾ ¡
-‚±‚ê‚ÍA’Pƒ‚Éƒf[ƒ^‚ðŠÇ—‚·‚éƒNƒ‰ƒX‚Å‚·Bcomic_char.csv‚ÌŒ`Ž®‚ªA
-  [ƒJƒeƒSƒŠ[–¼],[ƒLƒƒƒ‰ƒNƒ^[–¼]
-‚Ì‚æ‚¤‚É‚È‚Á‚Ä‚Ü‚·‚Ì‚ÅA‚»‚ê‚¼‚ê‚Ìƒf[ƒ^‚ðŠi”[‚·‚éƒtƒB[ƒ‹ƒh‚ð—pˆÓ‚µ‚Ä‚¢
-‚Ü‚·BCSVƒtƒ@ƒCƒ‹‚Ìs”•ªA‚±‚ÌƒNƒ‰ƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚ª¶¬‚³‚ê‚Ü‚·‚Ì‚ÅA
-CSVƒtƒ@ƒCƒ‹‚Ì’†g‚ðŠm”F‚µ‚Ä‚¨‚¢‚Ä‚­‚¾‚³‚¢B
+/* â–  ã‚¯ãƒ©ã‚¹ã®å¤–ã§ã¡ã‚‡ã£ã¨ä¸€è¨€ â– 
+ã“ã‚Œã¯ã€å˜ç´”ã«ãƒ‡ãƒ¼ã‚¿ã‚’ç®¡ç†ã™ã‚‹ã‚¯ãƒ©ã‚¹ã§ã™ã€‚comic_char.csvã®å½¢å¼ãŒã€
+  [ã‚«ãƒ†ã‚´ãƒªãƒ¼å],[ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼å]
+ã®ã‚ˆã†ã«ãªã£ã¦ã¾ã™ã®ã§ã€ãã‚Œãžã‚Œã®ãƒ‡ãƒ¼ã‚¿ã‚’æ ¼ç´ã™ã‚‹ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã‚’ç”¨æ„ã—ã¦ã„
+ã¾ã™ã€‚CSVãƒ•ã‚¡ã‚¤ãƒ«ã®è¡Œæ•°åˆ†ã€ã“ã®ã‚¯ãƒ©ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ãŒç”Ÿæˆã•ã‚Œã¾ã™ã®ã§ã€
+CSVãƒ•ã‚¡ã‚¤ãƒ«ã®ä¸­èº«ã‚’ç¢ºèªã—ã¦ãŠã„ã¦ãã ã•ã„ã€‚
 
-‚»‚ê‚É‚µ‚Ä‚àw–k“l‚ÌŒx‚Í”M‚¢‚ºI@”M‚­‚ÄŽ€‚Ê‚ºI
+ãã‚Œã«ã—ã¦ã‚‚ã€ŽåŒ—æ–—ã®æ‹³ã€ã¯ç†±ã„ãœï¼ã€€ç†±ãã¦æ­»ã¬ãœï¼
  */

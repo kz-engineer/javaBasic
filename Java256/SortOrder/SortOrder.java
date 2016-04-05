@@ -1,17 +1,21 @@
 /**
- * ����Java256�{�m�b�N for Java 5.0
- * Java�T���v���\�[�X ver0.2C "SortOrder"
- * SortOrder.java �u�ǂ݉������ɖ��O���\�[�g�v
+ * 愛のJava256本ノック for Java 5.0
+ * Javaサンプルソース ver0.2C "SortOrder"
+ * SortOrder.java 「読み仮名順に名前をソート」
  *
- * 2005/09/23 ����F���i�m���J�Y
+ * 2005/09/23 制作：安永ノリカズ
  *
- * �y�R���p�C�������s���@�z
+ * 【コンパイル＆実行方法】
  *     >javac SortOrder.java
  *     >java SortOrder
- * �y�L�[���[�h�z
- *     �����C���i�N���X(anonymous inner class), ���בւ�(sort),  *     java.lang.Comparable�C���^�[�t�F�[�X *     
- * �y�����Ă݂悤�z
- *     50���̍~���i�t���j�ŕ��בւ���B *     Person�N���X�ɔN��Ȃǂ�ǉ����āA���̍��ڂŕ��בւ���B *     �R���p�C����A�ǂ��.class�t�@�C�����o�����̂��m�F����B
+ * 【キーワード】
+ *     無名インナクラス(anonymous inner class), 並べ替え(sort), 
+ *     java.lang.Comparableインターフェース
+ *     
+ * 【試してみよう】
+ *     50音の降順（逆順）で並べ替える。
+ *     Personクラスに年齢などを追加して、その項目で並べ替える。
+ *     コンパイル後、どんな.classファイルが出来たのか確認する。
  */
 import java.lang.String;
 import java.lang.System;
@@ -35,13 +39,13 @@ public class SortOrder {
     public SortOrder() {
         List<Person> L00 = new ArrayList<Person>();
 
-        L00.add(new Person("���򏃈�Y", "�������� ����񂢂��낤"));
-        L00.add(new Person("�y�E�����W����", "�� ��񂶂��"));
-        L00.add(new Person("�x�]�M��", "�ق肦 �����ӂ�"));
-        L00.add(new Person("�� �厡", "���� �����͂�"));
-        L00.add(new Person("�v���e�B����", "�Ȃ����� �Ղ�Ă�"));
+        L00.add(new Person("小泉純一郎", "こいずみ じゅんいちろう"));
+        L00.add(new Person("ペ・ヨンジュン", "ぺ よんじゅん"));
+        L00.add(new Person("堀江貴文", "ほりえ たかふみ"));
+        L00.add(new Person("王 貞治", "おう さだはる"));
+        L00.add(new Person("プリティ長嶋", "ながしま ぷりてぃ"));
 
-        System.out.println("---- ���ёւ��O ----");
+        System.out.println("---- 並び替え前 ----");
         for (Person L01 : L00) {
             System.out.printf("%s(%s)%n", L01.I00, L01.I01);
         }
@@ -52,7 +56,7 @@ public class SortOrder {
             }
         });
 
-        System.out.println("\n---- �T�O���� ----");
+        System.out.println("\n---- ５０音順 ----");
         for (Person L02 : L00) {
             System.out.printf("%s(%s)%n", L02.I00, L02.I01);
         }
@@ -63,24 +67,24 @@ public class SortOrder {
     }
 }
 
-/* �� �N���X�̊O�ł�����ƈꌾ ��
-�����Ő݌v�����N���X�̃C���X�^���X����בւ���ɂ́A�O������Comparable�C
-���^�[�t�F�[�X���������Ă������@�ƁA�\�[�g����Comparator���w�肷����@��
-�Q������܂��B����Љ��̂͌�҂̕��B���̕��@�Ȃ�A�w�肷��
-Comparator��ς��邱�ƂŁA�l�X�ȏ����ɕ��וς��邱�Ƃ��\�ł��B
+/* ■ クラスの外でちょっと一言 ■
+自分で設計したクラスのインスタンスを並べ替えるには、前もってComparableイ
+ンターフェースを実装しておく方法と、ソート時にComparatorを指定する方法の
+２つがあります。今回紹介するのは後者の方。この方法なら、指定する
+Comparatorを変えることで、様々な順序に並べ変えることが可能です。
 
-���̃T���v���ɂ͂Q�̃C���i�[�N���X���o�ꂵ�܂��B�C���i�[�N���X�Ƃ̓N��
-�X�̒��ɒ�`���ꂽ�N���X�̂��ƁB�P��Person�N���X�B����͕�����₷����
-����ˁB�����P�́ACollections.sort���\�b�h�̈����̒��Ŗ����i�����j�C��
-�i�[�N���X�Ƃ��Ē�`����Ă��܂��B
+このサンプルには２つのインナークラスが登場します。インナークラスとはクラ
+スの中に定義されたクラスのこと。１つはPersonクラス。これは分かりやすいで
+すよね。もう１つは、Collections.sortメソッドの引数の中で無名（匿名）イン
+ナークラスとして定義されています。
 
-�����C���i�[�N���X���Ă̂́A�N���X��`�̏ȗ��`�ŁA�ق�̐��s�A����������
-��Q�Ƃ���Ȃ��悤�Ȃ��̏����̃N���X�����ꍇ�ɁA�u�킴�킴���O����
-�Ē�`����قǂł��ˁ[�ȁv���ĂƂ��Ɏg���܂��B�������A���܂蒷�������C��
-�i�[�N���X������Ă��܂��ƁA�����̗��ꂪ�����ɂ����Ȃ��Ă��܂��܂��B����
-�����ꍇ�ɂ́A�ʏ�̖��O���C���i�[�N���X�ŋL�q���ׂ��ł��ˁB
+無名インナークラスってのは、クラス定義の省略形で、ほんの数行、しかも他か
+ら参照されないようなその場限りのクラスを作る場合に、「わざわざ名前をつけ
+て定義するほどでもねーな」ってときに使います。ただし、あまり長い無名イン
+ナークラスを作ってしまうと、処理の流れが見えにくくなってしまいます。そう
+いう場合には、通常の名前つきインナークラスで記述すべきですね。
 
-J2SE 5.0�̐V�@�\�u�W�F�l���b�N�X�v��List��Map�Ȃǂ̃R���N�V�����n���L��
-�ł����AComparator�ɂ��g���܂��BObject�^���L���X�g���Ȃ��Ă����ł����A��
-����ĈႤ�^��n���S�z���Ȃ��A���S�ł��ˁB
+J2SE 5.0の新機能「ジェネリックス」はListやMapなどのコレクション系が有名
+ですが、Comparatorにも使えます。Object型をキャストしなくていいですし、間
+違って違う型を渡す心配もなく、安全ですね。
  */

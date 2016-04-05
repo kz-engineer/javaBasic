@@ -1,17 +1,20 @@
 /**
- * ����Java256�{�m�b�N for Java 5.0
- * Java�T���v���\�[�X ver0.2C "PieChart"
- * PieChart.java �u�A���`�G�C���A�X�ŉ~�O���t�����ꂢ�ɕ\���v
+ * 愛のJava256本ノック for Java 5.0
+ * Javaサンプルソース ver0.2C "PieChart"
+ * PieChart.java 「アンチエイリアスで円グラフをきれいに表示」
  *
- * 2005/09/23 ����F���i�m���J�Y
+ * 2005/09/23 制作：安永ノリカズ
  *
- * �y�R���p�C�������s���@�z
+ * 【コンパイル＆実行方法】
  *     >javac PieChart.java
  *     >java PieChart
- * �y�L�[���[�h�z
- *     ��(arc)�̓h��Ԃ�, Java2D, �A���`�G�C���A�X(antialias), *     Map�C���^�[�t�F�[�X
- * �y�����Ă݂悤�z
- *     �f�[�^��ǉ����Ă݂�B *     �f�[�^�̊Ǘ���HashMap���g���Ƃǂ��Ȃ邩�����Ă݂�B *     �O���t�ɁA�l��p�[�Z���e�[�W���\������B
+ * 【キーワード】
+ *     弧(arc)の塗りつぶし, Java2D, アンチエイリアス(antialias),
+ *     Mapインターフェース
+ * 【試してみよう】
+ *     データを追加してみる。
+ *     データの管理にHashMapを使うとどうなるか試してみる。
+ *     グラフに、値やパーセンテージも表示する。
  */
 import java.awt.Color;
 import java.awt.Dimension;
@@ -34,7 +37,7 @@ public class PieChart extends JFrame {
 
     public static void main(String[] A00) {
         JFrame L00 = new PieChart();
-        L00.setTitle("�~�O���t");
+        L00.setTitle("円グラフ");
         L00.setDefaultCloseOperation(EXIT_ON_CLOSE);
         L00.setBackground(Color.white);
         L00.pack();
@@ -46,10 +49,10 @@ public class PieChart extends JFrame {
 class DrawPanel extends JPanel {
     private static final int C00 = 200;
     private static final int C01 = 200;
-    private static final int C02 = 20;  // �O���t�̕\���ʒu(x�����Ay�������p)
-    private static final int C03 = 5;   // �e�̂��炵�Ԋu(x�����Ay�������p)
+    private static final int C02 = 20;  // グラフの表示位置(x方向、y方向兼用)
+    private static final int C03 = 5;   // 影のずらし間隔(x方向、y方向兼用)
     private static final int C04 = 150;
-    private Color I00 = new Color(64, 64, 64);    // �e�Ƃӂ��̐F
+    private Color I00 = new Color(64, 64, 64);    // 影とふちの色
 
     private Map<Color, Integer> I01;
     private int I02;
@@ -80,8 +83,8 @@ class DrawPanel extends JPanel {
         L00.setColor(I00);
         L00.fillOval(C02 + C03, C02 + C03, C04, C04);
 
-        int L01 = 90;   // �~�O���t�̕`��J�n�p�x
-        int L02 = 0;    // ��`�̒��S�p
+        int L01 = 90;   // 円グラフの描画開始角度
+        int L02 = 0;    // 扇形の中心角
         
         for (Color L03 : I01.keySet()) {
             L02 = Math.round(360f * I01.get(L03) / I02);
@@ -89,7 +92,7 @@ class DrawPanel extends JPanel {
             L00.setColor(L03);
             L00.fillArc(C02, C02, C04, C04, L01, L02);
         }
-        // �l�̌ܓ��̓s���œh��c�����o���ꍇ�̑Ώ�
+        // 四捨五入の都合で塗り残しが出た場合の対処
         L00.fillArc(C02, C02, C04, C04, -270, L02);
 
         L00.setColor(I00);
@@ -97,25 +100,25 @@ class DrawPanel extends JPanel {
     }
 }
 
-/* �� �N���X�̊O�ł�����ƈꌾ ��
-�ʏ�A�~�O���t�́A�^��i���v��12���j����E���ɍ��ڂ�z�u���܂����A
-fillArc���\�b�h�ł́A�E�����̐������i���v��3���j��0�x�Ƃ��āA�����ɒ�
-�S�p���w�肵�܂��B���̓s���ŁA���̃T���v���ł́A90�x(�^��)����`����n��
-�āA-270�x(�^��)�ŏI���Ƃ����\���ɂȂ��Ă܂��B���G�ł����A�q���g�𑽂�
-�ɓ���Ă܂���ŁA�撣���ĉ�͂��Ă��������B
+/* ■ クラスの外でちょっと一言 ■
+通常、円グラフは、真上（時計の12時）から右回りに項目を配置しますが、
+fillArcメソッドでは、右方向の水平線（時計の3時）を0度として、左回りに中
+心角を指定します。その都合で、このサンプルでは、90度(真上)から描画を始め
+て、-270度(真上)で終わるという構造になってます。複雑ですが、ヒントを多め
+に入れてますんで、頑張って解析してください。
 
-�O���t�ɗ��p����f�[�^�́A�F�Ɛ��l�g�ݍ��킹��Map�ŊǗ����Ă��܂��BMap��
-�͒ǉ��������Ԃ�ێ�����LinkedHashMap���̗p���܂����B���Ȃ݂ɁA�F���L�[
-�ɂ��Ă܂��̂ŁAMap�̓�����A�����F��2�x�g�����Ƃ͏o���܂���B
+グラフに利用するデータは、色と数値組み合わせたMapで管理しています。Mapに
+は追加した順番を保持するLinkedHashMapを採用しました。ちなみに、色をキー
+にしてますので、Mapの特性上、同じ色を2度使うことは出来ません。
 
-�E�B���h�E�T�C�Y�̎w��ɂ́A������Ƃ����d�|��������܂��BJFrame�ɑ΂���
-setSize���\�b�h�ŃT�C�Y���w�肷��ƁA�g��^�C�g���o�[���݂̃T�C�Y�ɂȂ�
-�Ă��܂��܂���ˁB����̃T���v���̂悤�ɁA�\���̈�𒆐S�ɐ��@�����߂���
-�ꍇ�́A�\���p�l���ɑ΂��āAsetPreferredSize���\�b�h�ŕK�v�ȃT�C�Y���w��
-���āA�t���[����pack���\�b�h���Ăׂ΁A���̕\���̈悪���܂�A�œK�ȃt���[
-���T�C�Y�ɂȂ��Ă���܂��B
+ウィンドウサイズの指定には、ちょっとした仕掛けがあります。JFrameに対して
+setSizeメソッドでサイズを指定すると、枠やタイトルバー込みのサイズになっ
+てしまいますよね。今回のサンプルのように、表示領域を中心に寸法を決めたい
+場合は、表示パネルに対して、setPreferredSizeメソッドで必要なサイズを指定
+して、フレームのpackメソッドを呼べば、この表示領域が収まる、最適なフレー
+ムサイズになってくれます。
 
-�A���`�G�C���A�X��������ƁA�`�摬�x���x���Ȃ�܂����A����̂悤�ȃA�j
-���[�V�����𔺂�Ȃ��}�`�`��Ȃ�A��肠��܂���̂ŁA�����ڗD��łǂ��
-�񗘗p���Ă����Ă����Ǝv���܂��B
+アンチエイリアスをかけると、描画速度が遅くなりますが、今回のようなアニ
+メーションを伴わない図形描画なら、問題ありませんので、見た目優先でどんど
+ん利用していっていいと思います。
  */

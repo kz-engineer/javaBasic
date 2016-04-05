@@ -1,17 +1,17 @@
 /**
- * ����Java256�{�m�b�N for Java 5.0
- * Java�T���v���\�[�X ver0.2C "JavaCurry"
- * Text.java �u�J���[�̃p�b�P�[�W���I�u�W�F�N�g�w���ŕ\���v
+ * 愛のJava256本ノック for Java 5.0
+ * Javaサンプルソース ver0.2C "JavaCurry"
+ * Text.java 「カレーのパッケージをオブジェクト指向で表現」
  *
- * 2005/09/23 ����F���i�m���J�Y
+ * 2005/09/23 制作：安永ノリカズ
  *
- * �y�R���p�C�������s���@�z
+ * 【コンパイル＆実行方法】
  *     >javac *.java
  *     >java JavaCurry
- * �y�L�[���[�h�z
- *     �_��(logical)�t�H���g�ƕ���(physical)�t�H���g
- * �y�����Ă݂悤�z
- *     JavaCurry.java�Q��
+ * 【キーワード】
+ *     論理(logical)フォントと物理(physical)フォント
+ * 【試してみよう】
+ *     JavaCurry.java参照
  */
 import java.awt.Color;
 import java.awt.Font;
@@ -40,16 +40,16 @@ public class Text implements Parts {
     }
 }
 
-/* �� �N���X�̊O�ł�����ƈꌾ ��
-�������[�J���̘b�ɂȂ��Đ\����Ȃ���ł����A�V�_���ʂ�̃P���^�b�L�[�̏�
-�ɁA�u�c�i�p�n�v�Ƃ����J���[�����񂪂���܂��B�����́u�h���C�J���[�v��
-�i���Ȃ��Ƃ������ɂƂ��Ắj���Ȃ�h����ł����A�Ƃ��Ă����������ł��B�f
-�W�n�������Z���喼�ɂ��������A�����`�ł悭�H�ׂ܂����ˁB
+/* ■ クラスの外でちょっと一言 ■
+福岡ローカルの話になって申し訳ないんですが、天神西通りのケンタッキーの上
+に、「ツナパハ」というカレー屋さんがあります。そこの「ドライカリー」は
+（少なくとも自分にとっては）かなり辛いんですが、とっても美味しいです。デ
+ジハリ福岡校が大名にあった頃、ランチでよく食べましたね。
 
-���̓X�ɁA�h���̎w��Łu�f�r�����b�h�v�Ƃ������ڂ�����܂��B�����ɂ��h��
-���Ȗ��O�ŁA���ۂɂ������h���ł��B���ƁA�́A�e�s�F�ʂ�ɂ������u�^�[�W�v
-�Ƃ����X�ɂ́u�_�J���[�v�Ƃ������j���[������܂����B���ʂقǐh�����
-���傤�ˁB�ŁA��������͂Ȃ��Ȃ����X�ł����A�V�_�r���n���́u�T���\���v��
-�́A�u�v���ɐh�v�Ƃ����h���w�肪����܂����B�������A�ǂ���H�ׂ����Ƃ�
-����܂���B
+その店に、辛さの指定で「デビルレッド」という項目があります。いかにも辛そ
+うな名前で、実際にすごく辛いです。あと、昔、親不孝通りにあった「タージ」
+という店には「青酸カリー」というメニューがありました。死ぬほど辛いんで
+しょうね。で、これも今はなくなった店ですが、天神ビル地下の「サムソン」に
+は、「Ｗ死に辛」という辛さ指定がありました。もちろん、どれも食べたことは
+ありません。
  */

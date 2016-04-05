@@ -1,17 +1,17 @@
 /**
- * ����Java256�{�m�b�N for Java 5.0
- * Java�T���v���\�[�X ver0.2C "JavaCurry"
- * DrawPanel.java �u�J���[�̃p�b�P�[�W���I�u�W�F�N�g�w���ŕ\���v
+ * 愛のJava256本ノック for Java 5.0
+ * Javaサンプルソース ver0.2C "JavaCurry"
+ * DrawPanel.java 「カレーのパッケージをオブジェクト指向で表現」
  *
- * 2005/09/23 ����F���i�m���J�Y
+ * 2005/09/23 制作：安永ノリカズ
  *
- * �y�R���p�C�������s���@�z
+ * 【コンパイル＆実行方法】
  *     >javac *.java
  *     >java JavaCurry
- * �y�L�[���[�h�z
- *     �A���`�G�C���A�X(antialias)
- * �y�����Ă݂悤�z
- *     JavaCurry.java�Q�ƁB
+ * 【キーワード】
+ *     アンチエイリアス(antialias)
+ * 【試してみよう】
+ *     JavaCurry.java参照。
  */
 import java.awt.Color;
 import java.awt.Dimension;
@@ -39,10 +39,10 @@ public class DrawPanel extends JPanel {
         I00 = new ArrayList<Parts>();
 
         I00.add(new Box(10, 10, 260, 340, C03));
-        I00.add(new Text("�W���o�J���[", 25, 62, C02, 36));
-        I00.add(new Text("JAVA CURRY GOLD �S�[���h", 30, 84, C02, 16));
-        I00.add(new Text("�h��256�{", 176, 100, Color.red, 16));
-        I00.add(new Text("200g�E1�l��", 25, 330, Color.black, 10));
+        I00.add(new Text("ジャバカレー", 25, 62, C02, 36));
+        I00.add(new Text("JAVA CURRY GOLD ゴールド", 30, 84, C02, 16));
+        I00.add(new Text("辛さ256倍", 176, 100, Color.red, 16));
+        I00.add(new Text("200g・1人分", 25, 330, Color.black, 10));
         I00.add(new Circle(30, 105, 220, C02));
         I00.add(new Circle(60, 135, 160, C04));
         I00.add(new Circle(80, 155, 120, C05));
@@ -60,19 +60,19 @@ public class DrawPanel extends JPanel {
     }
 }
 
-/* �� �N���X�̊O�ł�����ƈꌾ ��
-�uJava�J���[�S�[���h�v�̕\���́A�u�l�p�v�u�����v�u�~�v��3��ނ̃p�[�c��
-�g�ݍ��킹�Ď������Ă��܂��B�\������Ă��镶���́A���ׂ�Text�N���X�̃C��
-�X�^���X�ŁA���S�~�́ACircle�N���X�̃C���X�^���X��4�d�˂����̂ł��B
+/* ■ クラスの外でちょっと一言 ■
+「Javaカレーゴールド」の表示は、「四角」「文字」「円」の3種類のパーツを
+組み合わせて実現しています。表示されている文字は、すべてTextクラスのイン
+スタンスで、同心円は、Circleクラスのインスタンスを4つ重ねたものです。
 
-����ȋ�ɁA�Ⴄ�N���X����h�������C���X�^���X�ł����A�ŏI�I�ɂ͂ǂ��
-Parts�^�Ƃ��Ĉꊇ�Ǘ�����Ă��܂��B����́ABox, Text, Circle���ꂼ��̃N
-���X��Parts�C���^�[�t�F�[�X���������Ă��邩�炱���Ȃ���킴�B�ʁX�̃N��
-�X�ł��A���ʗv�f���C���^�[�t�F�[�X�ɒ��o���邱�ƂŁu������ނ��́v�Ƃ���
-�Ǘ����邱�Ƃ��o���܂��B
+そんな具合に、違うクラスから派生したインスタンスですが、最終的にはどれも
+Parts型として一括管理されています。これは、Box, Text, Circleそれぞれのク
+ラスがPartsインターフェースを実装しているからこそなせるわざ。別々のクラ
+スでも、共通要素をインターフェースに抽出することで「同じ種類もの」として
+管理することが出来ます。
 
-�Ƃɂ����A�I�u�W�F�N�g�w���𗝉����Ă��炤�̂ɁA����ȃT���v�����̂́A
-�������炢�̂��񂾂낤�ƁA���Â��i�ł�������҂�ւ�Ɂj�v���Ă��܂��B
-���N����ɁuJavaCurry�ŃI�u�W�F�N�g�w���̈Ӗ��𗝉����܂����v�Ƃ����v��
-�O���}������邱�Ƃ��A�S������Ă�݂܂���B
+とにかく、オブジェクト指向を理解してもらうのに、こんなサンプル作るのは、
+自分くらいのもんだろうと、つくづく（でもちょっぴり誇りに）思っています。
+何年か後に「JavaCurryでオブジェクト指向の意味を理解しました」というプロ
+グラマが現れることを、心より願ってやみません。
  */

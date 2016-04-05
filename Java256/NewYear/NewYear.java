@@ -1,17 +1,18 @@
 /**
- * ����Java256�{�m�b�N for Java 5.0
- * Java�T���v���\�[�X ver0.2C "NewYear"
- * NewYear.java �u�����܂ł̓��ɂ������߂�v
+ * 愛のJava256本ノック for Java 5.0
+ * Javaサンプルソース ver0.2C "NewYear"
+ * NewYear.java 「正月までの日にちを求める」
  *
- * 2005/09/23 ����F���i�m���J�Y
+ * 2005/09/23 制作：安永ノリカズ
  *
- * �y�R���p�C�������s���@�z
+ * 【コンパイル＆実行方法】
  *     >javac NewYear.java
  *     >java NewYear
- * �y�L�[���[�h�z
- *     �J�����_�[�t�B�[���h(calendar fields), ����������(format string), *     java.util.Formatter�N���X, 
- * �y�����Ă݂悤�z
- *     ���̒a�����܂ŉ��������߂�B
+ * 【キーワード】
+ *     カレンダーフィールド(calendar fields), 書式文字列(format string),
+ *     java.util.Formatterクラス, 
+ * 【試してみよう】
+ *     次の誕生日まで何日か求める。
  */
 import java.lang.String;
 import java.lang.System;
@@ -24,33 +25,33 @@ public class NewYear {
         int L01 = L00.get(DAY_OF_YEAR);
         int L02 = L00.getActualMaximum(DAY_OF_YEAR);
         
-        System.out.printf("����%d��Q��ƁA�������B%n", L02 - L01 + 1);
+        System.out.printf("あと%d回寝ると、お正月。%n", L02 - L01 + 1);
     }
 }
 
-/* �� �N���X�̊O�ł�����ƈꌾ ��
-java.util�p�b�P�[�W�ɂ́ADate�N���X�ACalendar�N���X�Ƃ����A�����悤�Ȋ�
-���̃N���X�����݂��܂��B�P���ɃG�|�b�N�^�C���i1970�N1��1��00:00:00�����
-�o�ߎ��ԁj�������Ƃ���Date�A���t�������Ƃ���Calendar�Ƃ����̂���ʓI�Ȏg
-�������ł��B
+/* ■ クラスの外でちょっと一言 ■
+java.utilパッケージには、Dateクラス、Calendarクラスという、似たような感
+じのクラスが存在します。単純にエポックタイム（1970年1月1日00:00:00からの
+経過時間）を扱うときはDate、日付を扱うときはCalendarというのが一般的な使
+い分けです。
 
-�����ŁA�s�v�c�Ȃ̂��u�Ȃ�Date�N���X�œ��t���������Ȃ��̂��H�v�Ƃ�������
-�ł���ˁB���́AJDK1.0�̂Ƃ���Date�œ��t�̏������s���Ă܂����B�������A
-1.1��Calendar���o�ꂵ�Ĉȍ~�́A�u�N���������b�v�͂���Calendar�̒S����
-�Ȃ��āADate�Ɏc���ꂽ�d���́u�~���b�v�݂̂ɂȂ��Ă��܂��܂����BAPI���h
-�L�������g�����Ă݂�ƁA�����̃��\�b�h���񐄏��ɂȂ��Ă���̂�������Ǝv
-���܂��B
+ここで、不思議なのが「なぜDateクラスで日付を処理しないのか？」ということ
+ですよね。実は、JDK1.0のときはDateで日付の処理を行ってました。しかし、
+1.1でCalendarが登場して以降は、「年月日時分秒」はこのCalendarの担当に
+なって、Dateに残された仕事は「ミリ秒」のみになってしまいました。APIをド
+キュメントを見てみると、多くのメソッドが非推奨になっているのが分かると思
+います。
 
-�������������ADate�N���X�́u���t�v�Ɩ����Ȃ���u���t�v���������邱
-�Ƃ�������Ȃ��A�߂������݂ɂȂ��Ă܂��B�����Ɏg���Ă��炦�Ȃ��x�e������
-���I��݂����ŁA�v�킸������Ⴂ�����ł����A�ł��܂��A�g���Ȃ������
-����[�Ȃ���ŁA���̃T���v���ł͂������Calendar�𗘗p���Ă܂��B
+そういう事情から、Dateクラスは「日付」と名乗りながら「日付」を処理するこ
+とが許されない、悲しい存在になってます。試合に使ってもらえないベテラン野
+球選手みたいで、思わず同情しちゃいそうですが、でもまあ、使えないもんは
+しゃーないんで、このサンプルではもちろんCalendarを利用してます。
 
-���Ȃ݂ɁA�񐄏����\�b�h����������Ƃ����āADate�N���X���̂��񐄏��Ƃ���
-�킯���Ⴀ��܂���BDate�^�������ɂƂ郁�\�b�h�͂������񂠂�܂��B
-Calender��Date�̕ϊ���Calendar#getTime���\�b�h�ŁADate��Calendar�̕ϊ���
-Calendar#setTime���\�b�h�ōs���܂��̂ŁA�o���Ă����Ă��������B
+ちなみに、非推奨メソッドが多いからといって、Dateクラス自体が非推奨という
+わけじゃありません。Date型を引数にとるメソッドはたくさんあります。
+Calender→Dateの変換はCalendar#getTimeメソッドで、Date→Calendarの変換は
+Calendar#setTimeメソッドで行いますので、覚えておいてください。
 
-�a�����܂ł̓��������߂�ɂ́A���N�̒a�������߂������ǂ����ŏꍇ��������
-�K�v������܂��B���̏������|�C���g�ɂȂ�܂��ˁB
+誕生日までの日数を求めるには、今年の誕生日を過ぎたかどうかで場合分けする
+必要があります。その処理がポイントになりますね。
  */

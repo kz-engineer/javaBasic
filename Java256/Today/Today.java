@@ -1,17 +1,19 @@
 /**
- * ˆ¤‚ÌJava256–{ƒmƒbƒN for Java 5.0
- * JavaƒTƒ“ƒvƒ‹ƒ\[ƒX ver0.2C "Today"
- * Today.java u¡“ú‚Ì“ú•t‚ð•\Ž¦‚·‚év
+ * æ„›ã®Java256æœ¬ãƒŽãƒƒã‚¯ for Java 5.0
+ * Javaã‚µãƒ³ãƒ—ãƒ«ã‚½ãƒ¼ã‚¹ ver0.2C "Today"
+ * Today.java ã€Œä»Šæ—¥ã®æ—¥ä»˜ã‚’è¡¨ç¤ºã™ã‚‹ã€
  *
- * 2005/09/23 §ìFˆÀ‰iƒmƒŠƒJƒY
+ * 2005/09/23 åˆ¶ä½œï¼šå®‰æ°¸ãƒŽãƒªã‚«ã‚º
  *
- * yƒRƒ“ƒpƒCƒ‹•ŽÀs•û–@z
+ * ã€ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ï¼†å®Ÿè¡Œæ–¹æ³•ã€‘
  *     >javac Today.java
  *     >java Today
- * yƒL[ƒ[ƒhz
- *     java.util.DateƒNƒ‰ƒX, java.util.FormatterƒNƒ‰ƒX, fromat(‘Ž®‰»‚·‚é), *     ƒtƒ@ƒNƒgƒŠ(factory)ƒƒ\ƒbƒh
- * yŽŽ‚µ‚Ä‚Ý‚æ‚¤z
- *     ‚»‚ê‚¼‚ê‚ÌŽè–@‚ÅA”N‚âŽžŠÔ‚à•\Ž¦‚·‚éB *     
+ * ã€ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã€‘
+ *     java.util.Dateã‚¯ãƒ©ã‚¹, java.util.Formatterã‚¯ãƒ©ã‚¹, fromat(æ›¸å¼åŒ–ã™ã‚‹),
+ *     ãƒ•ã‚¡ã‚¯ãƒˆãƒª(factory)ãƒ¡ã‚½ãƒƒãƒ‰
+ * ã€è©¦ã—ã¦ã¿ã‚ˆã†ã€‘
+ *     ãã‚Œãžã‚Œã®æ‰‹æ³•ã§ã€å¹´ã‚„æ™‚é–“ã‚‚è¡¨ç¤ºã™ã‚‹ã€‚
+ *     
  */
 import java.lang.String;
 import java.lang.System;
@@ -22,38 +24,38 @@ public class Today {
     public static void main(String[] A00) {
         Calendar L00 = Calendar.getInstance();
 
-        // “ú•t—j“ú‚ðˆê‚Â‚¸‚ÂŽæ“¾
-        String[] L01 = {"“ú", "ŒŽ", "‰Î", "…", "–Ø", "‹à", "“y"};
+        // æ—¥ä»˜æ›œæ—¥ã‚’ä¸€ã¤ãšã¤å–å¾—
+        String[] L01 = {"æ—¥", "æœˆ", "ç«", "æ°´", "æœ¨", "é‡‘", "åœŸ"};
         int L02 = L00.get(Calendar.MONTH) + 1;
         int L03 =  L00.get(Calendar.DAY_OF_MONTH);
         int L04 =  L00.get(Calendar.DAY_OF_WEEK) - 1;
-        System.out.printf("¡“ú‚Í%02dŒŽ%02d“ú%s—j“ú‚Å‚·B%n", L02, L03, L01[L04]);
+        System.out.printf("ä»Šæ—¥ã¯%02dæœˆ%02dæ—¥%sæ›œæ—¥ã§ã™ã€‚%n", L02, L03, L01[L04]);
 
-        // DateFormat‚ð—˜—p
-        SimpleDateFormat L05 = new SimpleDateFormat("MMŒŽdd“úE—j“ú");
-        System.out.printf("¡“ú‚Í%s‚Å‚·B%n", L05.format(L00.getTime()));
+        // DateFormatã‚’åˆ©ç”¨
+        SimpleDateFormat L05 = new SimpleDateFormat("MMæœˆddæ—¥Eæ›œæ—¥");
+        System.out.printf("ä»Šæ—¥ã¯%sã§ã™ã€‚%n", L05.format(L00.getTime()));
 
-        // ˆê‚Â‚ÌƒJƒŒƒ“ƒ_[ƒIƒuƒWƒFƒNƒg‚©‚çŽæ“¾
-        System.out.printf("¡“ú‚Í%1$tmŒŽ%1$td“ú%1$tA‚Å‚·B%n", L00);
+        // ä¸€ã¤ã®ã‚«ãƒ¬ãƒ³ãƒ€ãƒ¼ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‹ã‚‰å–å¾—
+        System.out.printf("ä»Šæ—¥ã¯%1$tmæœˆ%1$tdæ—¥%1$tAã§ã™ã€‚%n", L00);
     }
 }
 
-/* ¡ ƒNƒ‰ƒX‚ÌŠO‚Å‚¿‚å‚Á‚ÆˆêŒ¾ ¡
-l‚»‚ê‚¼‚êA‚Ç‚¤‚µ‚Ä‚àŠo‚¦‚ç‚ê‚È‚¢‚±‚Æ‚Á‚Ä‚ ‚é‚ÆŽv‚¤‚ñ‚Å‚·‚ªA–l‚Ìê‡A
-Java‚Å“ú•t‚ð•\Ž¦‚·‚é•û–@‚ð‚·‚®‚É–Y‚ê‚Ä‚µ‚Ü‚¢‚Ü‚·BŽQl‘‚Ì“¯‚¶•”•ª‚ðŠJ‚¢
-‚Ä‚ÍAu‘O‚à‚±‚±Œ©‚½‚Èv‚Æ–ˆ‰ñ‚Â‚Ô‚â‚¢‚Ä‚éŽŸ‘æB
+/* â–  ã‚¯ãƒ©ã‚¹ã®å¤–ã§ã¡ã‚‡ã£ã¨ä¸€è¨€ â– 
+äººãã‚Œãžã‚Œã€ã©ã†ã—ã¦ã‚‚è¦šãˆã‚‰ã‚Œãªã„ã“ã¨ã£ã¦ã‚ã‚‹ã¨æ€ã†ã‚“ã§ã™ãŒã€åƒ•ã®å ´åˆã€
+Javaã§æ—¥ä»˜ã‚’è¡¨ç¤ºã™ã‚‹æ–¹æ³•ã‚’ã™ãã«å¿˜ã‚Œã¦ã—ã¾ã„ã¾ã™ã€‚å‚è€ƒæ›¸ã®åŒã˜éƒ¨åˆ†ã‚’é–‹ã„
+ã¦ã¯ã€ã€Œå‰ã‚‚ã“ã“è¦‹ãŸãªã€ã¨æ¯Žå›žã¤ã¶ã‚„ã„ã¦ã‚‹æ¬¡ç¬¬ã€‚
 
-Calendar‚©‚ç“ú•t‚ðŽæ‚èo‚·•û–@‚ÆASimpleDateFormat‚Å‘Ž®‰»‚·‚é•û–@‚ª‚ ‚é
-‚ñ‚Å‚·‚ªA‚»‚Ì‚Ç‚¿‚ç‚à‚ªA‘½•ª‚É¬—‚µ‚ª‚¿‚È—v‘f‚ðŠÜ‚ñ‚Å‚é‚ñ‚Å‚·‚æ‚ËBŒŽ
-‚Í0‚©‚çŽn‚Ü‚é‚Ì‚ÉA—j“ú‚Í1‚©‚ç‚¾‚Á‚½‚èA’è”ƒtƒB[ƒ‹ƒh‚â‚çAƒpƒ^[ƒ“•¶Žš
-—ñ‚ª‚¢‚Á‚Ï‚¢‚ ‚Á‚½‚èccB
+Calendarã‹ã‚‰æ—¥ä»˜ã‚’å–ã‚Šå‡ºã™æ–¹æ³•ã¨ã€SimpleDateFormatã§æ›¸å¼åŒ–ã™ã‚‹æ–¹æ³•ãŒã‚ã‚‹
+ã‚“ã§ã™ãŒã€ãã®ã©ã¡ã‚‰ã‚‚ãŒã€å¤šåˆ†ã«æ··ä¹±ã—ãŒã¡ãªè¦ç´ ã‚’å«ã‚“ã§ã‚‹ã‚“ã§ã™ã‚ˆã­ã€‚æœˆ
+ã¯0ã‹ã‚‰å§‹ã¾ã‚‹ã®ã«ã€æ›œæ—¥ã¯1ã‹ã‚‰ã ã£ãŸã‚Šã€å®šæ•°ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã‚„ã‚‰ã€ãƒ‘ã‚¿ãƒ¼ãƒ³æ–‡å­—
+åˆ—ãŒã„ã£ã±ã„ã‚ã£ãŸã‚Šâ€¦â€¦ã€‚
 
-‚»‚ñ‚È–l‚Ì‹CŽ‚¿‚ð’m‚Á‚Ä‚©’m‚ç‚¸‚©AJ2SE5.0‚©‚ç‚ÍACalendar‚ðprintf‚Å
-ƒtƒH[ƒ}ƒbƒg‚·‚é‚Æ‚¢‚¤AV‚½‚È•û–@‚ª‰Á‚í‚è‚Ü‚µ‚½B‚à‚¤A‘S•”Šo‚¦‚é‚Ì–³
-—B‚ ‚«‚ç‚ß‚Ü‚·B
+ãã‚“ãªåƒ•ã®æ°—æŒã¡ã‚’çŸ¥ã£ã¦ã‹çŸ¥ã‚‰ãšã‹ã€J2SE5.0ã‹ã‚‰ã¯ã€Calendarã‚’printfã§
+ãƒ•ã‚©ãƒ¼ãƒžãƒƒãƒˆã™ã‚‹ã¨ã„ã†ã€æ–°ãŸãªæ–¹æ³•ãŒåŠ ã‚ã‚Šã¾ã—ãŸã€‚ã‚‚ã†ã€å…¨éƒ¨è¦šãˆã‚‹ã®ç„¡
+ç†ã€‚ã‚ãã‚‰ã‚ã¾ã™ã€‚
 
-‚±‚ÌƒTƒ“ƒvƒ‹‚Å‚Í‚»‚Ì‚R‚Â‚Ì•û–@‚Å“¯‚¶•\Ž¦‚ðŽÀŒ»‚µ‚Ä‚¢‚Ü‚·B’Pƒ‚Éo—Í‚·‚é
-‚Æ‚«‚ÍprintfA•¶Žš—ñ‚Æ‚µ‚Ä®Œ`‚·‚é‚Æ‚«‚ÍSimpleDateFormat‚©ACŒ¾Œê‚Å‚¢‚¤
-sprintf‚É‚ ‚½‚éString.formatƒƒ\ƒbƒhA“ú•t‚ð”’l‚Æ‚µ‚Äˆµ‚¢‚½‚¢‚Æ‚«‚Í
-Calendar‚Æ‚¢‚¤Žg‚¢•ª‚¯‚É‚È‚é‚Å‚µ‚å‚¤‚ËB
+ã“ã®ã‚µãƒ³ãƒ—ãƒ«ã§ã¯ãã®ï¼“ã¤ã®æ–¹æ³•ã§åŒã˜è¡¨ç¤ºã‚’å®Ÿç¾ã—ã¦ã„ã¾ã™ã€‚å˜ç´”ã«å‡ºåŠ›ã™ã‚‹
+ã¨ãã¯printfã€æ–‡å­—åˆ—ã¨ã—ã¦æ•´å½¢ã™ã‚‹ã¨ãã¯SimpleDateFormatã‹ã€Cè¨€èªžã§ã„ã†
+sprintfã«ã‚ãŸã‚‹String.formatãƒ¡ã‚½ãƒƒãƒ‰ã€æ—¥ä»˜ã‚’æ•°å€¤ã¨ã—ã¦æ‰±ã„ãŸã„ã¨ãã¯
+Calendarã¨ã„ã†ä½¿ã„åˆ†ã‘ã«ãªã‚‹ã§ã—ã‚‡ã†ã­ã€‚
  */

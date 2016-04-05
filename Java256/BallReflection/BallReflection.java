@@ -1,17 +1,18 @@
 /**
- * ����Java256�{�m�b�N for Java 5.0
- * Java�T���v���\�[�X ver0.2C "BallReflection"
- * BallReflection.java �u�E�B���h�E�̓����𔽎˂���{�[���v
+ * 愛のJava256本ノック for Java 5.0
+ * Javaサンプルソース ver0.2C "BallReflection"
+ * BallReflection.java 「ウィンドウの内側を反射するボール」
  *
- * 2005/09/23 ����F���i�m���J�Y
+ * 2005/09/23 制作：安永ノリカズ
  *
- * �y�R���p�C�������s���@�z
+ * 【コンパイル＆実行方法】
  *     >javac *.java
  *     >java BallReflection
- * �y�L�[���[�h�z
- *     ��ʂ̃��t���b�V�����[�g(refresh rate:�����������g��)
- * �y�����Ă݂悤�z
- *     �^�C�}�[�̔����Ԋu��ς��āA�A�j���[�V�����̌��������ׂ�B *     �E�B���h�E�̃T�C�Y��ύX�\�ɂ��A�t���[�����Œ��˕Ԃ�悤�ɂ���B
+ * 【キーワード】
+ *     画面のリフレッシュレート(refresh rate:垂直走査周波数)
+ * 【試してみよう】
+ *     タイマーの発生間隔を変えて、アニメーションの見え方を比べる。
+ *     ウィンドウのサイズを変更可能にし、フレーム内で跳ね返るようにする。
  */
 import java.awt.Color;
 import java.lang.String;
@@ -30,7 +31,7 @@ public class BallReflection extends JFrame {
 
     public static void main(String[] A00) {
         JFrame L00 = new BallReflection();
-        L00.setTitle("���˂���{�[��");
+        L00.setTitle("反射するボール");
         L00.setDefaultCloseOperation(EXIT_ON_CLOSE);
         L00.setBackground(Color.white);
         L00.setResizable(false);
@@ -39,20 +40,20 @@ public class BallReflection extends JFrame {
     }
 }
 
-/* �� �N���X�̊O�ł�����ƈꌾ ��
-�O���t�B�b�N�����I�ɕ`�悷��A�܂�A�j���[�V����������ɂ́A���Ԋu
-�ŃC�x���g�𔭐�������d�g�݂��K�v�ł��B���̃v���O�����ł�
-javax.swing.Timer���g���āA��0.03�b���ƂɁi���b��33��j�A
-java.awt.event.ActionEvent�𔭐������Ă��܂��B
+/* ■ クラスの外でちょっと一言 ■
+グラフィックを定期的に描画する、つまりアニメーションさせるには、一定間隔
+でイベントを発生させる仕組みが必要です。このプログラムでは
+javax.swing.Timerを使って、約0.03秒ごとに（毎秒約33回）、
+java.awt.event.ActionEventを発生させています。
 
-�Q�[���ł́A���b30���ʂ�����������u�b30�t���[���v�����ϓI�ł��ˁB����
-�����񐔂𑝂₷�قǁA�A�j���[�V�������X���[�Y�ɂȂ�킯�ł����A�b60�t
-���[���ȏ�́A�����瑝�₵�Ă������Ɍ����܂��B�l�Ԃ̖ڂ̌��E���Ă̂�����
-�܂����A��ʓI�ȃp�\�R���̃f�B�X�v���C�́A���b60�`85�񂭂炢�ŉ�ʂ��X�V
-���Ă��ŁA����ȏ����Ă����ʂȂ킯�ł��B�ނ���A���₵������ƕ`���
-�������Ԃ�����āu�d���v�Ȃ�̂ŁA�C�����Ă��������B
+ゲームでは、毎秒30回画面を書き換える「秒30フレーム」が平均的ですね。書き
+換え回数を増やすほど、アニメーションがスムーズになるわけですが、秒60フ
+レーム以上は、いくら増やしても同じに見えます。人間の目の限界ってのもあり
+ますが、一般的なパソコンのディスプレイは、毎秒60〜85回くらいで画面を更新
+してるんで、それ以上やっても無駄なわけです。むしろ、増やしすぎると描画に
+処理時間を取られて「重く」なるので、気をつけてください。
 
-�t�Ɍ��炷�ꍇ�́A�����̏��Ȃ����̂Ȃ�A�b15�t���[���ł�����Ȃ�Ɍ�����
-����܂��B���̕ӂ̓o�����X�̖��ł��̂ŁA���ۂɎ����Ċ��G������ł���
-�����B
+逆に減らす場合は、動きの少ないものなら、秒15フレームでもそれなりに見えて
+くれます。この辺はバランスの問題ですので、実際に試して感触をつかんでくだ
+さい。
  */

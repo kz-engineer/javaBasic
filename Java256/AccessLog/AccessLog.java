@@ -1,17 +1,20 @@
 /**
- * ����Java256�{�m�b�N for Java 5.0
- * Java�T���v���\�[�X ver0.2C "AccessLog"
- * AccessLog.java �u���K�\�����g���A�N�Z�X���O����Googlebot�̃A�N�Z�X�����o����v
+ * 愛のJava256本ノック for Java 5.0
+ * Javaサンプルソース ver0.2C "AccessLog"
+ * AccessLog.java 「正規表現を使いアクセスログからGooglebotのアクセスを検出する」
  *
- * 2005/09/23 ����F���i�m���J�Y
+ * 2005/09/23 制作：安永ノリカズ
  *
- * �y�R���p�C�������s���@�z
+ * 【コンパイル＆実行方法】
  *     >javac AccessLog.java
  *     >java AccessLog
- * �y�L�[���[�h�z
- *     ���K�\��(regular expression), Googlebot, �N���[���[(crawler), *     HTTP�X�e�[�^�X�R�[�h(status code) *     
- * �y�����Ă݂悤�z
- *     Googlebot�ȊO�̃��{�b�g�̃A�N�Z�X�����o����B *     �O�������N(www.groovy-number.com�ȊO)����Q�Ƃ��ꂽ�A�N�Z�X�����o����B
+ * 【キーワード】
+ *     正規表現(regular expression), Googlebot, クローラー(crawler),
+ *     HTTPステータスコード(status code)
+ *     
+ * 【試してみよう】
+ *     Googlebot以外のロボットのアクセスを検出する。
+ *     外部リンク(www.groovy-number.com以外)から参照されたアクセスを検出する。
  */
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -43,34 +46,34 @@ public class AccessLog {
                     }
 
                 } else {
-                    System.out.println("��͂ł��Ȃ��s������܂����F" + L03);
+                    System.out.println("解析できない行がありました：" + L03);
                 }
             }
             L01.close();
 
         } catch(IOException L05) {
-            System.out.println(L00 + "��ǂݍ��ݒ��ɗ�O���������܂����B");
+            System.out.println(L00 + "を読み込み中に例外が発生しました。");
         }
 
     }
 }
 
-/* �� �N���X�̊O�ł�����ƈꌾ ��
-Web�T�[�o�[�̃A�N�Z�X���O�ɂ́A���A�ǂ̂悤�Ȍ`�Ńy�[�W���A�N�Z�X����
-���̂��A���̋L�^���c���Ă��܂��B�N�����y�[�W���{�������ꍇ�ȊO�ɂ��A����
-�G���W�����s���y�[�W�̎������W�̋L�^�Ȃǂ����O�Ɏc��܂��B
+/* ■ クラスの外でちょっと一言 ■
+Webサーバーのアクセスログには、いつ、どのような形でページがアクセスされ
+たのか、その記録が残っています。誰かがページを閲覧した場合以外にも、検索
+エンジンが行うページの自動収集の記録などもログに残ります。
 
-Google�̓y�[�W�̎��W��Googlebot�Ƃ����N���[���[�i���{�b�g��X�p�C�_�[��
-���Ă΂��j���g�p���Ă���A�A�N�Z�X���O�ɂ����ẮA�u���E�U�[�̖��O���c
-�镔����"Googlebot"�Ƃ����������܂񂾖��O���c���܂��B����͂��̃f�[�^��
-�݂𒊏o���Ă݂܂����B
+Googleはページの収集にGooglebotというクローラー（ロボットやスパイダーと
+も呼ばれる）を使用しており、アクセスログにおいては、ブラウザーの名前が残
+る部分に"Googlebot"という文字を含んだ名前を残します。今回はそのデータの
+みを抽出してみました。
 
-���̃T���v����ǂ݉����O�ɁA�t����access_log.txt���J���āA�A�N�Z�X���O��
-�ǂ�Ȃ��̂����m�F���Ă����Ă��������B���O�̌`���̓X�y�[�X��؂�ŁA�u�z
-�X�g�� ���ʏ�� �F�؃��[�U�[ ���� ���N�G�X�g �X�e�[�^�X ���M�o�C�g�� �Q
-�ƌ� �u���E�U�[���v�ƂȂ��Ă܂��B
+このサンプルを読み解く前に、付属のaccess_log.txtを開いて、アクセスログが
+どんなものかを確認しておいてください。ログの形式はスペース区切りで、「ホ
+スト名 識別情報 認証ユーザー 日時 リクエスト ステータス 送信バイト数 参
+照元 ブラウザー名」となってます。
 
-���K�\���̒��ɂ�"()"������܂����A����̓p�^�[�����}�b�`��������A���̕�
-���𔲂��o�����߂̂��̂ł��B�Ⴆ�΁AMatcher��group(3)�Ƃ������\�b�h�́u3
-�Ԗڂ�()�v�܂�u���E�U�[�����擾���邱�ƂɂȂ�܂��B
+正規表現の中にに"()"がありますが、これはパターンをマッチさせた後、その部
+分を抜き出すためのものです。例えば、Matcherのgroup(3)というメソッドは「3
+番目の()」つまりブラウザー名を取得することになります。
  */

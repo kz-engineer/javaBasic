@@ -1,17 +1,19 @@
 /**
- * ����Java256�{�m�b�N for Java 5.0
- * Java�T���v���\�[�X ver0.2C "Category"
- * DataManager.java �uSet���g�����J�e�S���[���ށv
+ * 愛のJava256本ノック for Java 5.0
+ * Javaサンプルソース ver0.2C "Category"
+ * DataManager.java 「Setを使ったカテゴリー分類」
  *
- * 2005/09/23 ����F���i�m���J�Y
+ * 2005/09/23 制作：安永ノリカズ
  *
- * �y�R���p�C�������s���@�z
+ * 【コンパイル＆実行方法】
  *     >javac *.java
  *     >java Category
- * �y�L�[���[�h�z
- *     �W�F�l���b�N�X(generics), �g��for���[�v, Set(�W��), List(���X�g),  *     equals�ɂ�镶����̔�r *     
- * �y�����Ă݂悤�z
- *     Category.java���Q�ƁB
+ * 【キーワード】
+ *     ジェネリックス(generics), 拡張forループ, Set(集合), List(リスト), 
+ *     equalsによる文字列の比較
+ *     
+ * 【試してみよう】
+ *     Category.javaを参照。
  */
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -28,7 +30,7 @@ public class DataManager {
     List<ComicChar> I00 = new ArrayList<ComicChar>();
 
     public DataManager() {
-        // CSV�t�@�C������f�[�^��ǂݍ���Ń��X�g�ɒǉ�
+        // CSVファイルからデータを読み込んでリストに追加
         try {
             BufferedReader L00 = new BufferedReader(new FileReader(C00));
             String L01;
@@ -38,13 +40,13 @@ public class DataManager {
             }
             L00.close();
         } catch(FileNotFoundException L03) {
-            System.out.println(C00 + "��������܂��ł����B");
+            System.out.println(C00 + "が見つかりませでした。");
         } catch(IOException L04) {
-            System.out.println(C00 + "��ǂݍ��߂܂���ł����B");
+            System.out.println(C00 + "を読み込めませんでした。");
         }
     }
     
-    // �J�e�S���[�̔z���Ԃ�
+    // カテゴリーの配列を返す
     public String[] M00() {
         Set<String> L00 = new LinkedHashSet<String>();
         
@@ -55,7 +57,7 @@ public class DataManager {
         return L00.toArray(new String[0]);
     }
 
-    // �J�e�S���[���w�肵�Č���
+    // カテゴリーを指定して検索
     public List<ComicChar> M01(String A00) {
         List<ComicChar> L00 = new ArrayList<ComicChar>();
 
@@ -69,29 +71,29 @@ public class DataManager {
     }
 }
 
-/* �� �N���X�̊O�ł�����ƈꌾ ��
-�f�[�^�̊Ǘ���S�����邱�̃N���X�ɂ�3�̋@�\��������Ă܂��B
+/* ■ クラスの外でちょっと一言 ■
+データの管理を担当するこのクラスには3つの機能が備わってます。
 
-�܂��́A�R���X�g���N�^�ŊO���t�@�C������f�[�^��ǂݍ��ދ@�\�B�ǂݍ��܂�
-���f�[�^��1�����ƃC���X�^���X������āAList�ɒǉ�����܂��B�ȍ~�A����
-List����A�����K�v�ȃf�[�^�����o�����ƂɂȂ�܂��B�R���X�g���N�^�Ȃ�
-�ŁA�t�@�C���̓ǂݍ��݂͍ŏ��̂P�񂾂��ł��ˁB
+まずは、コンストラクタで外部ファイルからデータを読み込む機能。読み込まれ
+たデータは1件ごとインスタンス化されて、Listに追加されます。以降、この
+Listから、随時必要なデータを取り出すことになります。コンストラクタなん
+で、ファイルの読み込みは最初の１回だけですね。
 
-���́A�J�e�S���[���W�v����@�\�B�ǂݍ���List����A�J�e�S���[�����o��
-�Ă܂����A�|�C���g�́A�d�����Ȃ��K�v������Ƃ������ƁB�����ŃR���N�V����
-�t���[�����[�N��Set�̓o��ł��BSet�́A���w�ł����Ƃ���́u�W���v�ŁA�d��
-�v�f�������Ȃ��Ƃ�������������܂��B���������W�v�ɂ͂҂�����ł��ˁB
+次は、カテゴリーを集計する機能。読み込んだListから、カテゴリーを取り出し
+てますが、ポイントは、重複を省く必要があるということ。そこでコレクション
+フレームワークのSetの登場です。Setは、数学でいうところの「集合」で、重複
+要素を持たないという性質があります。こういう集計にはぴったりですね。
 
-Set����z��ւ̕ϊ���toArray���\�b�h���g���Ă܂����A���̈�����String[0]
-�ƁA����0�̔z���n���Ă܂��B���̃��\�b�h�́A�u�z��̃T�C�Y���\���łȂ�
-�ꍇ�́A�������s���̌^�ŐV�����z�񂪊i�[�p�Ƃ��Ċ��蓖�Ă���v�����Ȃ�
-�ŁA�z��̒�����0��OK�B�厖�Ȃ͔̂z��̌^�����ł��B
+Setから配列への変換にtoArrayメソッドを使ってますが、その引数にString[0]
+と、長さ0の配列を渡してます。このメソッドは、「配列のサイズが十分でない
+場合は、同じ実行時の型で新しい配列が格納用として割り当てられる」そうなの
+で、配列の長さは0でOK。大事なのは配列の型だけです。
 
-�Ō�ɁA�w�肳�ꂽ�J�e�S���[�̃f�[�^���������o���@�\�B����List����Y��
-����f�[�^��I��ŁA�ʂ�List�ɒǉ����Ă��܂��B�u����V����List�𐶐���
-�āA�������͑��v���H�v�Ƃ����C�����܂����AList�ɂ̓C���X�^���X�̎Q�Ƃ�
-���邾���Ȃ̂ŁA����قǎ����͏���܂���B
+最後に、指定されたカテゴリーのデータだけを取り出す機能。元のListから該当
+するデータを選んで、別のListに追加しています。「毎回新しいListを生成し
+て、メモリは大丈夫か？」という気がしますが、Listにはインスタンスの参照が
+入るだけなので、それほど資源は消費しません。
 
-�W�F�l���b�N�X�̂������Ŗʓ|�Ȍ^�ϊ����Ȃ��A�g��for���[�v�ł�������ƑS
-�v�f�̑������ł��Ă܂��B���̂ւ�́AJ2SE 5.0���܂��܂ł��ˁB
+ジェネリックスのおかげで面倒な型変換がなく、拡張forループですっきりと全
+要素の走査ができてます。このへんは、J2SE 5.0さまさまですね。
  */

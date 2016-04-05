@@ -1,17 +1,23 @@
 /**
- * ˆ¤‚ÌJava256–{ƒmƒbƒN for Java 5.0
- * JavaƒTƒ“ƒvƒ‹ƒ\[ƒX ver0.2C "MousePosition"
- * MousePosition.java uƒ}ƒEƒXƒCƒxƒ“ƒg‚ÅƒJ[ƒ\ƒ‹‚ÌÀ•W‚ğæ“¾v
+ * æ„›ã®Java256æœ¬ãƒãƒƒã‚¯ for Java 5.0
+ * Javaã‚µãƒ³ãƒ—ãƒ«ã‚½ãƒ¼ã‚¹ ver0.2C "MousePosition"
+ * MousePosition.java ã€Œãƒã‚¦ã‚¹ã‚¤ãƒ™ãƒ³ãƒˆã§ã‚«ãƒ¼ã‚½ãƒ«ã®åº§æ¨™ã‚’å–å¾—ã€
  *
- * 2005/09/23 §ìFˆÀ‰iƒmƒŠƒJƒY
+ * 2005/09/23 åˆ¶ä½œï¼šå®‰æ°¸ãƒãƒªã‚«ã‚º
  *
- * yƒRƒ“ƒpƒCƒ‹•Às•û–@z
+ * ã€ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ï¼†å®Ÿè¡Œæ–¹æ³•ã€‘
  *     >javac MousePosition.java
  *     >java MousePosition
- * yƒL[ƒ[ƒhz
- *     ƒCƒ“ƒ^[ƒtƒF[ƒX(interface), implements(À‘•),  *     MouseListener, MouseMotionListener *     
- * y‚µ‚Ä‚İ‚æ‚¤z
- *     ƒ}ƒEƒXƒhƒ‰ƒbƒO’†‚Í•¶š‚ÌF‚ğ•Ï‚¦‚ÄÀ•W‚ğ•\¦‚·‚éB *     ƒ}ƒEƒXƒJ[ƒ\ƒ‹‚ª’[‚Á‚±‚És‚Á‚Ä‚à•¶š‚ª‰æ–Ê‚©‚ç‚Í‚İo‚³‚È‚¢‚æ‚¤‚É‚·‚éB *     MouseMotionAdapter‚ÅƒCƒxƒ“ƒg‚ğˆ—‚·‚éB *      *     
+ * ã€ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã€‘
+ *     ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹(interface), implements(å®Ÿè£…), 
+ *     MouseListener, MouseMotionListener
+ *     
+ * ã€è©¦ã—ã¦ã¿ã‚ˆã†ã€‘
+ *     ãƒã‚¦ã‚¹ãƒ‰ãƒ©ãƒƒã‚°ä¸­ã¯æ–‡å­—ã®è‰²ã‚’å¤‰ãˆã¦åº§æ¨™ã‚’è¡¨ç¤ºã™ã‚‹ã€‚
+ *     ãƒã‚¦ã‚¹ã‚«ãƒ¼ã‚½ãƒ«ãŒç«¯ã£ã“ã«è¡Œã£ã¦ã‚‚æ–‡å­—ãŒç”»é¢ã‹ã‚‰ã¯ã¿å‡ºã•ãªã„ã‚ˆã†ã«ã™ã‚‹ã€‚
+ *     MouseMotionAdapterã§ã‚¤ãƒ™ãƒ³ãƒˆã‚’å‡¦ç†ã™ã‚‹ã€‚
+ *     
+ *     
  */
 import java.awt.Color;
 import java.awt.Graphics;
@@ -33,7 +39,7 @@ public class MousePosition extends JFrame {
         Toolkit.getDefaultToolkit().setDynamicLayout(true);
 
         JFrame L00 = new MousePosition();
-        L00.setTitle("ƒ}ƒEƒX‚ÌÀ•W‚ğ•\¦");
+        L00.setTitle("ãƒã‚¦ã‚¹ã®åº§æ¨™ã‚’è¡¨ç¤º");
         L00.setDefaultCloseOperation(EXIT_ON_CLOSE);
         L00.setBackground(Color.white);
         L00.setSize(320, 240);
@@ -65,17 +71,17 @@ class DrawPanel extends JPanel implements MouseMotionListener {
     public void mouseDragged(MouseEvent A00) {}
 }
 
-/* ¡ ƒNƒ‰ƒX‚ÌŠO‚Å‚¿‚å‚Á‚ÆˆêŒ¾ ¡
-ƒ}ƒEƒXƒCƒxƒ“ƒg‚ÌƒŠƒXƒi[‚É‚ÍAMouseListener‚ÆMouseMotionListener‚ª‚ ‚è‚Ü
-‚·BMouseListener‚Íƒ}ƒEƒX‚Ìƒ{ƒ^ƒ“‘€ìAƒRƒ“ƒ|[ƒlƒ“ƒg‚Ö‚Ìo“ü‚è‚É‘Î‰
-‚µAMouseMotionListener‚ÍƒJ[ƒ\ƒ‹‚ÌˆÚ“®Aƒhƒ‰ƒbƒO‚Ì’ÇÕ‚É‘Î‰‚µ‚Ü‚·B
+/* â–  ã‚¯ãƒ©ã‚¹ã®å¤–ã§ã¡ã‚‡ã£ã¨ä¸€è¨€ â– 
+ãƒã‚¦ã‚¹ã‚¤ãƒ™ãƒ³ãƒˆã®ãƒªã‚¹ãƒŠãƒ¼ã«ã¯ã€MouseListenerã¨MouseMotionListenerãŒã‚ã‚Šã¾
+ã™ã€‚MouseListenerã¯ãƒã‚¦ã‚¹ã®ãƒœã‚¿ãƒ³æ“ä½œã€ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã¸ã®å‡ºå…¥ã‚Šã«å¯¾å¿œ
+ã—ã€MouseMotionListenerã¯ã‚«ãƒ¼ã‚½ãƒ«ã®ç§»å‹•ã€ãƒ‰ãƒ©ãƒƒã‚°ã®è¿½è·¡ã«å¯¾å¿œã—ã¾ã™ã€‚
 
-‚±‚ÌƒvƒƒOƒ‰ƒ€‚Ìƒ|ƒCƒ“ƒg‚Írepaint()‚Å‚·‚ËBƒ}ƒEƒXƒJ[ƒ\ƒ‹‚ÌˆÚ“®‚ğŒŸ’m‚µ
-‚½‚çAƒNƒ‰ƒX•Ï”‚É‚»‚ÌÀ•W‚ğ‘ã“ü‚µA©•ª©g‚ÌÄ•`‰æ—v‹‚ğo‚µ‚Ä‚Ü‚·B‚»
-‚¤‚·‚é‚ÆAŒã‚ÅpaintComponent‚ªŒÄ‚Î‚êAƒJ[ƒ\ƒ‹‚ÌˆÊ’u‚É•¶š‚ª•`‰æ‚³‚ê‚éd
-‘g‚İ‚Å‚·B
+ã“ã®ãƒ—ãƒ­ã‚°ãƒ©ãƒ ã®ãƒã‚¤ãƒ³ãƒˆã¯repaint()ã§ã™ã­ã€‚ãƒã‚¦ã‚¹ã‚«ãƒ¼ã‚½ãƒ«ã®ç§»å‹•ã‚’æ¤œçŸ¥ã—
+ãŸã‚‰ã€ã‚¯ãƒ©ã‚¹å¤‰æ•°ã«ãã®åº§æ¨™ã‚’ä»£å…¥ã—ã€è‡ªåˆ†è‡ªèº«ã®å†æç”»è¦æ±‚ã‚’å‡ºã—ã¦ã¾ã™ã€‚ã
+ã†ã™ã‚‹ã¨ã€å¾Œã§paintComponentãŒå‘¼ã°ã‚Œã€ã‚«ãƒ¼ã‚½ãƒ«ã®ä½ç½®ã«æ–‡å­—ãŒæç”»ã•ã‚Œã‚‹ä»•
+çµ„ã¿ã§ã™ã€‚
 
-ƒ}ƒEƒXƒ‚[ƒVƒ‡ƒ“‚Í’ZŠÔ‚É”ñí‚É‚½‚­‚³‚ñ”­¶‚·‚é‚ÌƒCƒxƒ“ƒg‚Å‚·‚Ì‚ÅA
-mouseMovedƒƒ\ƒbƒhAmouseDraggedƒƒ\ƒbƒh‚Éd‚¢ˆ—‚ğ‹Lq‚·‚é‚±‚Æ‚Í”ğ‚¯‚é
-‚×‚«‚Å‚µ‚å‚¤B
+ãƒã‚¦ã‚¹ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ã¯çŸ­æ™‚é–“ã«éå¸¸ã«ãŸãã•ã‚“ç™ºç”Ÿã™ã‚‹ã®ã‚¤ãƒ™ãƒ³ãƒˆã§ã™ã®ã§ã€
+mouseMovedãƒ¡ã‚½ãƒƒãƒ‰ã€mouseDraggedãƒ¡ã‚½ãƒƒãƒ‰ã«é‡ã„å‡¦ç†ã‚’è¨˜è¿°ã™ã‚‹ã“ã¨ã¯é¿ã‘ã‚‹
+ã¹ãã§ã—ã‚‡ã†ã€‚
  */

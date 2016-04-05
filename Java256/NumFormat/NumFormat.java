@@ -1,17 +1,17 @@
 /**
- * ����Java256�{�m�b�N for Java 5.0
- * Java�T���v���\�[�X ver0.2C "NumFormat"
- * NumFormat.java �uNumberFormat���g���āA3����؂�̐��l���v�Z����v
+ * 愛のJava256本ノック for Java 5.0
+ * Javaサンプルソース ver0.2C "NumFormat"
+ * NumFormat.java 「NumberFormatを使って、3桁区切りの数値を計算する」
  *
- * 2005/09/23 ����F���i�m���J�Y
+ * 2005/09/23 制作：安永ノリカズ
  *
- * �y�R���p�C�������s���@�z
+ * 【コンパイル＆実行方法】
  *     >javac NumFormat.java
  *     >java NumFormat
- * �y�L�[���[�h�z
- *     �t�@�N�g��(factory)���\�b�h, parse(��͂���), format(����������)
- * �y�����Ă݂悤�z
- *     �����_��}�C�i�X���܂�3����؂�̐��������Z����B
+ * 【キーワード】
+ *     ファクトリ(factory)メソッド, parse(解析する), format(書式化する)
+ * 【試してみよう】
+ *     小数点やマイナスを含む3桁区切りの数字を演算する。
  */
 import java.lang.String;
 import java.lang.System;
@@ -30,19 +30,19 @@ public class NumFormat {
             L02 = L03.parse(L00).intValue() + L03.parse(L01).intValue();
             System.out.printf("%s + %s = %s%n", L00, L01, L03.format(L02));
         } catch (ParseException L04) {
-            System.out.println("���������͂ł��܂���ł����B");
+            System.out.println("文字列を解析できませんでした。");
         }
     }
 }
 
-/* �� �N���X�̊O�ł�����ƈꌾ ��
-3���ŋ�؂�ꂽ�����������Ƃ��ɂ́A����NumberFormat�N���X���֗��ł��B�I
-�u�W�F�N�g�̎擾�́Anew�Ő��������ɁAgetInstance���\�b�h�ōs���܂��B����
-�_�������ӂ��Ă����Ό�͊ȒP�Bparse���\�b�h�ŕ������琔�l�ɕϊ����āA
-format���\�b�h�Ő��l���當���ɕϊ����܂��B
+/* ■ クラスの外でちょっと一言 ■
+3桁で区切られた数字を扱うときには、このNumberFormatクラスが便利です。オ
+ブジェクトの取得は、newで生成せずに、getInstanceメソッドで行います。その
+点さえ注意しておけば後は簡単。parseメソッドで文字から数値に変換して、
+formatメソッドで数値から文字に変換します。
 
-�����m��Ȃ��ƁA���������J���}����菜������}��������ƁA�]���ȃR�[�h
-�������n���ɂȂ�܂��ˁB�����ł��y�������Ƃ����v�l�́A�v���O���}�[�ɂƂ�
-�ďd�v�ȃ����^���e�B�ł��B�F������A�ǂ�ǂ�y���邽�߂̒m����~���Ă���
-�����B
+これを知らないと、いちいちカンマを取り除いたり挿入したりと、余分なコード
+を書くハメになりますね。少しでも楽したいという思考は、プログラマーにとっ
+て重要なメンタリティです。皆さんも、どんどん楽するための知識を蓄えてくだ
+さい。
  */

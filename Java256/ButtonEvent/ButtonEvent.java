@@ -1,17 +1,19 @@
 /**
- * ����Java256�{�m�b�N for Java 5.0
- * Java�T���v���\�[�X ver0.2C "ButtonEvent"
- * ButtonEvent.java �u�{�^���C�x���g��JTextArea�ɕ�����ǉ��v
+ * 愛のJava256本ノック for Java 5.0
+ * Javaサンプルソース ver0.2C "ButtonEvent"
+ * ButtonEvent.java 「ボタンイベントでJTextAreaに文字を追加」
  *
- * 2005/09/23 ����F���i�m���J�Y
+ * 2005/09/23 制作：安永ノリカズ
  *
- * �y�R���p�C�������s���@�z
+ * 【コンパイル＆実行方法】
  *     >javac ButtonEvent.java
  *     >java ButtonEvent
- * �y�L�[���[�h�z
- *     �C�x���g�쓮(event driven)�v���O����, Delegation(�㗝�l)�C�x���g���f��, *     �C���^�[�t�F�[�X(interface), implements(����), �L�[���[�hthis
- * �y�����Ă݂悤�z
- *     actionPerformed���킴�ƕʂ̖��O�ɕς��A�ǂ�ȃR���p�C���G���[���o�邩�m���߂�B *     JButton��getActionCommand���\�b�h���g���āA��̃{�^������ʂ��Ă݂�B
+ * 【キーワード】
+ *     イベント駆動(event driven)プログラム, Delegation(代理人)イベントモデル,
+ *     インターフェース(interface), implements(実装), キーワードthis
+ * 【試してみよう】
+ *     actionPerformedをわざと別の名前に変え、どんなコンパイルエラーが出るか確かめる。
+ *     JButtonのgetActionCommandメソッドを使って、二つのボタンを区別してみる。
  */
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -40,8 +42,8 @@ public class ButtonEvent extends JFrame implements ActionListener {
         add(L00, BorderLayout.CENTER);
 
         JPanel L01 = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        I01 = new JButton("�m�b�N");
-        I02 = new JButton("�N���A");
+        I01 = new JButton("ノック");
+        I02 = new JButton("クリア");
         L01.add(I01);
         L01.add(I02);
         add(L01, BorderLayout.SOUTH);
@@ -54,7 +56,7 @@ public class ButtonEvent extends JFrame implements ActionListener {
         Toolkit.getDefaultToolkit().setDynamicLayout(true);
 
         JFrame L00 = new ButtonEvent();
-        L00.setTitle("�{�^���������Ă����܂�");
+        L00.setTitle("ボタンを押してちょんまげ");
         L00.setDefaultCloseOperation(EXIT_ON_CLOSE);
         L00.setBackground(Color.white);
         L00.setSize(320, 240);
@@ -63,34 +65,34 @@ public class ButtonEvent extends JFrame implements ActionListener {
 
     public void actionPerformed(ActionEvent A00) {
         if (I01 == A00.getSource()) {
-            String L00 = String.format("���̃m�b�N%d�{�ڂ��`�I%n", ++I03);
+            String L00 = String.format("愛のノック%d本目だ〜！%n", ++I03);
             I00.append(L00);
             I00.setCaretPosition(I00.getText().length());
         } else if (I02 == A00.getSource()){
-            I00.setText("�����ǁ[��I�@�ŏ������炾�I�I\n");
+            I00.setText("たるんどーる！　最初っからだ！！\n");
             I03 = 0;
         }
     }
 }
 
-/* �� �N���X�̊O�ł�����ƈꌾ ��
-Java�̃C�x���g�����ɂ͂������̎�@������܂����A�܂��͂��́A�`Listener
-��implements�����������o����Ƃ����ł��傤�BJava�̃C�x���g���f����
-������ɂ́A�ȉ��̂R�̃|�C���g���������邱�Ƃ��d�v�ł��B
+/* ■ クラスの外でちょっと一言 ■
+Javaのイベント処理にはいくつかの手法がありますが、まずはこの、〜Listener
+をimplementsするやり方から覚えるといいでしょう。Javaのイベントモデルを理
+解するには、以下の３つのポイントを押さえることが重要です。
 
-���̂P�D�{�^���������ꂽ�ꍇ�́Ajava.awt.event.ActionEvent����������
-���̂Q�DActionEvent�͂��炩���߁u�o�^���ꂽ�l�v�ɒʒm�����
-���̂R�DActionEvent���ʒm�����ƁAactionPerformed���\�b�h���Ă΂��
+その１．ボタンが押された場合は、java.awt.event.ActionEventが発生する
+その２．ActionEventはあらかじめ「登録された人」に通知される
+その３．ActionEventが通知されると、actionPerformedメソッドが呼ばれる
 
-���̂����v���O���}�[���L�q����̂́A���̂Q�Ƃ��̂R�ŁA�T���v���ł�
-addActionListener(this)�ŁA���ꂼ��̃{�^���̃C�x���g�̒ʒm��ɁA������
-�g�ւ̎Q��=this��o�^���Ă��܂��B���ꂪ�A���ł��o�^�ł�����Ă킯�����
-���āA�C���^�[�t�F�[�XActionListener������(implements)�������̂������o�^
-�ł���d�g�݂ɂȂ��Ă܂��B
+このうちプログラマーが記述するのは、その２とその３で、サンプルでも
+addActionListener(this)で、それぞれのボタンのイベントの通知先に、自分自
+身への参照=thisを登録しています。これが、何でも登録できるってわけじゃな
+くて、インターフェースActionListenerを実装(implements)したものだけが登録
+できる仕組みになってます。
 
-actionPerformed���\�b�h�ɂ́A�{�^���������ꂽ�Ƃ��̏������L�q���܂��B��
-�̃T���v���ł́A�ǂ����̃{�^����������Ă��������\�b�h���Ă΂��̂ŁA��
-����̃{�^���������������C�x���g���𔻕ʂ��鏈�������Ă܂��B�u�����Ă�
-�悤�v�ɂ������Ă܂����AgetActionCommand�ŁA�{�^���̃��x���̕�������擾
-���Ĕ��肷����@������܂��̂ŁA���ׂĂ݂Ă��������B
+actionPerformedメソッドには、ボタンが押されたときの処理を記述します。こ
+のサンプルでは、どっちのボタンが押されても同じメソッドが呼ばれるので、ど
+ちらのボタンが発生させたイベントかを判別する処理を入れてます。「試してみ
+よう」にも書いてますが、getActionCommandで、ボタンのラベルの文字列を取得
+して判定する方法もありますので、調べてみてください。
  */

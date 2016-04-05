@@ -1,17 +1,18 @@
 /**
- * ����Java256�{�m�b�N for Java 5.0
- * Java�T���v���\�[�X ver0.2C "JavaCurry"
- * JavaCurry.java �u�J���[�̃p�b�P�[�W���I�u�W�F�N�g�w���ŕ\���v
+ * 愛のJava256本ノック for Java 5.0
+ * Javaサンプルソース ver0.2C "JavaCurry"
+ * JavaCurry.java 「カレーのパッケージをオブジェクト指向で表現」
  *
- * 2005/09/23 ����F���i�m���J�Y
+ * 2005/09/23 制作：安永ノリカズ
  *
- * �y�R���p�C�������s���@�z
+ * 【コンパイル＆実行方法】
  *     >javac *.java
  *     >java JavaCurry
- * �y�L�[���[�h�z
- *     ��ːH�i, �{���J���[�S�[���h
- * �y�����Ă݂悤�z
- *     Box�ACircle�AText����肭�g�ݍ��킹�A�E����JAS�}�[�N������B *     http://www.jasnet.or.jp/
+ * 【キーワード】
+ *     大塚食品, ボンカレーゴールド
+ * 【試してみよう】
+ *     Box、Circle、Textを上手く組み合わせ、右下にJASマークを入れる。
+ *     http://www.jasnet.or.jp/
  */
 import java.awt.Color;
 import java.lang.String;
@@ -26,7 +27,7 @@ public class JavaCurry extends JFrame {
 
     public static void main(String[] A00) {
         JFrame L00 = new JavaCurry();
-        L00.setTitle("�I�u�W�F�N�g�w�����g���g�J���[");
+        L00.setTitle("オブジェクト指向レトルトカレー");
         L00.setDefaultCloseOperation(EXIT_ON_CLOSE);
         L00.setBackground(Color.white);
         L00.pack();
@@ -35,10 +36,10 @@ public class JavaCurry extends JFrame {
     }
 }
 
-/* �� �N���X�̊O�ł�����ƈꌾ ��
-�{���́A�n�E�X�w�W�����J���[�x�̃p�b�P�[�W����肽��������ł����A���Ȃ�
-���G�ŁA�ƂĂ��v���~�e�B�u�Ȑ}�`�̑g�ݍ��킹�ł͕\���s�\�Ȃ��߁A�f����
-�v���ŁA��ːH�i�w�{���J���[ �S�[���h�x���ނɂ��܂����B
+/* ■ クラスの外でちょっと一言 ■
+本当は、ハウス『ジャワカレー』のパッケージをやりたかったんですが、かなり
+複雑で、とてもプリミティブな図形の組み合わせでは表現不可能なため、断腸の
+思いで、大塚食品『ボンカレー ゴールド』を題材にしました。
 
-���g���g�J���[�}�j�A�ɂ����܂��O�ɁA�����󂵂Ă����܂��B
+レトルトカレーマニアにつっこまれる前に、言い訳しておきます。
  */

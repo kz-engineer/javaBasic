@@ -1,17 +1,20 @@
 /**
- * ����Java256�{�m�b�N for Java 5.0
- * Java�T���v���\�[�X ver0.2C "LineInput"
- * LineInput.java �u�R�}���h���C�����當������́v
+ * 愛のJava256本ノック for Java 5.0
+ * Javaサンプルソース ver0.2C "LineInput"
+ * LineInput.java 「コマンドラインから文字を入力」
  *
- * 2005/09/23 ����F���i�m���J�Y
+ * 2005/09/23 制作：安永ノリカズ
  *
- * �y�R���p�C�������s���@�z
+ * 【コンパイル＆実行方法】
  *     >javac LineInput.java
  *     >java LineInput
- * �y�L�[���[�h�z
- *     �W������(standard input), �W���o��(standard output),  *     ���o��(io:input/output), �X�g���[��(stream:����),  *     java.io.InputStreamReader
- * �y�����Ă݂悤�z
- *     �A�����ē��͂��󂯕t����B *     ���͂��ꂽ���e���t�@�C���ɏ����o���B
+ * 【キーワード】
+ *     標準入力(standard input), 標準出力(standard output), 
+ *     入出力(io:input/output), ストリーム(stream:流れ), 
+ *     java.io.InputStreamReader
+ * 【試してみよう】
+ *     連続して入力を受け付ける。
+ *     入力された内容をファイルに書き出す。
  */
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -24,42 +27,42 @@ public class LineInput {
         BufferedReader L00 = new BufferedReader(new InputStreamReader(System.in));
         
         try {
-            System.out.print("���������͂��Ă��������F");
+            System.out.print("文字列を入力してください：");
             String L01 = L00.readLine();
-            System.out.printf("���� = %s%n���� = %d����%n", L01, L01.length());
+            System.out.printf("入力 = %s%n長さ = %d文字%n", L01, L01.length());
         } catch(IOException L02) {
-            System.out.println("���̓G���[");
+            System.out.println("入力エラー");
         }
     }
 }
 
-/* �� �N���X�̊O�ł�����ƈꌾ ��
-java.io�p�b�P�[�W�ɂ́A���o�͂̂��߂̃N���X���������񂠂�܂��B�ŏ��́A
-�ǂꂪ�ǂ�ȋ@�\�Ȃ̂��A���܂������ł��Ȃ����Ƃł��傤�B���́A���̃p�b
-�P�[�W��ǂ݉����ɂ̓R�c�������āA�ŏ���4�̊�b�I�ȃN���X����������K
-�v������܂��B
+/* ■ クラスの外でちょっと一言 ■
+java.ioパッケージには、入出力のためのクラスがたくさんあります。最初は、
+どれがどんな機能なのか、うまく整理できないことでしょう。実は、このパッ
+ケージを読み解くにはコツがあって、最初に4つの基礎的なクラスを押さえる必
+要があります。
 
-Java�ł͓ǂݏ�������f�[�^�̗�����X�g���[���Ƃ����܂��B���̃X�g���[����
-�́A�f�[�^�𐔒l�Ƃ��ď�������u�o�C�g�X�g���[���v�ƁA�����Ƃ��ď�������
-�u�����X�g���[���v��2��ނ�����܂��B���̓��͂Əo�͂���b�I��4�̃N���X
-�ŕ\����Ă��āA�o�C�g����="InputStream"�A�o�C�g�o��="OutputStream"�A��
-������="Reader"�A�����o��="Writer"�ƂȂ��Ă��܂��B
+Javaでは読み書きするデータの流れをストリームといいます。そのストリームに
+は、データを数値として処理する「バイトストリーム」と、文字として処理する
+「文字ストリーム」の2種類があります。その入力と出力が基礎的な4つのクラス
+で表されていて、バイト入力="InputStream"、バイト出力="OutputStream"、文
+字入力="Reader"、文字出力="Writer"となっています。
 
-����4�̃N���X�������ł���΁A���Ƃ͊ȒP�B�����̃X�g���[���N���X�́A��
-�����p�����Ă��܂��̂ŁA�N���X�������������ŁA��܂��ȋ@�\�������ł���
-���B�uDataInputStream�v�́u�f�[�^���o�C�g�œǂݍ��ށv�A�uFileWriter�v��
-�u�t�@�C���ɕ����������o���v�Ɖ��߂���΂����ł��B
+この4つのクラスが理解できれば、あとは簡単。多くのストリームクラスは、こ
+れらを継承していますので、クラス名を見ただけで、大まかな機能が推測できま
+す。「DataInputStream」は「データをバイトで読み込む」、「FileWriter」は
+「ファイルに文字を書き出す」と解釈すればいいです。
 
-�܂��A�X�g���[���N���X�̑����́A�R���X�g���N�^�[�ő��̃N���X���󂯎��
-�āA�A�����Ďg�p���邱�Ƃ��\�ł��B
+また、ストリームクラスの多くは、コンストラクターで他のクラスを受け取っ
+て、連結して使用することが可能です。
 
-����̗�ł����΁ASystem.in�ŕW�����͂Ɏw�肳��Ă���̂�InputStream�B��
-�̂܂܂ł́A�o�C�g�f�[�^�����擾�ł��܂���̂ŁA�u�o�C�g�f�[�^�������v��
-�ϊ����s��InputStreamReader�ƁA�u������1�s�̕�����v�̕ϊ����s��
-BufferedReader���Ȃ����킹�āA�W�����͂���1�s�̕������ǂݍ��ދ@�\��
-�������Ă��܂��B
+今回の例でいえば、System.inで標準入力に指定されているのはInputStream。こ
+のままでは、バイトデータしか取得できませんので、「バイトデータ→文字」の
+変換を行うInputStreamReaderと、「文字→1行の文字列」の変換を行う
+BufferedReaderをつなぎ合わせて、標準入力から1行の文字列を読み込む機能を
+実現しています。
 
-�u�t�@�C���Ƀo�C�g�������o���v�Ƃ��A�uWeb�T�[�o�[����1�s�ǂݍ��ށv�Ƃ��A
-�ꍇ�ɂ���Ă��낢��ȓ��o�͂̌`��������Ǝv���܂����A���ׂĂ����̃N��
-�X���Ȃ����킹�đΉ����邱�ƂɂȂ�܂��B
+「ファイルにバイトを書き出す」とか、「Webサーバーから1行読み込む」とか、
+場合によっていろいろな入出力の形式があると思いますが、すべてこれらのクラ
+スをつなぎ合わせて対応することになります。
  */

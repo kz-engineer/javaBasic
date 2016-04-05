@@ -1,17 +1,20 @@
 /**
- * ����Java256�{�m�b�N for Java 5.0
- * Java�T���v���\�[�X ver0.2C "CsvData"
- * CsvData.java �uCSV�t�@�C����ǂݍ��ށv
+ * 愛のJava256本ノック for Java 5.0
+ * Javaサンプルソース ver0.2C "CsvData"
+ * CsvData.java 「CSVファイルを読み込む」
  *
- * 2005/09/23 ����F���i�m���J�Y
+ * 2005/09/23 制作：安永ノリカズ
  *
- * �y�R���p�C�������s���@�z
+ * 【コンパイル＆実行方法】
  *     >javac CsvData.java
  *     >java CsvData
- * �y�L�[���[�h�z
- *     CSV(Comma Separated Values:�J���}��؂�f�[�^),  *     ���K�\��(regular expression), ��O(exception),  *     IO(Input/Output:���o��), �X�g���[��(stream:����), 
- * �y�����Ă݂悤�z
- *     finally�߂𗘗p���A��O���������Ă��m���Ƀt�@�C�����N���[�Y����悤�ɂ���B *     Excel�̃V�[�g��CSV�`���ŏo�͂��āAJava�œǂݍ��ݕ\������B
+ * 【キーワード】
+ *     CSV(Comma Separated Values:カンマ区切りデータ), 
+ *     正規表現(regular expression), 例外(exception), 
+ *     IO(Input/Output:入出力), ストリーム(stream:流れ), 
+ * 【試してみよう】
+ *     finally節を利用し、例外が発生しても確実にファイルをクローズするようにする。
+ *     ExcelのシートをCSV形式で出力して、Javaで読み込み表示する。
  */
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -29,30 +32,30 @@ public class CsvData {
             String L02;
             while( (L02 = L01.readLine()) != null ) {
                 String[] L03 = L02.split(",");
-                System.out.printf("%s [����:%3s �R��:%3s �q�d:%3s ��]:%3s]%n",
+                System.out.printf("%s [政治:%3s 軍事:%3s 智謀:%3s 野望:%3s]%n",
                         L03[0], L03[1], L03[2], L03[3], L03[4]);
             }
             L01.close();
         } catch(FileNotFoundException L04) {
-            System.out.println(L00 + "��������܂��ł����B");
+            System.out.println(L00 + "が見つかりませでした。");
         } catch(IOException L05) {
-            System.out.println(L00 + "��ǂݍ��߂܂���ł����B");
+            System.out.println(L00 + "を読み込めませんでした。");
         }
     }
 }
 
-/* �� �N���X�̊O�ł�����ƈꌾ ��
-CSV�Ƃ́u�f�[�^���J���}�ŋ�؂�ŋL�q�����e�L�X�g�t�@�C���v�̂��Ƃł��B
-busyo.csv�t�@�C�����G�f�B�^�ŊJ���Ē��g���m�F���Ă����Ă��������BExcel��
-�f�[�^�𗘗p�������Ƃ��́A*.csv�`���ŏ����o���Ă����āA���̂悤�ɂ��ē�
-�ݍ��߂΂n�j�ł��iJakarta POI�Œ��ړǂޕ��@������܂��j�B
+/* ■ クラスの外でちょっと一言 ■
+CSVとは「データをカンマで区切りで記述したテキストファイル」のことです。
+busyo.csvファイルをエディタで開いて中身を確認しておいてください。Excelの
+データを利用したいときは、*.csv形式で書き出しておいて、このようにして読
+み込めばＯＫです（Jakarta POIで直接読む方法もあります）。
 
-�����̕������s���Ă���split���\�b�h�́A���K�\��(java.util.regex�p�b�P�[
-�W)���̗p���ꂽJ2SE1.4�ŁA�V���ɒǉ����ꂽ���\�b�h�ł��B����܂ł́A
-java.util.StringTokenizer�𗘗p���āAwhile���[�v�Ŏ��o���Ă�����ł�
-���A�ꔭ�Ŕz��ɕϊ��ł���悤�ɂȂ��ĕ֗��ɂȂ�܂����ˁB
+文字の分割を行っているsplitメソッドは、正規表現(java.util.regexパッケー
+ジ)が採用されたJ2SE1.4で、新たに追加されたメソッドです。それまでは、
+java.util.StringTokenizerを利用して、whileループで取り出していたんです
+が、一発で配列に変換できるようになって便利になりましたね。
 
-���Ȃ݂ɁA�l���ł�������퍑�V�~�����[�V�����Q�[���́A�V�X�e���\�t�g��
-�w�V������x�B�V���v���ȃV�X�e���ƁA��B�̕����̃p�����[�^�������Ƃ��낪
-�O�b�h�ł��B
+ちなみに、僕が最も愛する戦国シミュレーションゲームは、システムソフトの
+『天下統一』。シンプルなシステムと、九州の武将のパラメータが高いところが
+グッドです。
  */

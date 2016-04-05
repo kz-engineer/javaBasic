@@ -1,17 +1,20 @@
 /**
- * ����Java256�{�m�b�N for Java 5.0
- * Java�T���v���\�[�X ver0.2C "GossipMaker"
- * GossipMaker.java �u�z��������Ɏ�郁�\�b�h�v
+ * 愛のJava256本ノック for Java 5.0
+ * Javaサンプルソース ver0.2C "GossipMaker"
+ * GossipMaker.java 「配列を引数に取るメソッド」
  *
- * 2005/09/23 ����F���i�m���J�Y
+ * 2005/09/23 制作：安永ノリカズ
  *
- * �y�R���p�C�������s���@�z
+ * 【コンパイル＆実行方法】
  *     >javac GossipMaker.java
  *     >java GossipMaker
- * �y�L�[���[�h�z
- *     �z��(array)�̏�����(initialize), �z��̒���(length),  *     ����(random), �^�ϊ�(cast) *     
- * �y�����Ă݂悤�z
- *     �ʔ����l�^���o��܂ŁA���x�����s����B *     ���̃e�[�}�ŕ��͂�������������v���O���������B
+ * 【キーワード】
+ *     配列(array)の初期化(initialize), 配列の長さ(length), 
+ *     乱数(random), 型変換(cast)
+ *     
+ * 【試してみよう】
+ *     面白いネタが出るまで、何度も実行する。
+ *     他のテーマで文章を自動生成するプログラムを作る。
  */
 import java.lang.Math;
 import java.lang.String;
@@ -20,21 +23,21 @@ import java.lang.System;
 public class GossipMaker {
     public static void main(String[] A00) {
         String[] L00 = {
-            "�Ɛ�X�N�[�v", "�Ռ�����", "�ɔ���", "�܂Ƃ�",
-            "�����J���[", "�ƊE���R", "�V����", "������b",
+            "独占スクープ", "衝撃事実", "極秘情報", "袋とじ",
+            "巻頭カラー", "業界騒然", "仰天告白", "感動秘話",
         };
         String[] L01 = {
-            "���򑍗�", "�t�Z�C�����哝��", "�����̕���",
-            "�x�b�J��", "�{�u�T�b�v", "�v���e�B����", 
-            "���[�j���O���B", "���c���q", "�ߏ��̂��΂����",
+            "小泉総理", "フセイン元大統領", "うちの部長",
+            "ベッカム", "ボブサップ", "プリティ長嶋", 
+            "モーニング娘。", "松田聖子", "近所のおばちゃん",
         };
         String[] L02 = {
-            "�o�������������", "�Z�N�n������", "����摜���o", "�s�ϑ���", 
-            "�g��Ƃŋt�؂�", "�J�c���^�f", "12�D�O�U��������",
-            "�����L�[�\��������",
+            "出来ちゃった結婚", "セクハラ現場", "お宝画像流出", "不倫騒動", 
+            "吉野家で逆切れ", "カツラ疑惑", "12奪三振完封勝利",
+            "ヤンキー暴走族時代",
         };
 
-        System.out.printf("%s!!�@%s�@%s!?%n", M00(L00), M00(L01), M00(L02));
+        System.out.printf("%s!!　%s　%s!?%n", M00(L00), M00(L01), M00(L02));
     }
     
     public static String M00(String[] A00) {
@@ -43,15 +46,15 @@ public class GossipMaker {
     }
 }
 
-/* �� �N���X�̊O�ł�����ƈꌾ ��
-���w���̍��A�u���ǂ��ŒN�����������v�Q�[�����Ă��܂���ł����H�@�u��
-�v�u�ǂ��Łv�u�N���v�u���������v�Ƃ����̂����ꂼ�ꎆ�ɏ����āA�K���ɂ�
-�Ȃ����킹�āA���̈ӊO�����y���ނ��Ă�ł��B
-���̃T���v���́A���̗V�т��q���g�ɍ쐬���܂����B�l���̂Ƃ���ɁA�g�߂Ȑl
-�Ԃ�����ƌ��\�y���߂܂��ˁB
+/* ■ クラスの外でちょっと一言 ■
+小学生の頃、「いつどこで誰が何をした」ゲームってしませんでした？　「い
+つ」「どこで」「誰が」「何をした」というのをそれぞれ紙に書いて、適当につ
+なぎ合わせて、その意外性を楽しむってやつです。
+このサンプルは、その遊びをヒントに作成しました。人物のところに、身近な人
+間を入れると結構楽しめますね。
 
-�v���O�����I�ɂ́A�z��������Ƃ��ă��\�b�h�ɓn���Ă���Ƃ���ɒ��ڂł��B
-�܂��A�z��̒����疳��ׂ�1�̗v�f���擾���镔���ł́A�z��̒����𓮓I
-(�v���O�������s��)�Ɏ擾���Ă���̂ŁA�f�[�^��ǉ����Ă��A�������W�b�N��
-�ύX����K�v�͂���܂���B
+プログラム的には、配列を引数としてメソッドに渡しているところに注目です。
+また、配列の中から無作為に1つの要素を取得する部分では、配列の長さを動的
+(プログラム実行時)に取得しているので、データを追加しても、処理ロジックを
+変更する必要はありません。
  */

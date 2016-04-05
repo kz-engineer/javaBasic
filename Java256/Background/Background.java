@@ -1,17 +1,20 @@
 /**
- * ����Java256�{�m�b�N for Java 5.0
- * Java�T���v���\�[�X ver0.2C "Background"
- * Background.java �u�E�C���h�E�̔w�i�ɉ摜��~���l�߂�v
+ * 愛のJava256本ノック for Java 5.0
+ * Javaサンプルソース ver0.2C "Background"
+ * Background.java 「ウインドウの背景に画像を敷き詰める」
  *
- * 2005/09/23 ����F���i�m���J�Y
+ * 2005/09/23 制作：安永ノリカズ
  *
- * �y�R���p�C�������s���@�z
+ * 【コンパイル＆実行方法】
  *     >javac Background.java
  *     >java Background
- * �y�L�[���[�h�z
- *     �w�i(background)�̓h��Ԃ�, BorderLayout, do while���[�v, *     ImageIcon
- * �y�����Ă݂悤�z
- *     �{�^���ȊO�̃R���|�[�l���g��z�u���Ă݂�B *     OK�{�^�����������тɔw�i�̉摜���ς��悤�ɂ���B *     �iimage�t�H���_��"dot.gif"�Ƃ����摜��p�ӂ��Ă܂��j
+ * 【キーワード】
+ *     背景(background)の塗りつぶし, BorderLayout, do whileループ,
+ *     ImageIcon
+ * 【試してみよう】
+ *     ボタン以外のコンポーネントを配置してみる。
+ *     OKボタンを押すたびに背景の画像が変わるようにする。
+ *     （imageフォルダに"dot.gif"という画像を用意してます）
  */
 import java.awt.BorderLayout;
 import java.awt.Graphics;
@@ -42,7 +45,7 @@ public class Background extends JFrame {
         System.setProperty("sun.awt.noerasebackground", "true");
 
         JFrame L00 = new Background();
-        L00.setTitle("�w�i�ɉ摜��~���l�߂Ă܂�");
+        L00.setTitle("背景に画像を敷き詰めてます");
         L00.setDefaultCloseOperation(EXIT_ON_CLOSE);
         L00.setSize(320, 240);
         L00.setVisible(true);
@@ -78,25 +81,25 @@ class BgPanel extends JPanel {
     }
 }
 
-/* �� �N���X�̊O�ł�����ƈꌾ ��
-�w�i�̉摜��ImageIcon�N���X���g���ēǂݍ���ł܂��B���̃N���X�̃R���X�g
-���N�^�[�́A���f�B�A�g���b�J�[(java.awt.MediaTracker)���g���āA�C���[�W
-�����S�ɓǂݍ��܂��܂őҋ@���Ă����̂ŁA�֗��ł��ˁB���Ȃ݂ɁA�摜
-�t�H�[�}�b�g��GIF�AJPEG�APNG�ɑΉ����Ă܂��B
+/* ■ クラスの外でちょっと一言 ■
+背景の画像はImageIconクラスを使って読み込んでます。このクラスのコンスト
+ラクターは、メディアトラッカー(java.awt.MediaTracker)を使って、イメージ
+が完全に読み込まれるまで待機してくれるので、便利ですね。ちなみに、画像
+フォーマットはGIF、JPEG、PNGに対応してます。
 
-�V�X�e���v���p�e�B���g���āA�w�i�̓h��Ԃ���}�����Ă܂��B������i���I
-�ɒ񋟂���邱�Ƃ��ۏ؂���Ă���@�\�ł͂���܂��񂪁A5.0�ł�����������
-�����ꂽ�̂ŁA���΂炭�͎g�������ȗ\���ł��B
+システムプロパティを使って、背景の塗りつぶしを抑制してます。今後も永続的
+に提供されることが保証されている機能ではありませんが、5.0でも引き続き提
+供されたので、しばらくは使えそうな予感です。
 
-�{�^���p�̃p�l���́A���ɕ~�����w�i�p�p�l����������悤�ɁA
-setOpaque(false)�œ����ɂ��Ă܂����A����"Opaque"�́u�s�����ȁv�Ƃ����Ӗ�
-�ŁA�u�I�E�y�C�N�v�Ɣ������܂��B�ł��l�́A�ŏ�������u�I�p�L���[�v�Ɠǂ�
-�ł��܂��A�ȗ������ƁA�u�I�o�L���[���I�o�P�̂p���Y�������v�̘A�z��
-�usetOpaque(true)�œ������I�v�Ƃ����������瓦���ꂸ�ɂ��܂��B
+ボタン用のパネルは、後ろに敷いた背景用パネルが見えるように、
+setOpaque(false)で透明にしてますが、この"Opaque"は「不透明な」という意味
+で、「オウペイク」と発音します。でも僕は、最初これを「オパキュー」と読ん
+でしまい、以来ずっと、「オバキュー→オバケのＱ太郎→透明」の連想で
+「setOpaque(true)で透明だ！」という呪縛から逃れられずにいます。
 
-�Ƃ������ƂŁASun Microsystems�l�ցB�����Z�̐܂Ƃ͑����グ�܂����A
-JComponent�Ɉȉ��̂悤�ȃ��\�b�h��ǉ����Ă���������ƁA�l�͂Ƃ��Ă��K��
-�ł��B
+ということで、Sun Microsystems様へ。ご多忙の折とは存じ上げますが、
+JComponentに以下のようなメソッドを追加していただけると、僕はとっても幸せ
+です。
 
 public void setObaque(boolean isObaque) {
     setOpaque(!isObaque);

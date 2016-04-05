@@ -1,27 +1,27 @@
 /**
- * ����Java256�{�m�b�N for Java 5.0
- * Java�T���v���\�[�X ver0.2C "MultiScroll"
- * Background.java �u����GIF�𗘗p���āA�w�i�𑽏d�X�N���[���v
+ * 愛のJava256本ノック for Java 5.0
+ * Javaサンプルソース ver0.2C "MultiScroll"
+ * Background.java 「透過GIFを利用して、背景を多重スクロール」
  *
- * 2005/09/23 ����F���i�m���J�Y
+ * 2005/09/23 制作：安永ノリカズ
  *
- * �y�R���p�C�������s���@�z
+ * 【コンパイル＆実行方法】
  *     >javac *.java
  *     >java MultiScroll
- * �y�L�[���[�h�z
- *     �A�N�Z�T���\�b�h(accessor method), 
- * �y�����Ă݂悤�z
- *     MultiScroll.java�Q�ƁB
+ * 【キーワード】
+ *     アクセサメソッド(accessor method), 
+ * 【試してみよう】
+ *     MultiScroll.java参照。
  */
 import java.awt.Image;
 import java.lang.String;
 import javax.swing.ImageIcon;
 
 public class Background {
-    private Image I00;  // �摜
-    private int I01;    // ��
-    private int I02;    // �\���ʒu
-    private int I03;    // �ړ����x
+    private Image I00;  // 画像
+    private int I01;    // 幅
+    private int I02;    // 表示位置
+    private int I03;    // 移動速度
 
     public Background(String A00, int A01) {
         I00 = new ImageIcon(A00).getImage();
@@ -49,18 +49,18 @@ public class Background {
     }
 }
 
-/* �� �N���X�̊O�ł�����ƈꌾ ��
-�w�i�摜���Ǘ�����N���X�ł��B�t�B�[���h�ϐ��i�v���p�e�B�j���悭���Ă���
-�����B���ꂪ�ꖇ�̔w�i�ɕK�v�ȏ��ł��B
+/* ■ クラスの外でちょっと一言 ■
+背景画像を管理するクラスです。フィールド変数（プロパティ）をよく見てくだ
+さい。これが一枚の背景に必要な情報です。
 
-�R���X�g���N�^�[�ōs���Ă���̂��A���̃t�B�[���h�̏������B�����œn���ꂽ
-����Œ�̐��l���g���āA�t�B�[���h�ϐ��ɏ����l�������Ă��܂��B
+コンストラクターで行っているのが、そのフィールドの初期化。引数で渡された
+情報や固定の数値を使って、フィールド変数に初期値を代入しています。
 
-�P���Ƀt�B�[���h�ϐ��̒l��Ԃ������̃��\�b�h������������܂����A�����
-�ɂ́Aget�`()�Ƃ������O������̂���ʓI�B���Ƃ��΁Aprivate String name
-�Ƃ���΁Apublic String getName()�Ăȋ�ł��ˁB����̃T���v���ɂ͂���
-�܂��񂪁A�t�B�[���h�ɒl��ݒ肷�郁�\�b�h�Ȃ�Aset�`()�ƂȂ�܂��B
+単純にフィールド変数の値を返すだけのメソッドがいくつかありますが、これら
+には、get〜()という名前をつけるのが一般的。たとえば、private String name
+とくれば、public String getName()てな具合ですね。今回のサンプルにはあり
+ませんが、フィールドに値を設定するメソッドなら、set〜()となります。
 
-���Ȃ݂ɁA�����Ń��\�b�h����ς�����A�Ăяo������DrawPanel.java��������
-���ɕύX���Ă��������ˁB
+ちなみに、ここでメソッド名を変えたら、呼び出し元のDrawPanel.javaも同じよ
+うに変更してくださいね。
  */

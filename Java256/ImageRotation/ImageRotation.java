@@ -1,17 +1,19 @@
 /**
- * ����Java256�{�m�b�N for Java 5.0
- * Java�T���v���\�[�X ver0.2C "ImageRotation"
- * ImageRotation.java �u�摜����]������v
+ * 愛のJava256本ノック for Java 5.0
+ * Javaサンプルソース ver0.2C "ImageRotation"
+ * ImageRotation.java 「画像を回転させる」
  *
- * 2005/09/23 ����F���i�m���J�Y
+ * 2005/09/23 制作：安永ノリカズ
  *
- * �y�R���p�C�������s���@�z
+ * 【コンパイル＆実行方法】
  *     >javac ImageRotation.java
  *     >java ImageRotation
- * �y�L�[���[�h�z
- *     Java2D, java.awt.geom�p�b�P�[�W, AffineTransform�N���X, ���W�A��(radian)
- * �y�����Ă݂悤�z
- *     ��]���x���グ�A�u������葽���v�񂷁B *     �摜�̒��S�Ɖ�]�̒��S�����炵�A�u�������傫���v�񂷁B *     ������}�`�ȂǁA�u�����ƈႤ���v���񂷁B
+ * 【キーワード】
+ *     Java2D, java.awt.geomパッケージ, AffineTransformクラス, ラジアン(radian)
+ * 【試してみよう】
+ *     回転速度を上げ、「いつもより多く」回す。
+ *     画像の中心と回転の中心をずらし、「いつもより大きく」回す。
+ *     文字や図形など、「いつもと違う物」も回す。
  */
 import java.awt.Color;
 import java.awt.Graphics;
@@ -41,7 +43,7 @@ public class ImageRotation extends JFrame {
         Toolkit.getDefaultToolkit().setDynamicLayout(true);
 
         JFrame L00 = new ImageRotation();
-        L00.setTitle("���߂łƂ��������܁`���I");
+        L00.setTitle("おめでとうございま〜す！");
         L00.setDefaultCloseOperation(EXIT_ON_CLOSE);
         L00.setBackground(Color.white);
         L00.setSize(320, 240);
@@ -79,15 +81,15 @@ class DrawPanel extends JPanel implements ActionListener {
     }
 }
 
-/* �� �N���X�̊O�ł�����ƈꌾ ��
-�摜�̉�]�Ƃ����ƁA���ƂȂ�摜����]�����āA���ꂩ��\������Ƃ����菇
-���v�������ׂ����ł����A�����ł́A���W���̕�����]�����āA���񓯂��ʒu��
-�摜��\��t����Ƃ�����@���Ƃ��Ă܂��B
+/* ■ クラスの外でちょっと一言 ■
+画像の回転というと、元となる画像を回転させて、それから表示するという手順
+を思い浮かべがちですが、ここでは、座標軸の方を回転させて、毎回同じ位置に
+画像を貼り付けるという手法をとってます。
 
-��]�̒��S�p���p�l���̒��S�ɐݒ肵�A����ɁA�p�l���̒��S�ɉ摜��\������
-�܂��̂ŁA���ʓI�ɉ摜�̒��S�ŉ�]����Ƃ����킯�ł��ˁB
+回転の中心角をパネルの中心に設定し、さらに、パネルの中心に画像を表示して
+ますので、結果的に画像の中心で回転するというわけですね。
 
-����rotate���\�b�h��Graphics2D�N���X�̂��̂ł����AJ2SE1.2�ȍ~�Apaint�ɓn
-�����Graphics�I�u�W�F�N�g�́AGraphics2D�̃T�u�N���X�ł��̂ŁA���̂܂�
-�L���X�g���邱�Ƃɂ����Graphics2D�Ƃ��ė��p���邱�Ƃ��o���܂��B
+このrotateメソッドはGraphics2Dクラスのものですが、J2SE1.2以降、paintに渡
+されるGraphicsオブジェクトは、Graphics2Dのサブクラスですので、そのまま
+キャストすることによってGraphics2Dとして利用することが出来ます。
  */

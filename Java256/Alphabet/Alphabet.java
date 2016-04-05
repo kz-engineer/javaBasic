@@ -1,17 +1,19 @@
 /**
- * ����Java256�{�m�b�N for Java 5.0
- * Java�T���v���\�[�X ver0.2C "Alphabet"
- * Alphabet.java �ufor���[�v���g���ăA���t�@�x�b�g��\���v
+ * 愛のJava256本ノック for Java 5.0
+ * Javaサンプルソース ver0.2C "Alphabet"
+ * Alphabet.java 「forループを使ってアルファベットを表示」
  *
- * 2005/09/23 ����F���i�m���J�Y
+ * 2005/09/23 制作：安永ノリカズ
  *
- * �y�R���p�C�������s���@�z
+ * 【コンパイル＆実行方法】
  *     >javac Alphabet.java
  *     >java Alphabet
- * �y�L�[���[�h�z
- *     char(����)�^, for���[�v, �C���N�������g(increment:����)���Z�q, Unicode *     
- * �y�����Ă݂悤�z
- *     �������⊿�����C���N�������g���Ă݂�B *     ���[�v�J�E���^�[��char�^�ɂ��A�\���p�̕ϐ��ƌ��p������A����Z�܂ŕ\������B
+ * 【キーワード】
+ *     char(文字)型, forループ, インクリメント(increment:増加)演算子, Unicode
+ *     
+ * 【試してみよう】
+ *     平仮名や漢字をインクリメントしてみる。
+ *     ループカウンターをchar型にし、表示用の変数と兼用させてAからZまで表示する。
  */
 import java.lang.String;
 import java.lang.System;
@@ -26,13 +28,13 @@ public class Alphabet {
     }
 }
 
-/* �� �N���X�̊O�ł�����ƈꌾ ��
-���������̂܂܌v�Z���Ŏg�����Ƃ��ł��܂��BJava��Unicode���̗p���Ă܂���
-�ŁA������0�`65535�܂ł�2�o�C�g�̃R�[�h�ŊǗ����Ă��܂��B�ł��̂ŁA����
-�I�ɂ́A�����锼�p(1�o�C�g)�E�S�p(2�o�C�g)�̋�ʂ�����܂���B�A���t�@
-�x�b�g�ȊO�̕������ǂ��������Ԃŕ���������ł�̂��A�C�ɂȂ��Ė���Ȃ���
-�������́A�v���؂���0����65535�܂őS���̕�����\�����Ă݂�ƁA�X�b�L����
-��ł��傤�B
+/* ■ クラスの外でちょっと一言 ■
+文字をそのまま計算式で使うこともできます。JavaはUnicodeを採用してますの
+で、文字を0〜65535までの2バイトのコードで管理しています。ですので、内部
+的には、いわゆる半角(1バイト)・全角(2バイト)の区別がありません。アルファ
+ベット以外の文字がどういう順番で文字が並んでるのか、気になって眠れないと
+いう方は、思い切って0から65535まで全部の文字を表示してみると、スッキリす
+るでしょう。
 
-���Ȃ݂ɁA'A'�͕����A"A"�͕�����Ȃ̂ŁA�L�`���Ƌ�ʂ��Ă��������ˁB
+ちなみに、'A'は文字、"A"は文字列なので、キチンと区別してくださいね。
  */

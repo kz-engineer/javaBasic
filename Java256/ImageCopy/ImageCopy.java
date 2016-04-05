@@ -1,17 +1,18 @@
 /**
- * ����Java256�{�m�b�N for Java 5.0
- * Java�T���v���\�[�X ver0.2C "ImageCopy"
- * ImageCopy.java �u�摜���X���[�Y�Ɋg��k���v
+ * 愛のJava256本ノック for Java 5.0
+ * Javaサンプルソース ver0.2C "ImageCopy"
+ * ImageCopy.java 「画像をスムーズに拡大縮小」
  *
- * 2005/09/23 ����F���i�m���J�Y
+ * 2005/09/23 制作：安永ノリカズ
  *
- * �y�R���p�C�������s���@�z
+ * 【コンパイル＆実行方法】
  *     >javac ImageCopy.java
  *     >java ImageCopy
- * �y�L�[���[�h�z
- *     �X�P�[�����O(scaling:�g��k��), �񓯊�(asynchronous), 
- * �y�����Ă݂悤�z
- *     �k�����Ă݂�B *     SCALE_SMOOTH�Ƒ��̃X�P�[�����O�A���S���Y�����r����B
+ * 【キーワード】
+ *     スケーリング(scaling:拡大縮小), 非同期(asynchronous), 
+ * 【試してみよう】
+ *     縮小してみる。
+ *     SCALE_SMOOTHと他のスケーリングアルゴリズムを比較する。
  */
 import java.awt.Color;
 import java.awt.Graphics;
@@ -33,7 +34,7 @@ public class ImageCopy extends JFrame {
         Toolkit.getDefaultToolkit().setDynamicLayout(true);
 
         JFrame L00 = new ImageCopy();
-        L00.setTitle("�C���[�W���g��R�s�[");
+        L00.setTitle("イメージを拡大コピー");
         L00.setDefaultCloseOperation(EXIT_ON_CLOSE);
         L00.setSize(400, 400);
         L00.setVisible(true);
@@ -42,7 +43,7 @@ public class ImageCopy extends JFrame {
 
 class DrawPanel extends JPanel {
     static final String C00 = "image/image.gif";
-    static final int C01 = 130;        // �X�P�[����(%)
+    static final int C01 = 130;        // スケール率(%)
     Image I00;
     int I01;
     int I02;
@@ -68,37 +69,37 @@ class DrawPanel extends JPanel {
     public void paintComponent(Graphics A00) {
         super.paintComponent(A00);
 
-        A00.drawString("����", 10, 20);
+        A00.drawString("原寸", 10, 20);
         A00.drawImage(I00, 10, 25, this);
 
-        A00.drawString("�P���Ɋg��(" + C01 + "%)", 10, 180);
+        A00.drawString("単純に拡大(" + C01 + "%)", 10, 180);
         A00.drawImage(I00, 10, 185, I01 * C01 / 100, I02 * C01 / 100, this);
 
-        A00.drawString("�X���[�Y�Ɋg��(" + C01 + "%)", 200, 180);
+        A00.drawString("スムーズに拡大(" + C01 + "%)", 200, 180);
         A00.drawImage(I03, 200, 185, this);
     }
 }
-/* �� �N���X�̊O�ł�����ƈꌾ ��
-�摜�̊g��\���Ƃ����΁Ajava.awt.Graphics��drawImage�ŁA���ƍ������w�肷
-����@���L���ł����A�掿�͂��܂�ǂ�����܂���B���Ɍ��摜���C���X�g�^�b
-�`�̗֊s�̂������肵���G���ƁA���̃A���͖ڗ����܂��BGraphics2D�ŃA���`�G
-�C���A�X���w�肵�Ă��A�}�`����̕`��ɂ����K�p����܂���̂őΏ��s�\�B
+/* ■ クラスの外でちょっと一言 ■
+画像の拡大表示といえば、java.awt.GraphicsのdrawImageで、幅と高さを指定す
+る方法が有名ですが、画質はあまり良くありません。特に元画像がイラストタッ
+チの輪郭のくっきりした絵だと、そのアラは目立ちます。Graphics2Dでアンチエ
+イリアスを指定しても、図形や線の描画にしか適用されませんので対処不可能。
 
-�����œo�ꂷ��̂�java.awt.Image��getScaledInstance���\�b�h�B����́A��
-�̉摜���g��k�������V����Image�I�u�W�F�N�g������Ă���܂��B���̍ۂ�
-�u�掿�D��v�u���x�D��v�ȂǃA���S���Y�����w�肷�邱�Ƃ��ł��܂��B
+そこで登場するのがjava.awt.ImageのgetScaledInstanceメソッド。これは、元
+の画像を拡大縮小した新たなImageオブジェクトを作ってくれます。その際に
+「画質優先」「速度優先」などアルゴリズムを指定することができます。
 
-���̃T���v���Ŏw�肵���uSCALE_SMOOTH�v�͂����Ƃ����炩�ȉ掿�Ŋg��k����
-����́B���̕��A�����͒x���Ȃ��Ă܂��B����́A�R���X�g���N�^�[�łP�x����
-���邾���ł����ApaintComponent�Ȃǂŕp�ɂɍs���\��������ꍇ�́A�掿��
-���Ƃ��ď������x��D�悷��I�������l�����Ă��������B
+このサンプルで指定した「SCALE_SMOOTH」はもっとも滑らかな画質で拡大縮小す
+るもの。その分、処理は遅くなってます。今回は、コンストラクターで１度生成
+するだけですが、paintComponentなどで頻繁に行う可能性がある場合は、画質を
+落として処理速度を優先する選択肢も考慮してください。
 
-getScaledInstance���\�b�h�ŁA������-1���w�肵�Ă�̂́A�uwidth �� height
-�̂ǂ��炩�����̐��l�̏ꍇ�A���̃C���[�W���@�̏c������ێ�����(API�h�L��
-�����g���)�v����ł��B
+getScaledInstanceメソッドで、高さに-1を指定してるのは、「width と height
+のどちらかが負の数値の場合、元のイメージ寸法の縦横比を維持する(APIドキュ
+メントより)」からです。
 
-���̃��\�b�h�ŋC�����Ȃ���΂����Ȃ��̂́A�񓯊��ɃC���[�W�����[�h����
-�Ƃ������ƁB�܂�AMediaTracker���g���ă��[�h�̏I����҂K�v�������
-���BJava�ł́A�񓯊��ɉ摜��ǂݍ��ނ��Ƃ������̂ŁA���̑Ώ����@���o����
-�����Ă��������B
+このメソッドで気をつけなければいけないのは、非同期にイメージをロードする
+ということ。つまり、MediaTrackerを使ってロードの終了を待つ必要がありま
+す。Javaでは、非同期に画像を読み込むことが多いので、この対処方法を覚えて
+おいてください。
  */

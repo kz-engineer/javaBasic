@@ -1,17 +1,19 @@
 /**
- * ˆ¤‚ÌJava256–{ƒmƒbƒN for Java 5.0
- * JavaƒTƒ“ƒvƒ‹ƒ\[ƒX ver0.2C "Rounding"
- * Rounding.java uMath‚ÆBigDecimal‚É‚æ‚é¬”“_‚ÌlÌŒÜ“üAØ‚èÌ‚ÄAØ‚èã‚°v
+ * æ„›ã®Java256æœ¬ãƒãƒƒã‚¯ for Java 5.0
+ * Javaã‚µãƒ³ãƒ—ãƒ«ã‚½ãƒ¼ã‚¹ ver0.2C "Rounding"
+ * Rounding.java ã€ŒMathã¨BigDecimalã«ã‚ˆã‚‹å°æ•°ç‚¹ã®å››æ¨äº”å…¥ã€åˆ‡ã‚Šæ¨ã¦ã€åˆ‡ã‚Šä¸Šã’ã€
  *
- * 2005/09/23 §ìFˆÀ‰iƒmƒŠƒJƒY
+ * 2005/09/23 åˆ¶ä½œï¼šå®‰æ°¸ãƒãƒªã‚«ã‚º
  *
- * yƒRƒ“ƒpƒCƒ‹•Às•û–@z
+ * ã€ã‚³ãƒ³ãƒ‘ã‚¤ãƒ«ï¼†å®Ÿè¡Œæ–¹æ³•ã€‘
  *     >javac Rounding.java
  *     >java Rounding
- * yƒL[ƒ[ƒhz
- *     ceil(Ø‚èã‚°), floor(Ø‚è‰º‚°), round(lÌŒÜ“ü),@10i”(decimal), *     —ñ‹“Œ^(enumerated type),
- * y‚µ‚Ä‚İ‚æ‚¤z
- *     BigDecimal‚É—pˆÓ‚³‚ê‚Ä‚¢‚é8ŒÂ‚ÌŠÛ‚ß‚İƒ‚[ƒh‚ğƒ`ƒFƒbƒN‚·‚éB *     printfƒƒ\ƒbƒh‚âjava.text.NumberFormatƒNƒ‰ƒX‚ÅA¬”‚ğ®Œ`‚µ‚Ä•\¦‚µ‚Ä‚İ‚éB
+ * ã€ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰ã€‘
+ *     ceil(åˆ‡ã‚Šä¸Šã’), floor(åˆ‡ã‚Šä¸‹ã’), round(å››æ¨äº”å…¥),ã€€10é€²æ•°(decimal),
+ *     åˆ—æŒ™å‹(enumerated type),
+ * ã€è©¦ã—ã¦ã¿ã‚ˆã†ã€‘
+ *     BigDecimalã«ç”¨æ„ã•ã‚Œã¦ã„ã‚‹8å€‹ã®ä¸¸ã‚è¾¼ã¿ãƒ¢ãƒ¼ãƒ‰ã‚’ãƒã‚§ãƒƒã‚¯ã™ã‚‹ã€‚
+ *     printfãƒ¡ã‚½ãƒƒãƒ‰ã‚„java.text.NumberFormatã‚¯ãƒ©ã‚¹ã§ã€å°æ•°ã‚’æ•´å½¢ã—ã¦è¡¨ç¤ºã—ã¦ã¿ã‚‹ã€‚
  */
 import java.lang.Math;
 import java.lang.String;
@@ -22,37 +24,37 @@ import java.math.RoundingMode;
 public class Rounding {
     public static void main(String[] A00) {
 
-        System.out.println("¬”‚ğ®”‚É‚·‚éiMathƒNƒ‰ƒXj");
+        System.out.println("å°æ•°ã‚’æ•´æ•°ã«ã™ã‚‹ï¼ˆMathã‚¯ãƒ©ã‚¹ï¼‰");
 
         double L00 = 25.6;
-        System.out.println("Œ³‚Ì’l@F" + L00);
-        System.out.println("Ø‚èã‚°F" + (int)Math.ceil(L00));
-        System.out.println("Ø‚èÌ‚ÄF" + (int)Math.floor(L00));
-        System.out.println("lÌŒÜ“üF" + Math.round(L00));
+        System.out.println("å…ƒã®å€¤ã€€ï¼š" + L00);
+        System.out.println("åˆ‡ã‚Šä¸Šã’ï¼š" + (int)Math.ceil(L00));
+        System.out.println("åˆ‡ã‚Šæ¨ã¦ï¼š" + (int)Math.floor(L00));
+        System.out.println("å››æ¨äº”å…¥ï¼š" + Math.round(L00));
 
-        System.out.println("\n¬”“_‘æ‚PˆÊ‚Ü‚Å‚É‚·‚éiBigDecimalƒNƒ‰ƒXj");
+        System.out.println("\nå°æ•°ç‚¹ç¬¬ï¼‘ä½ã¾ã§ã«ã™ã‚‹ï¼ˆBigDecimalã‚¯ãƒ©ã‚¹ï¼‰");
 
         BigDecimal L01 = new BigDecimal("256.256");
-        System.out.println("Œ³‚Ì’l@F" + L01);
-        System.out.println("Ø‚èã‚°F" + L01.setScale(1, RoundingMode.CEILING));
-        System.out.println("Ø‚èÌ‚ÄF" + L01.setScale(1, RoundingMode.FLOOR));
-        System.out.println("lÌŒÜ“üF" + L01.setScale(1, RoundingMode.HALF_UP));
+        System.out.println("å…ƒã®å€¤ã€€ï¼š" + L01);
+        System.out.println("åˆ‡ã‚Šä¸Šã’ï¼š" + L01.setScale(1, RoundingMode.CEILING));
+        System.out.println("åˆ‡ã‚Šæ¨ã¦ï¼š" + L01.setScale(1, RoundingMode.FLOOR));
+        System.out.println("å››æ¨äº”å…¥ï¼š" + L01.setScale(1, RoundingMode.HALF_UP));
     }
 }
 
-/* ¡ ƒNƒ‰ƒX‚ÌŠO‚Å‚¿‚å‚Á‚ÆˆêŒ¾ ¡
-”’l‚ğˆµ‚¤‚Æ‚«A•K—v‚ÈŒ…”‚Éû‚Ü‚é‚æ‚¤A’l‚ğuŠÛ‚ß‚İv‚½‚¢‚Æ‚«‚ª‚ ‚è‚Ü
-‚·‚æ‚ËB‚»‚ñ‚È‚Æ‚«‚É‚æ‚­g‚í‚ê‚é‚Ì‚ªAØ‚èã‚°AØ‚èÌ‚ÄAlÌŒÜ“ü‚Å‚·B
+/* â–  ã‚¯ãƒ©ã‚¹ã®å¤–ã§ã¡ã‚‡ã£ã¨ä¸€è¨€ â– 
+æ•°å€¤ã‚’æ‰±ã†ã¨ãã€å¿…è¦ãªæ¡æ•°ã«åã¾ã‚‹ã‚ˆã†ã€å€¤ã‚’ã€Œä¸¸ã‚è¾¼ã¿ã€ãŸã„ã¨ããŒã‚ã‚Šã¾
+ã™ã‚ˆã­ã€‚ãã‚“ãªã¨ãã«ã‚ˆãä½¿ã‚ã‚Œã‚‹ã®ãŒã€åˆ‡ã‚Šä¸Šã’ã€åˆ‡ã‚Šæ¨ã¦ã€å››æ¨äº”å…¥ã§ã™ã€‚
 
-Šî–{Œ^(int‚âdouble‚È‚Ç)‚Åˆ—‚ği‚ß‚éê‡‚ÍAMathƒNƒ‰ƒX‚ª•Ö—˜BƒCƒ“ƒXƒ^
-ƒ“ƒX‚ğ¶¬‚·‚é‚±‚Æ‚È‚­AèŒy‚É—˜—p‚Å‚«‚Ü‚·B‚½‚¾‚µ¸“x‚Ì–â‘èãA¬”‚ğ®
-”‚É•ÏŠ·‚·‚é‚Æ‚«‚É‚µ‚©g‚¤‚×‚«‚Å‚Í‚ ‚è‚Ü‚¹‚ñB
+åŸºæœ¬å‹(intã‚„doubleãªã©)ã§å‡¦ç†ã‚’é€²ã‚ã‚‹å ´åˆã¯ã€Mathã‚¯ãƒ©ã‚¹ãŒä¾¿åˆ©ã€‚ã‚¤ãƒ³ã‚¹ã‚¿
+ãƒ³ã‚¹ã‚’ç”Ÿæˆã™ã‚‹ã“ã¨ãªãã€æ‰‹è»½ã«åˆ©ç”¨ã§ãã¾ã™ã€‚ãŸã ã—ç²¾åº¦ã®å•é¡Œä¸Šã€å°æ•°ã‚’æ•´
+æ•°ã«å¤‰æ›ã™ã‚‹ã¨ãã«ã—ã‹ä½¿ã†ã¹ãã§ã¯ã‚ã‚Šã¾ã›ã‚“ã€‚
 
-BigDecimal‚ÍAƒCƒ“ƒXƒ^ƒ“ƒX‚Ì¶¬‚ª”º‚¤‚È‚ÇA‘½­–Ê“|‚Å‚·‚ªA‚»‚Ì‚Ô‚ñ×‚©
-‚­ŠÛ‚ß‚İˆ—‚ğ§Œä‚·‚é‚±‚Æ‚ª‚Å‚«A¸“x‚Ì–â‘è‚à‚ ‚è‚Ü‚¹‚ñBê‡‚É‚æ‚Á‚Ä
-g‚¢•ª‚¯‚Ä‚­‚¾‚³‚¢B
+BigDecimalã¯ã€ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ç”ŸæˆãŒä¼´ã†ãªã©ã€å¤šå°‘é¢å€’ã§ã™ãŒã€ãã®ã¶ã‚“ç´°ã‹
+ãä¸¸ã‚è¾¼ã¿å‡¦ç†ã‚’åˆ¶å¾¡ã™ã‚‹ã“ã¨ãŒã§ãã€ç²¾åº¦ã®å•é¡Œã‚‚ã‚ã‚Šã¾ã›ã‚“ã€‚å ´åˆã«ã‚ˆã£ã¦
+ä½¿ã„åˆ†ã‘ã¦ãã ã•ã„ã€‚
 
-BigDecimal‚ÌŠÛ‚ßƒ‚[ƒh‚Ìw’è‚É‚ÍAˆÈ‘O‚Í®”ƒtƒB[ƒ‹ƒh
-iBigDecimal.ROUND_HALF_UP‚È‚Çj‚ªg‚í‚ê‚Ä‚¢‚Ü‚µ‚½‚ªAJ2SE 5.0‚©‚ç‚ÍA
-java.math.RoundingMode‚Ì—ñ‹“Œ^‚Ìg—p‚ª„§‚³‚ê‚Ä‚¢‚Ü‚·B
+BigDecimalã®ä¸¸ã‚ãƒ¢ãƒ¼ãƒ‰ã®æŒ‡å®šã«ã¯ã€ä»¥å‰ã¯æ•´æ•°ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰
+ï¼ˆBigDecimal.ROUND_HALF_UPãªã©ï¼‰ãŒä½¿ã‚ã‚Œã¦ã„ã¾ã—ãŸãŒã€J2SE 5.0ã‹ã‚‰ã¯ã€
+java.math.RoundingModeã®åˆ—æŒ™å‹ã®ä½¿ç”¨ãŒæ¨å¥¨ã•ã‚Œã¦ã„ã¾ã™ã€‚
  */

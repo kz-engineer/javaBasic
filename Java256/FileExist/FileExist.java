@@ -1,17 +1,18 @@
 /**
- * ����Java256�{�m�b�N for Java 5.0
- * Java�T���v���\�[�X ver0.2C "FileExist"
- * FileExist.java �u�t�@�C���̑��݃`�F�b�N�v
+ * 愛のJava256本ノック for Java 5.0
+ * Javaサンプルソース ver0.2C "FileExist"
+ * FileExist.java 「ファイルの存在チェック」
  *
- * 2005/09/23 ����F���i�m���J�Y
+ * 2005/09/23 制作：安永ノリカズ
  *
- * �y�R���p�C�������s���@�z
+ * 【コンパイル＆実行方法】
  *     >javac FileExist.java
  *     >java FileExist
- * �y�L�[���[�h�z
- *     ���ۃp�X��(abstract pathname), �f�B���N�g��(directory), �t�@�C��(file)
- * �y�����Ă݂悤�z
- *     �f�B���N�g�������݂��邩�ǂ������ׂ�B *     �t�@�C�������݂����ꍇ�ɁA���̐�΃p�X��\������B
+ * 【キーワード】
+ *     抽象パス名(abstract pathname), ディレクトリ(directory), ファイル(file)
+ * 【試してみよう】
+ *     ディレクトリが存在するかどうか調べる。
+ *     ファイルが存在した場合に、その絶対パスを表示する。
  */
 import java.io.File;
 import java.lang.String;
@@ -24,23 +25,23 @@ public class FileExist {
         for (String L01 : L00) {
             File L02 = new File(L01);
             if (L02.exists() && L02.isFile()) {
-                System.out.printf("�t�@�C���u%s�v�͑��݂��܂��B%n", L01);
+                System.out.printf("ファイル「%s」は存在します。%n", L01);
             } else {
-                System.out.printf("�t�@�C���u%s�v�͑��݂��܂���B%n", L01);
+                System.out.printf("ファイル「%s」は存在しません。%n", L01);
             }
         }
     }
 }
 
-/* �� �N���X�̊O�ł�����ƈꌾ ��
-�t�@�C���̑��݃`�F�b�N�ɂ́A�I�[�v������Ƃ��ɁAFileNotFoundException��
-�߂܂�����@�ƁA����File�N���X���g�����@������܂��B�t�@�C����ǂݏ�����
-��̂Ȃ�A��O�őΉ����Ă������ł����A�P���ɑ��݂��`�F�b�N���邾���Ȃ�A
-File�N���X�̕����ȒP�ł��ˁB
+/* ■ クラスの外でちょっと一言 ■
+ファイルの存在チェックには、オープンするときに、FileNotFoundExceptionを
+捕まえる方法と、このFileクラスを使う方法があります。ファイルを読み書きす
+るのなら、例外で対応してもいいですが、単純に存在をチェックするだけなら、
+Fileクラスの方が簡単ですね。
 
-�t�@�C�����u���݂��Ȃ��v���Ƃ�z�肵�Ȃ���A�v���O������g�ނ̂���{�B
-�Ƃ͂����A���́w����Java256�{�m�b�N�x�ł��A�u���݂���v���Ƃ�O��Ƃ���
-�ӏ�������������܂��B����ȏꏊ����������A������ƑΏ�����悤�C��
-���Ă��������B�蔲������Ȃ�������B�F����ւ̈��̎����Ƃ��āA�킴�Ǝc��
-�Ă��ł�����ˁB�u��肱�ݕ������ځv�����b�g�[�Ȃ�ł�����B�}�W�ŁB
+ファイルが「存在しない」ことを想定しながら、プログラムを組むのが基本。
+とはいえ、この『愛のJava256本ノック』でも、「存在する」ことを前提とした
+箇所がいくつかあります。そんな場所を見つけたら、きちんと対処するよう修正
+してください。手抜きじゃないっすよ。皆さんへの愛の試練として、わざと残し
+てるんですからね。「作りこみ腹八分目」がモットーなんですから。マジで。
  */

@@ -1,17 +1,20 @@
 /**
- * ����Java256�{�m�b�N for Java 5.0
- * Java�T���v���\�[�X ver0.2C "Hokaben"
- * Hokaben.java �uMap���g���ăf�[�^�Ǘ��v
+ * 愛のJava256本ノック for Java 5.0
+ * Javaサンプルソース ver0.2C "Hokaben"
+ * Hokaben.java 「Mapを使ってデータ管理」
  *
- * 2005/09/23 ����F���i�m���J�Y
+ * 2005/09/23 制作：安永ノリカズ
  *
- * �y�R���p�C�������s���@�z
+ * 【コンパイル＆実行方法】
  *     >javac Hokaben.java
  *     >java Hokaben
- * �y�L�[���[�h�z
- *     �R���N�V�����t���[�����[�N(collections framework), *     �n�b�V���@(hashing), �f�[�^�����A���S���Y��,  *     �W�F�l���b�N�X(generics), �{�N�V���O(boxing), �A���{�N�V���O(unboxing),
- * �y�����Ă݂悤�z
- *     System.out.println(L00)�ŁA�}�b�v�̓��e��\�����Ă݂�B *     �R�}���h���C������ٓ������󂯎���āA���i���������ĕ\������B
+ * 【キーワード】
+ *     コレクションフレームワーク(collections framework),
+ *     ハッシュ法(hashing), データ検索アルゴリズム, 
+ *     ジェネリックス(generics), ボクシング(boxing), アンボクシング(unboxing),
+ * 【試してみよう】
+ *     System.out.println(L00)で、マップの内容を表示してみる。
+ *     コマンドラインから弁当名を受け取って、価格を検索して表示する。
  */
 import java.lang.Integer;
 import java.lang.NullPointerException;
@@ -24,54 +27,54 @@ public class Hokaben {
     public static void main(String[] args) {
         Map<String, Integer> L00 = new HashMap<String, Integer>();
         
-        L00.put("�̂�ٓ�", 290);
-        L00.put("����g�ٓ�", 390);
-        L00.put("�`�L����ؕٓ�", 460);
-        L00.put("�f�~�n���o�[�O�ٓ�", 420);
-        L00.put("�V���P�ٓ�", 380);
-        L00.put("���[�X�J�c�ٓ�", 560);
-        L00.put("���̓��ٓ�", 450);
-        L00.put("�r�[�t�J���[", 390);
-        L00.put("�e�q��", 390);
-        L00.put("�r�b�O�`�L���J�c�ٓ�", 390);
+        L00.put("のり弁当", 290);
+        L00.put("から揚弁当", 390);
+        L00.put("チキン南蛮弁当", 460);
+        L00.put("デミハンバーグ弁当", 420);
+        L00.put("シャケ弁当", 380);
+        L00.put("ロースカツ弁当", 560);
+        L00.put("幕の内弁当", 450);
+        L00.put("ビーフカレー", 390);
+        L00.put("親子丼", 390);
+        L00.put("ビッグチキンカツ弁当", 390);
 
-        System.out.println("�`�@�ٓ��̋��z�������@�`");
-        M00(L00, "���̓��ٓ�");
-        M00(L00, "�`�L����ؕٓ�");
-        M00(L00, "�t�H�A�O���ٓ�");
-        M00(L00, "�r�b�O�`�L���J�c�ٓ�");
+        System.out.println("〜　弁当の金額を検索　〜");
+        M00(L00, "幕の内弁当");
+        M00(L00, "チキン南蛮弁当");
+        M00(L00, "フォアグラ弁当");
+        M00(L00, "ビッグチキンカツ弁当");
     }
 
     public static void M00(Map<String, Integer> A00, String A01) {
         try {
             int L00 = A00.get(A01);
-            System.out.printf("�u%s�v%d�~%n", A01, L00);
+            System.out.printf("「%s」%d円%n", A01, L00);
         } catch (NullPointerException L01) {
-            System.out.printf("�u%s�v�̓��j���[�ɂ������܂���B%n", A01);
+            System.out.printf("「%s」はメニューにございません。%n", A01);
         }
     }
 }
 
-/* �� �N���X�̊O�ł�����ƈꌾ ��
-Map�́A����̗�ł����΁u�ٓ����v�Ɓu�l�i�v�̂悤�Ȋ����ŁA�u�L�[�v��
-�u�l�v���y�A�ɂȂ������������Ƃ��Ɏg���܂��B�f�[�^�ʂ������Ă��A�L�[��
-��������΁A�l��f�������o����̂������ł��B
+/* ■ クラスの外でちょっと一言 ■
+Mapは、今回の例でいえば「弁当名」と「値段」のような感じで、「キー」と
+「値」がペアになった情報を扱うときに使います。データ量が増えても、キーで
+検索すれば、値を素早く取り出せるのが特徴です。
 
-Map<String, Integer>�Ƃ����錾�́A�L�[��String�^�A�l��Integer�^�����_��
-��A�Ƃ����Ӗ��ŁA�Ⴄ��ނ̃f�[�^�����邱�Ƃ𖢑R�ɖh������������܂��B
-���ۂɂ́Aput�Ńf�[�^��ǉ�����Ƃ����Aget�Œl�����o���Ƃ����A��{�^��
-int���g���Ă܂����A�����int�^��Integer�^�������I�ɕϊ������Ƃ����@�\
-���\�ɂ��Ă���L�q���@�ł��B
+Map<String, Integer>という宣言は、キーはString型、値はInteger型しかダメ
+よ、という意味で、違う種類のデータが入ることを未然に防ぐ働きがあります。
+実際には、putでデータを追加するときも、getで値を取り出すときも、基本型の
+intを使ってますが、これはint型とInteger型が自動的に変換されるという機能
+が可能にしている記述方法です。
 
-Map�͂����܂ł��C���^�[�t�F�[�X�ł��̂ŁAnew����ꍇ�́AHashMap�A
-TreeMap�ALinkedHashMap�Ȃǂ̃N���X���g�����ƂɂȂ�܂��B���ꂼ���������
-���ł����A����͈�ԍ����ɓ��삷��HashMap���̗p���܂����B�������ϐ���
-Map�^�Ƃ��Đ錾���Ă܂��̂ŁA����Map�n�N���X���g���ꍇ���Anew�̂Ƃ��낳
-�������������OK�B�ٓ����i�������\�b�h���C������K�v�͂���܂���B
+Mapはあくまでもインターフェースですので、newする場合は、HashMap、
+TreeMap、LinkedHashMapなどのクラスを使うことになります。それぞれ特徴があ
+るんですが、今回は一番高速に動作するHashMapを採用しました。ただし変数は
+Map型として宣言してますので、他のMap系クラスを使う場合も、newのところさ
+え書き換えればOK。弁当価格検索メソッドを修正する必要はありません。
 
-���̂悤�ɁA�uMap�C���^�[�t�F�[�X�������������c�Ȃ�ł������v��Ԃŕϐ�
-��錾���Ă����ƁA��X�A�\�[�X�R�[�h�̍ė��p�������܂�킯�ł��ˁB�I�u
-�W�F�N�g�w���Ɋ���Ă��Ȃ��ƁA���܂ЂƂs���Ɨ��Ȃ���������܂��񂪁A�C
-���^�[�t�F�[�X�o�R�ŃC���X�^���X����������̂��AJava�ł͈�̃X�^�C����
-�Ȃ��Ă܂��̂ŁA�ǂ�ǂ�^�����Ă����ĉ������B
+このように、「Mapインターフェースを実装したヤツなんでも来い」状態で変数
+を宣言しておくと、後々、ソースコードの再利用性が高まるわけですね。オブ
+ジェクト指向に慣れていないと、いまひとつピンと来ないかもしれませんが、イ
+ンターフェース経由でインスタンスをいじくるのが、Javaでは一つのスタイルに
+なってますので、どんどん真似していって下さい。
  */

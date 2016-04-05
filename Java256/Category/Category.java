@@ -1,17 +1,19 @@
 /**
- * ����Java256�{�m�b�N for Java 5.0
- * Java�T���v���\�[�X ver0.2C "Category"
- * Category.java �uSet���g�����J�e�S���[���ށv
+ * 愛のJava256本ノック for Java 5.0
+ * Javaサンプルソース ver0.2C "Category"
+ * Category.java 「Setを使ったカテゴリー分類」
  *
- * 2005/09/23 ����F���i�m���J�Y
+ * 2005/09/23 制作：安永ノリカズ
  *
- * �y�R���p�C�������s���@�z
+ * 【コンパイル＆実行方法】
  *     >javac *.java
  *     >java Category
- * �y�L�[���[�h�z
- *     �N���X�݌v(class design), Model(����), View(�\��)
- * �y�����Ă݂悤�z
- *     CSV�Ƀf�[�^��ǉ����A�J�e�S���[��������̂��m�F����B *     �ҏW�������e��CSV�ɏ����o���u�ۑ��v�@�\������B *     
+ * 【キーワード】
+ *     クラス設計(class design), Model(処理), View(表示)
+ * 【試してみよう】
+ *     CSVにデータを追加し、カテゴリーが増えるのを確認する。
+ *     編集した内容をCSVに書き出す「保存」機能をつける。
+ *     
  */
 import java.awt.BorderLayout;
 import java.awt.Toolkit;
@@ -30,7 +32,7 @@ public class Category extends JFrame implements ActionListener {
     
     public Category() {
         I02 = new DataManager();
-        // �J�e�S���[�̃��X�g���擾���āA�R���{�{�b�N�X���쐬
+        // カテゴリーのリストを取得して、コンボボックスを作成
         I00 = new JComboBox(I02.M00());
         I01 = new JTextArea();
         add(I00, BorderLayout.NORTH);
@@ -41,7 +43,7 @@ public class Category extends JFrame implements ActionListener {
     
     public void actionPerformed(ActionEvent A00) {
         String L00 = (String)I00.getSelectedItem();
-        // �I�����ꂽ�J�e�S���[�Ɋ܂܂��f�[�^������
+        // 選択されたカテゴリーに含まれるデータを検索
         List<ComicChar> L01 = I02.M01(L00);
 
         I01.setText("");
@@ -55,24 +57,24 @@ public class Category extends JFrame implements ActionListener {
         Toolkit.getDefaultToolkit().setDynamicLayout(true);
 
         Category L00 = new Category();
-        L00.setTitle("�J�e�S���[���Ƃɕ���");
+        L00.setTitle("カテゴリーごとに分類");
         L00.setDefaultCloseOperation(EXIT_ON_CLOSE);
         L00.setSize(320, 240);
         L00.setVisible(true);
     }
 }
 
-/* �� �N���X�̊O�ł�����ƈꌾ ��
-CSV�t�@�C������f�[�^��ǂݍ��݁A�J�e�S���[���Ƃɕ��ނ��ĕ\������v���O
-�����ł��B�܂��̓v���O�����𓮂����A�t����CSV�t�@�C���̒��g�ƌ���ׂĂ�
-�������B
+/* ■ クラスの外でちょっと一言 ■
+CSVファイルからデータを読み込み、カテゴリーごとに分類して表示するプログ
+ラムです。まずはプログラムを動かし、付属のCSVファイルの中身と見比べてく
+ださい。
 
-���̃T���v���́ACategory�ADataManager�AComicChar��3�̃N���X�ō\������
-�Ă���A���ꂼ��Ŗ����𕪒S���Ă��܂��BCategory�N���X�́AGUI��C�x���g
-�����Ȃǂ�S���BComicChar��1���̃f�[�^��\���N���X�ŁA����ComicChar�̃�
-�X�g��DataManager�N���X���Ǘ�����\���ɂȂ��Ă܂��B
+このサンプルは、Category、DataManager、ComicCharの3つのクラスで構成され
+ており、それぞれで役割を分担しています。Categoryクラスは、GUIやイベント
+処理などを担当。ComicCharは1件のデータを表すクラスで、そのComicCharのリ
+ストをDataManagerクラスが管理する構造になってます。
 
-�N���X�݌v�ɂ����āA�u��ʕ\���v�Ɓu�f�[�^�Ǘ��v�𕪂���̂͊�{���̊�
-�{�B�N���X�����ɔY�ޏꍇ�́A�܂�����������|����ɂ���΂������Ǝv����
-���B
+クラス設計において、「画面表示」と「データ管理」を分けるのは基本中の基
+本。クラス分けに悩む場合は、まずここを取っ掛かりにすればいいかと思いま
+す。
  */

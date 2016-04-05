@@ -1,17 +1,19 @@
 /**
- * ����Java256�{�m�b�N for Java 5.0
- * Java�T���v���\�[�X ver0.2C "Gachoooon"
- * Gachoooon.java �uJScrollBar�ŉ摜���g��k���v
+ * 愛のJava256本ノック for Java 5.0
+ * Javaサンプルソース ver0.2C "Gachoooon"
+ * Gachoooon.java 「JScrollBarで画像を拡大縮小」
  *
- * 2005/09/23 ����F���i�m���J�Y
+ * 2005/09/23 制作：安永ノリカズ
  *
- * �y�R���p�C�������s���@�z
+ * 【コンパイル＆実行方法】
  *     >javac Gachoooon.java
  *     >java Gachoooon
- * �y�L�[���[�h�z
- *     �ő�l(maximum), �ŏ��l(minimum), ���ݒl(current value), �͈�(extent),  *     ����(orientation), ����(vertical), ����(horizontal), �J�[
- * �y�����Ă݂悤�z
- *     ���X�N���[���o�[�Łu�K�`���[���v�B *     JScrollBar�̍ő�l�A�ŏ��l�A�c�}�~�̒�����ς��Ă݂�B
+ * 【キーワード】
+ *     最大値(maximum), 最小値(minimum), 現在値(current value), 範囲(extent), 
+ *     方向(orientation), 垂直(vertical), 水平(horizontal), 谷啓
+ * 【試してみよう】
+ *     横スクロールバーで「ガチョーン」。
+ *     JScrollBarの最大値、最小値、ツマミの長さを変えてみる。
  */
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -48,7 +50,7 @@ public class Gachoooon extends JFrame implements AdjustmentListener {
         Toolkit.getDefaultToolkit().setDynamicLayout(true);
 
         Gachoooon L00 = new Gachoooon();
-        L00.setTitle("�J�[�ɂȂ�������ŁI");
+        L00.setTitle("谷啓になったつもりで！");
         L00.setDefaultCloseOperation(EXIT_ON_CLOSE);
         L00.setBackground(Color.white);
         L00.pack();
@@ -59,10 +61,10 @@ public class Gachoooon extends JFrame implements AdjustmentListener {
 class DrawPanel extends JPanel {
     static final String C00 = "image/gachoooon.gif";
     private Image I00;
-    private int I01;    // ��
-    private int I02;    // ����
-    private int I03;    // �ő�l
-    private int I04;    // ���ݒl
+    private int I01;    // 幅
+    private int I02;    // 高さ
+    private int I03;    // 最大値
+    private int I04;    // 現在値
 
     public DrawPanel(int A00) {
         this.I03 = A00;
@@ -91,27 +93,27 @@ class DrawPanel extends JPanel {
     }
 }
 
-/* �� �N���X�̊O�ł�����ƈꌾ ��
-JScrollBar���\������v�f�́A�ŏ��l�A�ő�l�A���ݒl�A�\���͈�(=�c�}�~�̒�
-��)�̂S�B�c�}�~�𓮂�����AdjustmentEvent���������A���̃C�x���g�Ńc�}�~
-�̈ʒu���擾���邱�Ƃ��ł��܂��B
+/* ■ クラスの外でちょっと一言 ■
+JScrollBarを構成する要素は、最小値、最大値、現在値、表示範囲(=ツマミの長
+さ)の４つ。ツマミを動かせばAdjustmentEventが発生し、そのイベントでツマミ
+の位置を取得することができます。
 
-�f�t�H���g�ł́A�ŏ��l=0�A�ő�l=100�A���ݒn=0�A�c�}�~�̒���=10�̃X�N
-���[���o�[����������܂��B�ł́A���̃f�t�H���g�̃X�N���[���o�[���Ԃ��ő�
-�̒l�͂����ɂȂ�ł��傤�H�@�����́A�ő�l(100)�|�c�}�~�̒���(10)��90
-�ł��B
+デフォルトでは、最小値=0、最大値=100、現在地=0、ツマミの長さ=10のスク
+ロールバーが生成されます。では、そのデフォルトのスクロールバーが返す最大
+の値はいくつになるでしょう？　答えは、最大値(100)−ツマミの長さ(10)の90
+です。
 
-���������X�N���[���o�[�Ƃ́A�L���̈�̈ꕔ����\�����邽�߂ɂ�����́B�c
-�}�~�̒����͕\������͈͂�\���܂��B�ł��̂ŁA���̗�ł����΁A90�̈ʒu��
-��10�̕��ʂ�\������΁A�S�̂�100��\�����邱�Ƃ��\�ŁA�X�N���[���o�[
-�̋@�\�Ƃ��Ă͂���ŏ[���Ȃ킯�ł��B
+そもそもスクロールバーとは、広い領域の一部分を表示するためにあるもの。ツ
+マミの長さは表示する範囲を表します。ですので、この例でいえば、90の位置か
+ら10の分量を表示すれば、全体の100を表示することが可能で、スクロールバー
+の機能としてはこれで充分なわけです。
 
-���������ϓ_���炷��ƁA�摜�̊g��k���ɃX�N���[���o�[���g���͎̂ד��ŁA
-�X���C�_�[(JSlider)�̕����K�؂Ǝv���܂��B�ł�����́A�E�B���h�E�̉E��
-�ɂ��錩���ꂽ�X�N���[���o�[�Łu�K�`���[���v������̂��ʔ����Ȃ�ŁA����
-�ق��B
+そういう観点からすると、画像の拡大縮小にスクロールバーを使うのは邪道で、
+スライダー(JSlider)の方が適切と思われます。でも今回は、ウィンドウの右側
+にある見慣れたスクロールバーで「ガチョーン」をするのが面白さなんで、ご勘
+弁を。
 
-�Ō�ɁA�ߍ��̎Ⴂ����ɒ����B�����Y���b�ƃX�N���[���o�[��������Ȃ�Ė�
-��ȃ}�l�͂��Ȃ��悤�ɁB���̕��ōׂ����㉺�ɓ������āu�K�`���[���v�̃J��
-�����[�N���Č�����񂾂��B���ނ���ȁB
+最後に、近頃の若いもんに忠告。ただズルッとスクロールバーを下げるなんて野
+暮なマネはしないように。下の方で細かく上下に動かして「ガチョーン」のカメ
+ラワークを再現するんだぞ。頼むからな。
  */

@@ -1,17 +1,17 @@
 /**
- * ����Java256�{�m�b�N for Java 5.0
- * Java�T���v���\�[�X ver0.2C "JavaCurry"
- * Circle.java �u�J���[�̃p�b�P�[�W���I�u�W�F�N�g�w���ŕ\���v
+ * 愛のJava256本ノック for Java 5.0
+ * Javaサンプルソース ver0.2C "JavaCurry"
+ * Circle.java 「カレーのパッケージをオブジェクト指向で表現」
  *
- * 2005/09/23 ����F���i�m���J�Y
+ * 2005/09/23 制作：安永ノリカズ
  *
- * �y�R���p�C�������s���@�z
+ * 【コンパイル＆実行方法】
  *     >javac *.java
  *     >java JavaCurry
- * �y�L�[���[�h�z
- *     �ȉ~(oval)�̕`��
- * �y�����Ă݂悤�z
- *     JavaCurry.java�Q�ƁB
+ * 【キーワード】
+ *     楕円(oval)の描画
+ * 【試してみよう】
+ *     JavaCurry.java参照。
  */
 import java.awt.Color;
 import java.awt.Graphics;
@@ -35,13 +35,13 @@ public class Circle implements Parts {
     }
 }
 
-/* �� �N���X�̊O�ł�����ƈꌾ ��
-���̃T���v�������ɂ�����A�u�{���J���[�̃p�b�P�[�W���Ăǂ�Ȃ񂾂�
-���H�v�Ƃ������ƂŁA�����A�ߏ��̃X�[�p�[�i��߃^�E���@���X�j�֒����ɍs��
-�܂����B�������A�l�̋L���ɂ���w�{���J���[ �S�[���h�x�͂��������ɂ͂�
-���A�w�{���J���[ �S�[���h�Q�P�x�ւƃo�[�W�����A�b�v���Ă�ł͂Ȃ��ł�
-���I�@�������A�p�b�P�[�W�́u�ہv���A�����ɗ��̓I�ŁA�e�J���܂œ����Ă�
-����Ȃ��ł����I
+/* ■ クラスの外でちょっと一言 ■
+このサンプルを作るにあたり、「ボンカレーのパッケージってどんなんだっ
+け？」ということで、早速、近所のスーパー（ゆめタウン宗像店）へ調査に行き
+ました。しかし、僕の記憶にある『ボンカレー ゴールド』はもうそこにはな
+く、『ボンカレー ゴールド２１』へとバージョンアップしてるではないです
+か！　しかも、パッケージの「丸」が、微妙に立体的で、テカリまで入ってる
+じゃないですか！
 
-�Ƃ肠�������Ȃ��������Ƃɂ��āA�X�[�p�[����ɂ��܂����c�c�B
+とりあえず見なかったことにして、スーパーを後にしました……。
  */

@@ -1,17 +1,20 @@
 /**
- * ����Java256�{�m�b�N for Java 5.0
- * Java�T���v���\�[�X ver0.2C "DigitalClock"
- * DigitalClock.java �u���Ԃ𕶎���ɐ��`���ăf�W�^�����v�v
+ * 愛のJava256本ノック for Java 5.0
+ * Javaサンプルソース ver0.2C "DigitalClock"
+ * DigitalClock.java 「時間を文字列に整形してデジタル時計」
  *
- * 2005/09/23 ����F���i�m���J�Y
+ * 2005/09/23 制作：安永ノリカズ
  *
- * �y�R���p�C�������s���@�z
+ * 【コンパイル＆実行方法】
  *     >javac DigitalClock.java
  *     >java DigitalClock
- * �y�L�[���[�h�z
- *     ����������(format string), �x�[�X���C��(base line:���),  *     �A�Z���g(ascent:�㏸), �f�B�Z���g(descent:���~),
- * �y�����Ă݂悤�z
- *     java.text.SimpleDateFormat���g���Ď����𐮌`���� *     �N�������\������B *     �A�i���O���v�����B
+ * 【キーワード】
+ *     書式文字列(format string), ベースライン(base line:基準線), 
+ *     アセント(ascent:上昇), ディセント(descent:下降),
+ * 【試してみよう】
+ *     java.text.SimpleDateFormatを使って時刻を整形する
+ *     年月日も表示する。
+ *     アナログ時計を作る。
  */
 import java.awt.Color;
 import java.awt.FontMetrics;
@@ -39,7 +42,7 @@ public class DigitalClock extends JFrame {
         Toolkit.getDefaultToolkit().setDynamicLayout(true);
 
         DigitalClock L00 = new DigitalClock();
-        L00.setTitle("�f�W�^�����v");
+        L00.setTitle("デジタル時計");
         L00.setDefaultCloseOperation(EXIT_ON_CLOSE);
         L00.setBackground(Color.white);
         L00.setSize(200, 100);
@@ -69,31 +72,31 @@ class DrawPanel extends JPanel implements ActionListener {
     }
 }
 
-/* �� �N���X�̊O�ł�����ƈꌾ ��
-���������A���^�C���ŕ\������ɂ́A����I�ɉ�ʂ��X�V���Ȃ��Ƃ����܂���B
-���̂��߂ɗ��p���Ă���̂��Ajavax.swing.Timer�N���X�B1�b���ƂɃC�x���g��
-���������A�C�x���g�������\�b�h�ŉ�ʂ̍ĕ`��v�����o���Ă��܂��B
+/* ■ クラスの外でちょっと一言 ■
+時刻をリアルタイムで表示するには、定期的に画面を更新しないといけません。
+そのために利用しているのが、javax.swing.Timerクラス。1秒ごとにイベントを
+発生させ、イベント処理メソッドで画面の再描画要求を出しています。
 
-�����̕�������擾����ɂ́Ajava.text.SimpleDateFormat�A��������
-String.format���\�b�h���g���܂��B�����J2SE 5.0�œ������ꂽ�����������
-�g���āAString.format���\�b�h�Ńt�H�[�}�b�g������@���̗p���܂����B
+時刻の文字列を取得するには、java.text.SimpleDateFormat、もしくは
+String.formatメソッドを使います。今回はJ2SE 5.0で導入された書式文字列を
+使って、String.formatメソッドでフォーマットする方法を採用しました。
 
-"%1$tp %1$tI:%1$tM:%1$tS"�Ƃ��������͈ꌩ���G�ł����A���̈Ӗ���m���Ă�
-�΋����ɑ��炸�B�܂�"%"�Ŏn�܂镶���񂪏����̎w����\���܂��B���̌��
-����"1$"�́A�P�Ԗڂ̈���(= new Date())�Ƃ����Ӗ��B�܂�4�ӏ���"%"�̕���
-���ADate�I�u�W�F�N�g�𕶎��񉻂������̂ɒu���������܂��B
+"%1$tp %1$tI:%1$tM:%1$tS"という書式は一見複雑ですが、その意味を知ってれ
+ば恐れるに足らず。まず"%"で始まる文字列が書式の指示を表します。その後に
+続く"1$"は、１番目の引数(= new Date())という意味。つまり4箇所の"%"の部分
+が、Dateオブジェクトを文字列化したものに置き換えられます。
 
-"t"�Ƃ����w��́A�u���t/�����v�ɕϊ�����Ƃ����Ӗ��B"p"�͌ߑO���ߌ�A"I"
-��12���Ԑ��̎��A"M"�͕��A"S"�͕b��\���܂��B":"�̂悤�ɏ����Ƃ��ĉ��߂�
-��Ȃ��������̂́A���̂܂ܕ\������܂��B����ŁA"�ߑO���ߌ�@���F���F�b"
-�Ƃ��������̕����񂪊����B�ڂ�����API�h�L�������g��java.util.Formatter��
-����A����������̉�����Q�Ƃ��Ă��������B
+"t"という指定は、「日付/時刻」に変換するという意味。"p"は午前か午後、"I"
+は12時間制の時、"M"は分、"S"は秒を表します。":"のように書式として解釈さ
+れなかったものは、そのまま表示されます。これで、"午前か午後　時：分：秒"
+という書式の文字列が完成。詳しくはAPIドキュメントのjava.util.Formatterに
+ある、書式文字列の解説を参照してください。
 
-��������ʂ̒��S�ɕ\�����邽�߂ɁA�t�H���g�̏ڍׂȏ����擾���Ă܂��B��
-���ŏd�v�ɂȂ�̂��A�t�H���g�ɂ�����u�x�[�X���C���v�Ƃ����T�O�B�w�Z�ŏ�
-�߂ăA���t�@�x�b�g���K�����Ƃ��̉p��̃m�[�g���v���o���Ă��������B4�{��
-�̉�����2�Ԗڂ��Ԃ��Ȃ��Ă܂�����ˁB���ꂪ�u�x�[�X���C���v�B'A'�͂��̐�
-�����ɁA'y'��'g'�͉��ɂ͂ݏo���悤�ɔz�u����܂��B���́u�x�[�X���C���v
-����̍������u�A�Z���g�v�A���̍������u�f�B�Z���g�v�ƌĂԂ̂ŁA������o
-���Ă����Ă��������B
+時刻を画面の中心に表示するために、フォントの詳細な情報を取得してます。こ
+こで重要になるのが、フォントにおける「ベースライン」という概念。学校で初
+めてアルファベットを習ったときの英語のノートを思い出してください。4本線
+の下から2番目が赤くなってましたよね。あれが「ベースライン」。'A'はその線
+から上に、'y'や'g'は下にはみ出すように配置されます。その「ベースライン」
+より上の高さを「アセント」、下の高さを「ディセント」と呼ぶので、これも覚
+えておいてください。
  */
